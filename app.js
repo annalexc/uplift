@@ -1,4 +1,4 @@
-////////// MODULES //////////
+////////// MODULES & MIDDLEWARE //////////
 
 var express = require('express');
 var app = express();
@@ -17,8 +17,6 @@ app.use(bodyParser.urlencoded());
 var cookieParser = require('cookie-parser');
 app.use(cookieParser());
 
-/////////// MIDDLE WARE //////////
-
 var loadUser = require('./middleware/loadUser');
 app.use(loadUser);
 
@@ -28,7 +26,6 @@ var userRouter = require('./routes/users');
 app.use('/users', userRouter);
 
 app.get('/', function(req, res){
-  console.log("user ", req.user);
   res.render('index');
 });
 

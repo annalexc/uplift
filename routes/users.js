@@ -17,19 +17,15 @@ router.post('/authenticate', function(req, res){
     dbUser.authenticate(passwordTry, function(err, isMatch){  // See if the password is correct
       if(isMatch){  // If it is!!!...
         dbUser.setToken(function(){  // Create a new token
-              res.redirect('/show');
-          // res.json({
-          //   description: 'password correct',
-          //   token: dbUser.token  // Send It Down!
-          // });
+          res.json({
+            description: 'password correct',
+            token: dbUser.token  // Send It Down!
+          });
         });
       }
     });
   });
 });
 
-router.get('/show', function(req,res){
-  res.render('user');
-})
 
 module.exports = router;
