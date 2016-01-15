@@ -4,10 +4,42 @@ var bcrypt = require('bcryptjs');
 var crypto = require('crypto');
 
 var UserSchema = mongoose.Schema({
-  username: {type: String},
-  password: {type: String},
-  token: {type: String}
-});
+  username: {type: String, required: true},
+  password: {type: String, required: true},
+  token: {type: String},
+  profile:   [{
+      firstName: {type: String, required: true},
+      lastName: {type: String, required: true},
+      birthdate: {type: String},
+      sex: {type: String},
+      phoneNum: {type: String},
+      status: {type: String}
+      // illness: {},
+    }],
+  appointments: [{
+      date: {type: String},
+      location: {type: String},
+      doctor: {type: String},
+      phoneNum: {type: String},
+      coPay: {type: Number},
+      notes: {type: String}
+    }],
+  medications: [{
+      name: {type: String},
+      dosage: {type: String},
+      sideEffects: {type: String},
+      time: {type: String},
+      coPay: {type: Number}
+    }],
+  foodRestrictions: [{
+      name: {type: String},
+      notes: {type: String}
+    }],
+  medicalHistory: [{
+    
+  }]
+
+}, {timestamps: true});
 
 UserSchema.pre('save', function(next){
   if ( this.isModified('password') ) {

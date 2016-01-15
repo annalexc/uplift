@@ -36,5 +36,43 @@ $(function(){
   setLogInFormHandler();
   logOut();
 
+  // FUNCTIONING JQUERY GET of CDC NEWS STORIES
+  $.getJSON('https://tools.cdc.gov/api/v2/resources/media?topic=ovarian%20cancer', function(data){
+    console.log(data);
+    var results = data.results;
+    for (var i = 0; i < 3; i++) {
+      var $el = $('<li>');
+      var result = results[i];
+      $el.append($('<a href='+result.sourceUrl+'>').text(result.name) );
+      $('#dummy').append($el);
+    }
+  })
+
+  // $.ajax({
+  //   method: 'get',
+  //   url: 'https://wsearch.nlm.nih.gov/ws/query?db=healthTopics&term=asthma&knowledgeResponseType=application/javascript&callback=?',
+  //   dataType: 'jsonp',
+  //   success: function(data){
+  //
+  //   }
+  // })
+
+  // $.ajax({
+  //   method: 'get',
+  //   url: 'https://wsearch.nlm.nih.gov/ws/query?db=healthTopics&term=asthma&knowledgeResponseType=application/javascript',
+  //   dataType: 'xml',
+  //   success: function(data){
+  //     console.log(data);
+  //   }
+  // })
+
+  // $.ajax({
+  //   method: 'get',
+  //   dataType: 'xml',
+  //   url: 'https://wsearch.nlm.nih.gov/ws/query?db=healthTopics&term=asthma&callback=?',
+  //   success: function(xml){
+  //     console.log(xml);
+  //   }
+  // })
 
 });
