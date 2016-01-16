@@ -11,7 +11,7 @@ var UserSchema = mongoose.Schema({
       firstName: {type: String, required: true},
       lastName: {type: String, required: true},
       birthdate: {type: String},
-      sex: {type: String},
+      gender: {type: String},
       phoneNum: {type: String},
       status: {type: String}
       // illness: {},

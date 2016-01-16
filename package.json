@@ -10,7 +10,7 @@
     "dotenv": "^1.2.0",
     "ejs": "^2.3.4",
     "express": "^4.13.3",
-    "mongoose": "^4.3.5",
+    "mongoose": "^4.3.6",
     "morgan": "^1.6.1"
   },
   "devDependencies": {},
