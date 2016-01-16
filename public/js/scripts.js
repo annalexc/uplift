@@ -32,8 +32,8 @@ function logOut(){
     $.removeCookie('token');
   })
 }
-// render update function
-// get '/', will get req.user and respond with is
+
+//////// RENDER USER ///////
 function renderUser(user){
   console.log(user);
   var dummy = $('#dummy');
@@ -41,13 +41,17 @@ function renderUser(user){
   var $el = $('<h2>');
   $el.text(user.profile[0].firstName);
   dummy.append($el);
+  dummy.append( $('<h3>').text(user.profile[0].lastName));
+  dummy.append( $('<h3>').text(user.profile[0].birthdate).addClass('birthdate') );
+  dummy.append( $('<h3>').text(user.profile[0].gender).addClass('gender'));
+  dummy.append( $('<h3>').text(user.profile[0].phoneNum).addClass('phoneNum'));
 }
 
 
 
 
 
-//////// RENDER USER ////////
+////////GET USER ////////
 function getUser(){
   $.ajax({
     method: 'get',
@@ -81,7 +85,13 @@ function updateUserProfileHandler(){
     var firstName = firstNameField.val();
     var lastNameField = $('input[name="lastName"]')
     var lastName = lastNameField.val();
-    var userProfile = {firstName: firstName, lastName: lastName}
+    var birthdateField = $('input[name="birthdate"]')
+    var birthdate = birthdateField.val();
+    var genderField = $('select[name="gender"]')
+    var gender = genderField.val();
+    var phoneNumField = $('input[name="phoneNum"]')
+    var phoneNum = phoneNumField.val();
+    var userProfile = {firstName: firstName, lastName: lastName, birthdate: birthdate, gender: gender, phoneNum: phoneNum}
     updateUser(userProfile, function(){
       // RENDER USER INFO HERE
       getUser();

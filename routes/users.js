@@ -35,6 +35,7 @@ router.post('/authenticate', function(req, res){
 });
 
 router.patch('/', function (req, res){
+  console.log(req.user);
   if (req.user){
     req.user.profile = req.body.user;
     req.user.save(function(err, databaseUser){  // Save the user

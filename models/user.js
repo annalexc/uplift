@@ -10,9 +10,9 @@ var UserSchema = mongoose.Schema({
   profile:   [{
       firstName: {type: String, required: true},
       lastName: {type: String, required: true},
-      birthdate: {type: String},
+      birthdate: {type: Date},
       gender: {type: String},
-      phoneNum: {type: String},
+      phoneNum: {type: Number},
       status: {type: String}
       // illness: {},
     }],
