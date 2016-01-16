@@ -7,29 +7,29 @@
 
   <h2>Create Account</h2>
   <form id="create-profile" action="/users" method="post" class="sign-up">
-    <label for="username">Username</label>
+    <label for="username">Username:</label>
     <input type="text" name="user[username]" placeholder="username">
     <br>
-    <label for="password">Password</label>
+    <label for="password">Password:</label>
     <input type="password" name="user[password]" placeholder="password">
     <br>
-    <label for="firstName">First Name</label>
+    <label for="firstName">First Name:</label>
     <input type="text" name="firstName" placeholder="First Name">
     <br>
-    <label for="lastName">Last Name</label>
+    <label for="lastName">Last Name:</label>
     <input type="text" name="lastName" placeholder="Last Name">
     <br>
-    <label for="birthdate">Date of Birth</label>
+    <label for="birthdate">Date of Birth:</label>
     <input type="date" name="birthdate">
     <br>
-    <label for="gender">Gender</label>
+    <label for="gender">Gender:</label>
     <select class="gender" name="gender">
       <option value="blank">Select One</option>
       <option value="male">Male</option>
       <option value="female">Female</option>
     </select>
     <br>
-    <label for="phoneNum">Contact Number</label>
+    <label for="phoneNum">Contact Number:</label>
     <input type="tel" name="phoneNum" placeholder="XXX-XXX-XXXX">
     <br>
     <input type="submit" value="Create Profile">
@@ -37,10 +37,10 @@
 
   <h2>Log-In!</h2>
   <form id='log-in' action="/users/authenticate" method="post">
-    <label for="username">Username</label>
+    <label for="username">Username:</label>
     <input type="text" name="username" placeholder="username">
     <br>
-    <label for="password">Password</label>
+    <label for="password">Password:</label>
     <input type="password" name="password" placeholder="password">
     <br>
     <input type="submit" value="Log In">
@@ -53,23 +53,23 @@
 
     <h2>Update Profile</h2>
     <form id="update-profile" method="patch">
-      <label for="firstName">First Name</label>
+      <label for="firstName">First Name:</label>
       <input type="text" name="firstName" placeholder="First Name">
       <br>
-      <label for="lastName">Last Name</label>
+      <label for="lastName">Last Name:</label>
       <input type="text" name="lastName" placeholder="Last Name">
       <br>
-      <label for="birthdate">Date of Birth</label>
+      <label for="birthdate">Date of Birth:</label>
       <input type="date" name="birthdate">
       <br>
-      <label for="gender">Gender</label>
+      <label for="gender">Gender:</label>
       <select class="gender" name="gender">
         <option value="blank">Select One</option>
         <option value="male">Male</option>
         <option value="female">Female</option>
       </select>
       <br>
-      <label for="phoneNum">Contact Number</label>
+      <label for="phoneNum">Contact Number:</label>
       <input type="tel" name="phoneNum" placeholder="XXX-XXX-XXXX">
       <br>
       <input type="submit" value="Update Profile">
