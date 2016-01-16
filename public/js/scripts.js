@@ -37,15 +37,15 @@ function logOut(){
 //////// RENDER USER ///////
 function renderUser(user){
   console.log(user);
-  var dummy = $('#dummy');
-  dummy.empty();
+  var profile = $('#profile');
+  profile.empty();
   var $el = $('<h2>');
   $el.text(user.profile[0].firstName);
-  dummy.append($el);
-  dummy.append( $('<h3>').text(user.profile[0].lastName));
-  dummy.append( $('<h3>').text(user.profile[0].birthdate).addClass('birthdate') );
-  dummy.append( $('<h3>').text(user.profile[0].gender).addClass('gender'));
-  dummy.append( $('<h3>').text(user.profile[0].phoneNum).addClass('phoneNum'));
+  profile.append($el);
+  profile.append( $('<h3>').text(user.profile[0].lastName));
+  profile.append( $('<h3>').text(user.profile[0].birthdate).addClass('birthdate') );
+  profile.append( $('<h3>').text(user.profile[0].gender).addClass('gender'));
+  profile.append( $('<h3>').text(user.profile[0].phoneNum).addClass('phoneNum'));
 }
 
 
@@ -92,6 +92,7 @@ function updateUserProfileHandler(){
     var gender = genderField.val();
     var phoneNumField = $('input[name="phoneNum"]')
     var phoneNum = phoneNumField.val();
+    console.log(phoneNum);
     var userProfile = {firstName: firstName, lastName: lastName, birthdate: birthdate, gender: gender, phoneNum: phoneNum}
     updateUser(userProfile, function(){
       // RENDER USER INFO HERE
