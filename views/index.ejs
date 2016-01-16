@@ -5,6 +5,10 @@
 </head>
 <body>
 
+  <div id="profile">
+
+  </div>
+
   <h2>Create Account</h2>
   <form id="create-profile" action="/users" method="post" class="sign-up">
     <label for="username">Username:</label>
@@ -52,10 +56,6 @@
     <button id="log-out">Sign Out</button>
   </form>
 
-    <ul id="dummy">
-
-    </ul>
-
     <h2>Update Profile</h2>
     <form id="update-profile" method="patch">
       <label for="firstName">First Name:</label>
@@ -80,11 +80,58 @@
       <input type="submit" value="Update Profile">
     </form>
 
-    <!-- <form id="update-profile" method="patch">
-      <input type="text" name="firstName" placeholder="First name">
-      <input type="text" name="lastName" placeholder="Last name">
-      <input type="submit" value="Update Profile">
-    </form> -->
+    <h2>Appointments</h2>
+    <form id="appointments" method="post">
+      <label for="appDate">Date:</label>
+      <input type="date" name="appDate">
+      <br>
+      <label for="appLocation">Location:</label>
+      <input type="text" name="appLocation" placeholder="Location">
+      <br>
+      <label for="appDoctor">Doctor:</label>
+      <input type="text" name="appDoctor" placeholder="Doctor">
+      <br>
+      <label for="appPhoneNum">Contact Number:</label>
+      <input type="text" name="appPhoneNum" placeholder="XXX-XXX-XXXX">
+      <br>
+      <label for="appCoPay">Copay:</label>
+      <input type="text" name="appCoPay" placeholder="Copay">
+      <br>
+      <label for="appNotes">Notes:</label>
+      <input type="text" name="appNotes" placeholder="Notes">
+      <br>
+      <input type="submit" placeholder="Add Appointment">
+    </form>
+
+    <h2>Medication</h2>
+    <form id="medication" method="post">
+      <label for="medName">Medication:</label>
+      <input type="text" name="medName" placeholder="Name">
+      <br>
+      <label for="medDosage">Dosage:</label>
+      <input type="text" name="medDosage" placeholder="Dosage">
+      <br>
+      <label for="medSideEffects">Side Effects:</label>
+      <input type="text" name="medSideEffects" placeholder="Side Effects">
+      <br>
+      <label for="medTime">Time:</label>
+      <input type="text" name="medTime" placeholder="Time">
+      <br>
+      <label for="medCoPay">Copay:</label>
+      <input type="text" name="medCoPay" placeholder="Copay">
+      <br>
+      <input type="submit" value="Add Medication">
+    </form>
+
+    <h2>Food Restrictions</h2>
+    <form id="foodRestrictions" method="post">
+      <label for="foodRestrictionsName">Restriction:</label>
+      <input type="text" name="foodRestrictionsName" placeholder="Food">
+      <br>
+      <label for="foodRestrictionsNotes">Notes:</label>
+      <input type="text" name="foodRestrictionsNotes" placeholder="Notes">
+      <br>
+    </form>
 
 </body>
 </html>

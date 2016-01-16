@@ -30,7 +30,8 @@ function logOut(){
   $('#log-out').on('click', function(e){
     e.preventDefault();
     $.removeCookie('token');
-  })
+
+  });
 }
 
 //////// RENDER USER ///////
@@ -57,10 +58,10 @@ function getUser(){
     method: 'get',
     url: '/users',
     success: function(data){
-      console.log(data)
+      console.log(data);
       renderUser(data);
     }
-  })
+  });
 }
 
 //////// UPDATE USER FUNCTIONALITY ////////
