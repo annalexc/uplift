@@ -27,5 +27,16 @@ router.post('/authenticate', function(req, res){
   });
 });
 
+router.patch('/', function (req, res){
+  if (req.user){
+    req.user.profile = req.body.user;
+    req.user.save(function(err, databaseUser){  // Save the user
+      res.json(databaseUser); // Send the updated user as JSON
+    });
+  }
+});
+
+
+
 
 module.exports = router;

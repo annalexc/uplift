@@ -34,11 +34,7 @@ var UserSchema = mongoose.Schema({
   foodRestrictions: [{
       name: {type: String},
       notes: {type: String}
-    }],
-  medicalHistory: [{
-    
-  }]
-
+    }]
 }, {timestamps: true});
 
 UserSchema.pre('save', function(next){
