@@ -2,6 +2,13 @@ var express = require('express');
 var router = express.Router();
 var User = require('../models/user');
 
+router.get('/', function(req,res){
+  console.log('this is the get request' + req.user._id);
+  User.findById(req.user._id, function(err, user){
+    console.log("this is the user???"+user);
+    res.json(user);
+  })
+});
 
 router.post('/', function(req, res){
   var newUser = new User(req.body.user);
@@ -30,6 +37,33 @@ router.post('/authenticate', function(req, res){
 router.patch('/', function (req, res){
   if (req.user){
     req.user.profile = req.body.user;
+    req.user.save(function(err, databaseUser){  // Save the user
+      res.json(databaseUser); // Send the updated user as JSON
+    });
+  }
+});
+
+router.patch('/', function (req, res){
+  if (req.user){
+    req.user.appointments = req.body.user;
+    req.user.save(function(err, databaseUser){  // Save the user
+      res.json(databaseUser); // Send the updated user as JSON
+    });
+  }
+});
+
+router.patch('/', function (req, res){
+  if (req.user){
+    req.user.medications = req.body.user;
+    req.user.save(function(err, databaseUser){  // Save the user
+      res.json(databaseUser); // Send the updated user as JSON
+    });
+  }
+});
+
+router.patch('/', function (req, res){
+  if (req.user){
+    req.user.foodRestrictions = req.body.user;
     req.user.save(function(err, databaseUser){  // Save the user
       res.json(databaseUser); // Send the updated user as JSON
     });

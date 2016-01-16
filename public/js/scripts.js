@@ -1,5 +1,6 @@
 console.log("...loaded");
 
+//////// LOG-IN/LOG-OUT FUNCTIONALITY ////////
 function login(usernameTry, passwordTry, callback){
   $.ajax({
     method: 'post',
@@ -31,8 +32,34 @@ function logOut(){
     $.removeCookie('token');
   })
 }
+// render update function
+// get '/', will get req.user and respond with is
+function renderUser(user){
+  console.log(user);
+  var dummy = $('#dummy');
+  dummy.empty();
+  var $el = $('<h2>');
+  $el.text(user.profile[0].firstName);
+  dummy.append($el);
+}
 
 
+
+
+
+//////// RENDER USER ////////
+function getUser(){
+  $.ajax({
+    method: 'get',
+    url: '/users',
+    success: function(data){
+      console.log(data)
+      renderUser(data);
+    }
+  })
+}
+
+//////// UPDATE USER FUNCTIONALITY ////////
 
 function updateUser(userData, callback){
   console.log(userData);
@@ -47,7 +74,7 @@ function updateUser(userData, callback){
 
 }
 
-function updateUserHandler(){
+function updateUserProfileHandler(){
   $('form#update-profile').on('submit', function(e){
     e.preventDefault();
     var firstNameField = $('input[name="firstName"]')
@@ -55,8 +82,9 @@ function updateUserHandler(){
     var lastNameField = $('input[name="lastName"]')
     var lastName = lastNameField.val();
     var userProfile = {firstName: firstName, lastName: lastName}
-    updateUser(userProfile, function(user){
-      console.log(user);
+    updateUser(userProfile, function(){
+      // RENDER USER INFO HERE
+      getUser();
     })
   })
 }
@@ -65,7 +93,7 @@ function updateUserHandler(){
 $(function(){
   setLogInFormHandler();
   logOut();
-  updateUserHandler();
+  updateUserProfileHandler();
 
   // FUNCTIONING JQUERY GET of CDC
   // $.getJSON('https://tools.cdc.gov/api/v2/resources/media?topic=ovarian%20cancer', function(data){
