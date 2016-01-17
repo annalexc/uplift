@@ -22,6 +22,8 @@ function setLogInFormHandler(){
     var password = passwordField.val();
     login(username, password, function(){
       console.log('The token is: ', $.cookie('token') );
+      getUser();
+      getUserMeds();
     });
   });
 }
@@ -30,7 +32,7 @@ function logOut(){
   $('#log-out').on('click', function(e){
     e.preventDefault();
     $.removeCookie('token');
-
+    location.reload();
   });
 }
 
@@ -102,21 +104,19 @@ function updateUserProfileHandler(){
 
 /////////
 function renderUserMeds(user){
-  console.log(user);
-  var profile = $('#profile');
-  profile.empty();
-  var $el = $('<h2>');
-  $el.text(user.profile[0].firstName);
-  profile.append($el);
-  profile.append( $('<h3>').text(user.profile[0].lastName));
-  profile.append( $('<h3>').text(user.profile[0].birthdate).addClass('birthdate') );
-  profile.append( $('<h3>').text(user.profile[0].gender).addClass('gender'));
-  profile.append( $('<h3>').text(user.profile[0].phoneNum).addClass('phoneNum'));
+  var medications = user.medications;
+  var $display = $('#display-medications');
+  $display.empty();
+  medications.forEach(function(med){
+    console.log(med);
+    var $medDiv = $('<div>');
+    $medDiv.append( $('<h4>').text(med.name) );
+    $display.append($medDiv);
+  });
 }
 
-
 ////////GET USER AND RENDER MEDS ////////
-function getUser(){
+function getUserMeds(){
   $.ajax({
     method: 'get',
     url: '/users',
@@ -133,9 +133,8 @@ function addMeds(userData, callback){
       method: 'post',
       url: '/users/medications',
       data: {user: userData},
-      success: function(data){
-        console.log(data);
-        callback();
+      success: function(){
+        getUserMeds();
       }
     });
 }
