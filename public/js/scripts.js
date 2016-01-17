@@ -1,8 +1,8 @@
 console.log("...loaded");
 
-//////// LOG-IN/LOG-OUT FUNCTIONALITY ////////
+//////// LOG-IN/LOG-OUT FUNCTIONALITY ////////  var medicine = {name: medName}
 function login(usernameTry, passwordTry, callback){
-  $.ajax({
+  $.ajax  ({
     method: 'post',
     url: '/users/authenticate',
     data: {username: usernameTry, password: passwordTry},
@@ -35,32 +35,36 @@ function logOut(){
 }
 
 //////// RENDER USER ///////
-function renderUser(user){
+function renderUserProfile(user){
   console.log(user);
   var profile = $('#profile');
   profile.empty();
-  // var $el = $('<h2>');
-  // $el.text(user.profile[0].firstName);
-  profile.append($('<h2>').text(user.profile[0].firstName + ' ' + user.profile[0].lastName));
-  // profile.append( $('<h3>').text(user.profile[0].lastName));
-  profile.append( $('<p>').text("Gender: " + user.profile[0].gender).addClass('gender'));
-  profile.append( $('<p>').text("DOB: " + user.profile[0].birthdate).addClass('birthdate').html().split("T")[0] );
-  profile.append( $('<p>').text("Phone Number: " + user.profile[0].phoneNum).addClass('phoneNum'));
+  var $el = $('<h2>');
+  $el.text(user.profile[0].firstName);
+  profile.append($el);
+  profile.append( $('<h3>').text(user.profile[0].lastName));
+  profile.append( $('<h3>').text(user.profile[0].birthdate).addClass('birthdate') );
+  profile.append( $('<h3>').text(user.profile[0].gender).addClass('gender'));
+  profile.append( $('<h3>').text(user.profile[0].phoneNum).addClass('phoneNum'));
 }
 
-//////// GET USER ////////
+
+
+
+////////GET USER AND RENDER PROFILE ////////
 function getUser(){
   $.ajax({
     method: 'get',
     url: '/users',
     success: function(data){
       console.log(data);
-      renderUser(data);
+      renderUserProfile(data);
     }
   });
 }
 
 //////// UPDATE USER FUNCTIONALITY ////////
+
 function updateUser(userData, callback){
   console.log(userData);
   $.ajax({
@@ -76,29 +80,93 @@ function updateUser(userData, callback){
 function updateUserProfileHandler(){
   $('form#update-profile').on('submit', function(e){
     e.preventDefault();
-    var firstNameField = $('input[name="firstName"]')
+    var firstNameField = $('input[name="firstName"]');
     var firstName = firstNameField.val();
-    var lastNameField = $('input[name="lastName"]')
+    var lastNameField = $('input[name="lastName"]');
     var lastName = lastNameField.val();
-    var birthdateField = $('input[name="birthdate"]')
+    var birthdateField = $('input[name="birthdate"]');
     var birthdate = birthdateField.val();
-    var genderField = $('select[name="gender"]')
+    var genderField = $('select[name="gender"]');
     var gender = genderField.val();
-    var phoneNumField = $('input[name="phoneNum"]')
+    var phoneNumField = $('input[name="phoneNum"]');
     var phoneNum = phoneNumField.val();
     console.log(phoneNum);
-    var userProfile = {firstName: firstName, lastName: lastName, birthdate: birthdate, gender: gender, phoneNum: phoneNum}
+    var userProfile = {firstName: firstName, lastName: lastName, birthdate: birthdate, gender: gender, phoneNum: phoneNum};
     updateUser(userProfile, function(){
-      // RENDER USER INFO HERE
       getUser();
     });
   });
 }
 
+//////////////// MEDICATIONS
+
+/////////
+function renderUserMeds(user){
+  console.log(user);
+  var profile = $('#profile');
+  profile.empty();
+  var $el = $('<h2>');
+  $el.text(user.profile[0].firstName);
+  profile.append($el);
+  profile.append( $('<h3>').text(user.profile[0].lastName));
+  profile.append( $('<h3>').text(user.profile[0].birthdate).addClass('birthdate') );
+  profile.append( $('<h3>').text(user.profile[0].gender).addClass('gender'));
+  profile.append( $('<h3>').text(user.profile[0].phoneNum).addClass('phoneNum'));
+}
+
+
+////////GET USER AND RENDER MEDS ////////
+function getUser(){
+  $.ajax({
+    method: 'get',
+    url: '/users',
+    success: function(data){
+      console.log(data);
+      renderUserMeds(data);
+    }
+  });
+}
+
+function addMeds(userData, callback){
+    console.log(userData);
+    $.ajax({
+      method: 'post',
+      url: '/users/medications',
+      data: {user: userData},
+      success: function(data){
+        console.log(data);
+        callback();
+      }
+    });
+}
+
+function medsHandler(){
+  $('#medication').on('submit', function(e){
+    e.preventDefault();
+    var medNameField = $('input[name="medName"]');
+    var medName = medNameField.val();
+    var dosageField = $('input[name="medDosage"]');
+    var dosage = dosageField.val();
+    var sideEffectsField = $('input[name="medSideEffects"]');
+    var sideEffects = sideEffectsField.val();
+    var timeField = $('input[name="medTime"]');
+    var time = timeField.val();
+    var coPayField = $('input[name="medCoPay"]');
+    var coPay = coPayField.val();
+    var medicine = {name: medName, dosage: dosage, sideEffects: sideEffects, time: time, coPay: coPay };
+    addMeds(medicine, function(){
+      console.log("hello!");
+    });
+  });
+}
+
+
+
 $(function(){
   setLogInFormHandler();
   logOut();
   updateUserProfileHandler();
+  medsHandler();
 
   // FUNCTIONING JQUERY GET of CDC
   // $.getJSON('https://tools.cdc.gov/api/v2/resources/media?topic=ovarian%20cancer', function(data){
@@ -110,13 +178,14 @@ $(function(){
   //     $el.append($('<a href='+result.sourceUrl+'>').text(result.name) );
   //     $('#dummy').append($el);
   //   }
-  // });
+  // })
 
   // $.ajax({
   //   method: 'get',
   //   url: 'https://wsearch.nlm.nih.gov/ws/query?db=healthTopics&term=asthma&knowledgeResponseType=application/javascript&callback=?',
   //   dataType: 'jsonp',
   //   success: function(data){
+  //
   //   }
-  // });
+  // })
 });
