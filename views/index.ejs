@@ -99,7 +99,7 @@
       <label for="appNotes">Notes:</label>
       <input type="text" name="appNotes" placeholder="Notes">
       <br>
-      <input type="submit" placeholder="Add Appointment">
+      <input type="submit" value="Add Appointment">
     </form>
 
     <h2>Medication</h2>
@@ -123,13 +123,14 @@
     </form>
 
     <h2>Food Restrictions</h2>
-    <form id="foodRestrictions" method="post">
+    <form id="foodRestrictions" action="/users/foodRestrictions" method="post">
       <label for="foodRestrictionsName">Restriction:</label>
       <input type="text" name="foodRestrictionsName" placeholder="Food">
       <br>
       <label for="foodRestrictionsNotes">Notes:</label>
       <input type="text" name="foodRestrictionsNotes" placeholder="Notes">
       <br>
+      <input type="submit" value="Add Food Restriction">
     </form>
 
 </body>

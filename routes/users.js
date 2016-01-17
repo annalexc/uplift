@@ -76,9 +76,31 @@ router.post('/medications', function (req, res){
   }
 });
 
-router.patch('/', function (req, res){
+// DELETES A MEDICATION
+router.delete('/medications/:id', function(req,res){
+  var deleteId = req.params.id;
+  var medications = req.user.medications;
+  var i = 0;
+  medications.forEach(function(med){
+    console.log(med._id);
+    console.log("DELETE ME "+deleteId);
+    if (med._id == deleteId) {
+      req.user.medications.pop(i);
+      console.log(req.user.medications);
+    }
+    console.log(i);
+    i+=1;
+  });
+});
+
+// ADDS A NEW FOOD RESTRICTION TO THE USER
+router.post('/foodRestrictions', function (req, res){
   if (req.user){
-    req.user.foodRestrictions = req.body.user;
+    console.log("this is the user: "+req.user);
+    console.log("this is the body"+req.body.user);
+    console.log("this is the user's restrictions"+req.user.foodRestrictions)
+    req.user.foodRestrictions.push(req.body.user);
+    console.log("this is the new restriction"+req.user);
     req.user.save(function(err, databaseUser){  // Save the user
       res.json(databaseUser); // Send the updated user as JSON
     });

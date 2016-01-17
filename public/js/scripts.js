@@ -109,8 +109,9 @@ function renderUserMeds(user){
   $display.empty();
   medications.forEach(function(med){
     console.log(med);
-    var $medDiv = $('<div>');
+    var $medDiv = $('<div id="'+med._id+'">');
     $medDiv.append( $('<h4>').text(med.name) );
+    $medDiv.append( $('<button data-id="'+med._id+'">').addClass('remove-med').text('Delete Med') )
     $display.append($medDiv);
   });
 }
@@ -159,6 +160,28 @@ function medsHandler(){
   });
 }
 
+function deleteMedsHandler(){
+  $('#display-medications').on('click', '.remove-med', function(e){
+      e.preventDefault();
+      var medId = $(this).data('id');
+      console.log("i want to delete");
+      console.log(medId);
+      $.ajax({
+        method: 'delete',
+        url: '/users/medications/'+ medId,
+        success: function(data){
+          $('#'+medId).remove();
+          console.log("removing")
+        }
+      })
+  })
+
+}
+
+
+
+
+
 ////////////// APPOINTMENTS
 
 function addApps(appData, callback){
@@ -169,6 +192,7 @@ function addApps(appData, callback){
     data: {user: appData},
     success: function(){
       console.log('added the appointment?');
+      callback();
     }
   })
 }
@@ -197,7 +221,35 @@ function addAppointmentsHandler(){
   });
 }
 
+////////// FOOD RESTRICTIONS
 
+function addRestrictions(restriction, callback){
+  $.ajax({
+    method: 'post',
+    url: '/users/foodRestrictions',
+    data: {user: restriction},
+    success: function(){
+      console.log('added the restriction');
+    }
+  })
+}
+
+
+
+function addFoodRestionsHandler(){
+  $('#foodRestrictions').on('submit', function(e){
+    e.preventDefault();
+    var foodRestrictionsNameField = $('input[name="foodRestrictionsName"]');
+    var foodRestrictionsName = foodRestrictionsNameField.val();
+    var foodRestrictionsNotesField = $('input[name="foodRestrictionsNotes"]');
+    var foodRestrictionsNotes = foodRestrictionsNotesField.val();
+    console.log(foodRestrictionsName + " and " + foodRestrictionsNotes);
+    var restriction = {name: foodRestrictionsName, notes: foodRestrictionsNotes};
+    addRestrictions(restriction, function(){
+      console.log("...adding restrictions");
+    })
+  });
+};
 
 
 $(function(){
@@ -206,6 +258,8 @@ $(function(){
   updateUserProfileHandler();
   medsHandler();
   addAppointmentsHandler();
+  addFoodRestionsHandler();
+  deleteMedsHandler();
 
   // FUNCTIONING JQUERY GET of CDC
   // $.getJSON('https://tools.cdc.gov/api/v2/resources/media?topic=ovarian%20cancer', function(data){
