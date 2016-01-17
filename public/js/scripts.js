@@ -10,7 +10,7 @@ function login(usernameTry, passwordTry, callback){
       $.cookie('token', data.token);
       callback();
     }
-  })
+  });
 }
 
 function setLogInFormHandler(){
@@ -39,20 +39,16 @@ function renderUser(user){
   console.log(user);
   var profile = $('#profile');
   profile.empty();
-  var $el = $('<h2>');
-  $el.text(user.profile[0].firstName);
-  profile.append($el);
-  profile.append( $('<h3>').text(user.profile[0].lastName));
-  profile.append( $('<h3>').text(user.profile[0].birthdate).addClass('birthdate') );
-  profile.append( $('<h3>').text(user.profile[0].gender).addClass('gender'));
-  profile.append( $('<h3>').text(user.profile[0].phoneNum).addClass('phoneNum'));
+  // var $el = $('<h2>');
+  // $el.text(user.profile[0].firstName);
+  profile.append($('<h2>').text(user.profile[0].firstName + ' ' + user.profile[0].lastName));
+  // profile.append( $('<h3>').text(user.profile[0].lastName));
+  profile.append( $('<p>').text("Gender: " + user.profile[0].gender).addClass('gender'));
+  profile.append( $('<p>').text("DOB: " + user.profile[0].birthdate).addClass('birthdate').html().split("T")[0] );
+  profile.append( $('<p>').text("Phone Number: " + user.profile[0].phoneNum).addClass('phoneNum'));
 }
 
-
-
-
-
-////////GET USER ////////
+//////// GET USER ////////
 function getUser(){
   $.ajax({
     method: 'get',
@@ -65,7 +61,6 @@ function getUser(){
 }
 
 //////// UPDATE USER FUNCTIONALITY ////////
-
 function updateUser(userData, callback){
   console.log(userData);
   $.ajax({
@@ -76,7 +71,6 @@ function updateUser(userData, callback){
       callback();
     }
   });
-
 }
 
 function updateUserProfileHandler(){
@@ -97,10 +91,9 @@ function updateUserProfileHandler(){
     updateUser(userProfile, function(){
       // RENDER USER INFO HERE
       getUser();
-    })
-  })
+    });
+  });
 }
-
 
 $(function(){
   setLogInFormHandler();
@@ -117,14 +110,13 @@ $(function(){
   //     $el.append($('<a href='+result.sourceUrl+'>').text(result.name) );
   //     $('#dummy').append($el);
   //   }
-  // })
+  // });
 
   // $.ajax({
   //   method: 'get',
   //   url: 'https://wsearch.nlm.nih.gov/ws/query?db=healthTopics&term=asthma&knowledgeResponseType=application/javascript&callback=?',
   //   dataType: 'jsonp',
   //   success: function(data){
-  //
   //   }
-  // })
+  // });
 });

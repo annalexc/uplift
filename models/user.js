@@ -1,4 +1,3 @@
-
 var mongoose = require('mongoose');
 var bcrypt = require('bcryptjs');
 var crypto = require('crypto');
@@ -14,26 +13,6 @@ var UserSchema = mongoose.Schema({
       gender: {type: String},
       phoneNum: {type: Number},
       status: {type: String}
-      // illness: {},
-    }],
-  appointments: [{
-      date: {type: String},
-      location: {type: String},
-      doctor: {type: String},
-      phoneNum: {type: String},
-      coPay: {type: Number},
-      notes: {type: String}
-    }],
-  medications: [{
-      name: {type: String},
-      dosage: {type: String},
-      sideEffects: {type: String},
-      time: {type: String},
-      coPay: {type: Number}
-    }],
-  foodRestrictions: [{
-      name: {type: String},
-      notes: {type: String}
     }]
 }, {timestamps: true});
 
