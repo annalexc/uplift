@@ -16,7 +16,7 @@ var UserSchema = mongoose.Schema({
       // illness: {},
     }],
   appointments: [{
-      date: {type: String},
+      date: {type: Date},
       location: {type: String},
       doctor: {type: String},
       phoneNum: {type: String},

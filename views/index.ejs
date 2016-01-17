@@ -10,7 +10,7 @@
   </div>
 
   <div id="display-medications">
-    
+
   </div>
 
   <h2>Create Account</h2>
@@ -80,7 +80,7 @@
     </form>
 
     <h2>Appointments</h2>
-    <form id="appointments" method="post">
+    <form id="appointments" action="/users/appointments" method="post">
       <label for="appDate">Date:</label>
       <input type="date" name="appDate">
       <br>
@@ -94,7 +94,7 @@
       <input type="text" name="appPhoneNum" placeholder="XXX-XXX-XXXX">
       <br>
       <label for="appCoPay">Copay:</label>
-      <input type="text" name="appCoPay" placeholder="Copay">
+      <input type="number" name="appCoPay" placeholder="Copay">
       <br>
       <label for="appNotes">Notes:</label>
       <input type="text" name="appNotes" placeholder="Notes">

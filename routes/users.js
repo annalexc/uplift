@@ -49,14 +49,18 @@ router.patch('/', function (req, res){
   }
 });
 
-// router.patch('/', function (req, res){
-//   if (req.user){
-//     req.user.appointments = req.body.user;
-//     req.user.save(function(err, databaseUser){  // Save the user
-//       res.json(databaseUser); // Send the updated user as JSON
-//     });
-//   }
-// });
+router.post('/appointments', function (req, res){
+  if (req.user){
+    console.log("this is the user: "+req.user);
+    console.log("this is the body"+req.body.user);
+    console.log("this is the user's appointment"+req.user.appointments)
+    req.user.appointments.push(req.body.user);
+    console.log("this is the user with the new appointment"+req.user);
+    req.user.save(function(err, databaseUser){  // Save the user
+      res.json(databaseUser); // Send the updated user as JSON
+    });
+  }
+});
 
 // ADDS A NEW MEDICATION TO THE USER
 router.post('/medications', function (req, res){
@@ -72,14 +76,14 @@ router.post('/medications', function (req, res){
   }
 });
 
-// router.patch('/', function (req, res){
-//   if (req.user){
-//     req.user.foodRestrictions = req.body.user;
-//     req.user.save(function(err, databaseUser){  // Save the user
-//       res.json(databaseUser); // Send the updated user as JSON
-//     });
-//   }
-// });
+router.patch('/', function (req, res){
+  if (req.user){
+    req.user.foodRestrictions = req.body.user;
+    req.user.save(function(err, databaseUser){  // Save the user
+      res.json(databaseUser); // Send the updated user as JSON
+    });
+  }
+});
 
 
 
