@@ -25,7 +25,7 @@ function setLogInFormHandler(){
       getUser();
       getUserMeds();
       getUserFoods();
-      // getUserAppts();
+      getUserAppts();
     });
   });
 }
