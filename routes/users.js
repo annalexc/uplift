@@ -49,6 +49,7 @@ router.patch('/', function (req, res){
   }
 });
 
+// ADDS A NEW APPOINTMENT
 router.post('/appointments', function (req, res){
   if (req.user){
     console.log("this is the user: "+req.user);
@@ -82,14 +83,13 @@ router.delete('/medications/:id', function(req,res){
   var medications = req.user.medications;
   var i = 0;
   medications.forEach(function(med){
-    console.log(med._id);
-    console.log("DELETE ME "+deleteId);
     if (med._id == deleteId) {
-      req.user.medications.pop(i);
-      console.log(req.user.medications);
+      req.user.medications.splice(i, 1);
     }
-    console.log(i);
     i+=1;
+  });
+  req.user.save(function(err, databaseUser){  // Save the user
+    res.json(databaseUser); // Send the updated user as JSON
   });
 });
 

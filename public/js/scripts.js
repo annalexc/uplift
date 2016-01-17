@@ -100,166 +100,17 @@ function updateUserProfileHandler(){
   });
 }
 
-//////////////// MEDICATIONS
-
-/////////
-function renderUserMeds(user){
-  var medications = user.medications;
-  var $display = $('#display-medications');
-  $display.empty();
-  medications.forEach(function(med){
-    console.log(med);
-    var $medDiv = $('<div id="'+med._id+'">');
-    $medDiv.append( $('<h4>').text(med.name) );
-    $medDiv.append( $('<button data-id="'+med._id+'">').addClass('remove-med').text('Delete Med') )
-    $display.append($medDiv);
-  });
-}
-
-////////GET USER AND RENDER MEDS ////////
-function getUserMeds(){
-  $.ajax({
-    method: 'get',
-    url: '/users',
-    success: function(data){
-      console.log(data);
-      renderUserMeds(data);
-    }
-  });
-}
-
-function addMeds(userData, callback){
-    console.log(userData);
-    $.ajax({
-      method: 'post',
-      url: '/users/medications',
-      data: {user: userData},
-      success: function(){
-        getUserMeds();
-      }
-    });
-}
-
-function medsHandler(){
-  $('#medication').on('submit', function(e){
-    e.preventDefault();
-    var medNameField = $('input[name="medName"]');
-    var medName = medNameField.val();
-    var dosageField = $('input[name="medDosage"]');
-    var dosage = dosageField.val();
-    var sideEffectsField = $('input[name="medSideEffects"]');
-    var sideEffects = sideEffectsField.val();
-    var timeField = $('input[name="medTime"]');
-    var time = timeField.val();
-    var coPayField = $('input[name="medCoPay"]');
-    var coPay = coPayField.val();
-    var medicine = {name: medName, dosage: dosage, sideEffects: sideEffects, time: time, coPay: coPay };
-    addMeds(medicine, function(){
-      console.log("hello!");
-    });
-  });
-}
-
-function deleteMedsHandler(){
-  $('#display-medications').on('click', '.remove-med', function(e){
-      e.preventDefault();
-      var medId = $(this).data('id');
-      console.log("i want to delete");
-      console.log(medId);
-      $.ajax({
-        method: 'delete',
-        url: '/users/medications/'+ medId,
-        success: function(data){
-          $('#'+medId).remove();
-          console.log("removing")
-        }
-      })
-  })
-
-}
 
 
 
-
-
-////////////// APPOINTMENTS
-
-function addApps(appData, callback){
-  console.log()
-  $.ajax({
-    method: 'post',
-    url: '/users/appointments',
-    data: {user: appData},
-    success: function(){
-      console.log('added the appointment?');
-      callback();
-    }
-  })
-}
-
-function addAppointmentsHandler(){
-  $('#appointments').on('submit', function(e){
-    e.preventDefault();
-    var appDateField = $('input[name="appDate"]');
-    var appDate = appDateField.val();
-    var appLocationField = $('input[name="appLocation"]');
-    var appLocation = appLocationField.val();
-    var appDoctorField = $('input[name="appDoctor"]');
-    var appDoctor = appDoctorField.val();
-    var appPhoneNumField = $('input[name="appPhoneNum"]');
-    var appPhoneNum = appPhoneNumField.val();
-    var appCoPayField = $('input[name="appCoPay"]');
-    var appCoPay = appCoPayField.val();
-    var appNotesField = $('input[name="appNotes"]');
-    var appNotes = appNotesField.val();
-    console.log("date" + appDate + " app loc"+ appLocation);
-    var appointment = {date: appDate, location: appLocation, doctor: appDoctor, phoneNum: appPhoneNum, coPay: appCoPay, notes: appNotes};
-    JSON.stringify(appointment);
-    addApps(appointment, function(){
-      console.log("...adding apps... hopefully");
-    })
-  });
-}
-
-////////// FOOD RESTRICTIONS
-
-function addRestrictions(restriction, callback){
-  $.ajax({
-    method: 'post',
-    url: '/users/foodRestrictions',
-    data: {user: restriction},
-    success: function(){
-      console.log('added the restriction');
-    }
-  })
-}
-
-
-
-function addFoodRestionsHandler(){
-  $('#foodRestrictions').on('submit', function(e){
-    e.preventDefault();
-    var foodRestrictionsNameField = $('input[name="foodRestrictionsName"]');
-    var foodRestrictionsName = foodRestrictionsNameField.val();
-    var foodRestrictionsNotesField = $('input[name="foodRestrictionsNotes"]');
-    var foodRestrictionsNotes = foodRestrictionsNotesField.val();
-    console.log(foodRestrictionsName + " and " + foodRestrictionsNotes);
-    var restriction = {name: foodRestrictionsName, notes: foodRestrictionsNotes};
-    addRestrictions(restriction, function(){
-      console.log("...adding restrictions");
-    })
-  });
-};
 
 
 $(function(){
   setLogInFormHandler();
   logOut();
   updateUserProfileHandler();
-  medsHandler();
-  addAppointmentsHandler();
-  addFoodRestionsHandler();
-  deleteMedsHandler();
+
+
 
   // FUNCTIONING JQUERY GET of CDC
   // $.getJSON('https://tools.cdc.gov/api/v2/resources/media?topic=ovarian%20cancer', function(data){
