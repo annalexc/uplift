@@ -24,6 +24,8 @@ function setLogInFormHandler(){
       console.log('The token is: ', $.cookie('token') );
       getUser();
       getUserMeds();
+      getUserFoods();
+      // getUserAppts();
     });
   });
 }

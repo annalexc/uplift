@@ -1,4 +1,31 @@
 ////////// FOOD RESTRICTIONS
+function renderUserFoods(user){
+  var foods = user.foodRestrictions;
+  var $display = $('#display-foods');
+  $display.empty();
+  foods.forEach(function(food){
+    console.log(food);
+    var $foodDiv = $('<div id="'+ food._id +'">');
+    $foodDiv.append( $('<h4>').text(food.name));
+    $foodDiv.append( $('<p>').text(food.notes) )
+    $foodDiv.append( $('<button data-id="'+food._id+'">').addClass('remove-food').text( 'Remove Restriction') );
+    $display.append($foodDiv);
+  })
+}
+
+
+function getUserFoods(){
+  $.ajax({
+    method: 'get',
+    url: '/users',
+    success: function(data){
+      console.log(data);
+      renderUserFoods(data);
+    }
+  })
+}
+
+
 
 function addRestrictions(restriction, callback){
   $.ajax({
@@ -6,7 +33,7 @@ function addRestrictions(restriction, callback){
     url: '/users/foodRestrictions',
     data: {user: restriction},
     success: function(){
-      console.log('added the restriction');
+      getUserFoods();
     }
   })
 }
