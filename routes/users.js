@@ -63,6 +63,22 @@ router.post('/appointments', function (req, res){
   }
 });
 
+// DELETES AN APPOINTMENT
+router.delete('/appointments/:id', function(req,res){
+  var deleteId = req.params.id;
+  var appointments = req.user.appointments;
+  var i = 0;
+  appointments.forEach(function(appt){
+    if (appt._id == deleteId) {
+      req.user.appointments.splice(i, 1);
+    }
+    i+=1;
+  });
+  req.user.save(function(err, databaseUser){  // Save the user
+    res.json(databaseUser); // Send the updated user as JSON
+  });
+});
+
 // ADDS A NEW MEDICATION TO THE USER
 router.post('/medications', function (req, res){
   if (req.user){

@@ -64,6 +64,25 @@ function addAppointmentsHandler(){
   });
 }
 
+function deleteApptsHandler(){
+  $('#display-appointments').on('click', '.remove-app', function(e){
+      e.preventDefault();
+      var appId = $(this).data('id');
+      console.log("i want to delete");
+      console.log(appId);
+      $.ajax({
+        method: 'delete',
+        url: '/users/appointments/'+ appId,
+        success: function(data){
+          $('#'+appId).remove();
+          console.log("removing");
+        }
+      })
+  })
+
+}
+
 $(function(){
   addAppointmentsHandler();
+  deleteApptsHandler();
 })
