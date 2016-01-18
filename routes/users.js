@@ -107,6 +107,22 @@ router.post('/foodRestrictions', function (req, res){
   }
 });
 
+// DELETES A FOOD RESTRICTION
+router.delete('/foodRestrictions/:id', function(req,res){
+  var deleteId = req.params.id;
+  var foodRestrictions = req.user.foodRestrictions;
+  var i = 0;
+  foodRestrictions.forEach(function(foodRes){
+    if (foodRes._id == deleteId) {
+      req.user.foodRestrictions.splice(i, 1);
+    }
+    i+=1;
+  });
+  req.user.save(function(err, databaseUser){  // Save the user
+    res.json(databaseUser); // Send the updated user as JSON
+  });
+});
+
 
 
 

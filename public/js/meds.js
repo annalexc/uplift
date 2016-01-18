@@ -58,6 +58,7 @@ function medsHandler(){
   });
 }
 
+
 function deleteMedsHandler(){
   $('#display-medications').on('click', '.remove-med', function(e){
       e.preventDefault();

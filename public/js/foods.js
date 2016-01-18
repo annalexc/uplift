@@ -55,6 +55,25 @@ function addFoodRestrictionsHandler(){
   });
 };
 
+function deleteFoodsHandler(){
+  $('#display-foods').on('click', '.remove-food', function(e){
+      e.preventDefault();
+      var foodId = $(this).data('id');
+      console.log("i want to delete");
+      console.log(foodId);
+      $.ajax({
+        method: 'delete',
+        url: '/users/foodRestrictions/'+ foodId,
+        success: function(data){
+          $('#'+foodId).remove();
+          console.log("removing")
+        }
+      })
+  })
+
+}
+
 $(function(){
     addFoodRestrictionsHandler();
+    deleteFoodsHandler();
 })
