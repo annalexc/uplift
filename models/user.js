@@ -12,8 +12,8 @@ var UserSchema = mongoose.Schema({
       birthdate: {type: Date},
       gender: {type: String},
       phoneNum: {type: Number},
-      status: {type: String}
-      // illness: {},
+      status: {type: String},
+      illness: {type: String}
     }],
   appointments: [{
       date: {type: Date},
@@ -59,7 +59,7 @@ UserSchema.methods.authenticate = function(passwordTry, callback){
   bcrypt.compare(passwordTry, this.password, function(err, isMatch){
     if (err) { return callback(err) };
     callback(null, isMatch);
-  })
+  });
 };
 
 

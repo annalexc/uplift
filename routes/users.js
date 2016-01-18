@@ -5,11 +5,9 @@ var User = require('../models/user');
 
 /// GETS THE CURRENT USER'S INFO
 router.get('/', function(req,res){
-  console.log('this is the get request' + req.user._id);
   User.findById(req.user._id, function(err, user){
-    console.log("this is the user???"+user);
     res.json(user);
-  })
+  });
 });
 
 // CREATES A USER
@@ -40,7 +38,6 @@ router.post('/authenticate', function(req, res){
 
 // UPDATES THE USER'S PROFILE
 router.patch('/', function (req, res){
-  console.log(req.user);
   if (req.user){
     req.user.profile = req.body.user;
     req.user.save(function(err, databaseUser){  // Save the user
@@ -52,11 +49,7 @@ router.patch('/', function (req, res){
 // ADDS A NEW APPOINTMENT
 router.post('/appointments', function (req, res){
   if (req.user){
-    console.log("this is the user: "+req.user);
-    console.log("this is the body"+req.body.user);
-    console.log("this is the user's appointment"+req.user.appointments)
     req.user.appointments.push(req.body.user);
-    console.log("this is the user with the new appointment"+req.user);
     req.user.save(function(err, databaseUser){  // Save the user
       res.json(databaseUser); // Send the updated user as JSON
     });
@@ -82,11 +75,7 @@ router.delete('/appointments/:id', function(req,res){
 // ADDS A NEW MEDICATION TO THE USER
 router.post('/medications', function (req, res){
   if (req.user){
-    console.log("this is the user: "+req.user);
-    console.log("this is the body"+req.body.user);
-    console.log("this is the user's medications"+req.user.medications)
     req.user.medications.push(req.body.user);
-    console.log("this is the new medication"+req.user);
     req.user.save(function(err, databaseUser){  // Save the user
       res.json(databaseUser); // Send the updated user as JSON
     });
@@ -112,11 +101,7 @@ router.delete('/medications/:id', function(req,res){
 // ADDS A NEW FOOD RESTRICTION TO THE USER
 router.post('/foodRestrictions', function (req, res){
   if (req.user){
-    console.log("this is the user: "+req.user);
-    console.log("this is the body"+req.body.user);
-    console.log("this is the user's restrictions"+req.user.foodRestrictions)
     req.user.foodRestrictions.push(req.body.user);
-    console.log("this is the new restriction"+req.user);
     req.user.save(function(err, databaseUser){  // Save the user
       res.json(databaseUser); // Send the updated user as JSON
     });
@@ -139,7 +124,22 @@ router.delete('/foodRestrictions/:id', function(req,res){
   });
 });
 
-
+//////// HELPFUL CONSOLE LOGS
+// console.log('this is the get request' + req.user._id);
+// console.log("this is the user???"+user);
+// console.log(req.user);
+// console.log("this is the user: "+req.user);
+// console.log("this is the body"+req.body.user);
+// console.log("this is the user's appointment"+req.user.appointments);
+// console.log("this is the user with the new appointment"+req.user);
+// console.log("this is the user: "+req.user);
+// console.log("this is the body"+req.body.user);
+// console.log("this is the user's medications"+req.user.medications);
+// console.log("this is the new medication"+req.user);
+// console.log("this is the user: "+req.user);
+// console.log("this is the body"+req.body.user);
+// console.log("this is the user's restrictions"+req.user.foodRestrictions);
+// console.log("this is the new restriction"+req.user);
 
 
 module.exports = router;

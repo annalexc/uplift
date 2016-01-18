@@ -1,6 +1,6 @@
 console.log("...loaded");
 
-//////// LOG-IN/LOG-OUT FUNCTIONALITY ////////  var medicine = {name: medName}
+//////// LOG-IN/LOG-OUT FUNCTIONALITY ////////
 function login(usernameTry, passwordTry, callback){
   $.ajax  ({
     method: 'post',
@@ -13,6 +13,7 @@ function login(usernameTry, passwordTry, callback){
   });
 }
 
+//////// LOG IN EVENT HANDLER ///////
 function setLogInFormHandler(){
   $('form#log-in').on('submit', function(e){
     e.preventDefault();
@@ -30,6 +31,7 @@ function setLogInFormHandler(){
   });
 }
 
+//////// LOGS OUT THE USER ////////
 function logOut(){
   $('#log-out').on('click', function(e){
     e.preventDefault();
@@ -67,8 +69,7 @@ function getUser(){
   });
 }
 
-//////// UPDATE USER FUNCTIONALITY ////////
-
+//////// UPDATE USER PROFILE ////////
 function updateUser(userData, callback){
   console.log(userData);
   $.ajax({
@@ -81,6 +82,7 @@ function updateUser(userData, callback){
   });
 }
 
+//////// UPDATE PROFILE HANDLER ////////
 function updateUserProfileHandler(){
   $('form#update-profile').on('submit', function(e){
     e.preventDefault();
@@ -102,6 +104,8 @@ function updateUserProfileHandler(){
   });
 }
 
+
+///////// POPULATES THE USERS DETAILS WHEN SIGNED IN ////////
 function onloadgetter(){
   $.ajax({
     method: 'get',
@@ -112,8 +116,8 @@ function onloadgetter(){
       getUserFoods();
       getUserAppts();
     }
-  })
-};
+  });
+}
 
 
 

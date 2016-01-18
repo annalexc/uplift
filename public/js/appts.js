@@ -1,43 +1,41 @@
-////////////// APPOINTMENTS
+////////////// APPOINTMENTS ///////////////
 
+///////// RENDER APPOINTMENTS TO DOM ////////
 function renderAppointments(user){
   var appointments = user.appointments;
   var $display = $('#display-appointments');
   $display.empty();
   appointments.forEach(function(app){
-    console.log(app);
     var $appDiv = $('<div id="'+app._id+'">');
     $appDiv.append( $('<h4>').text(app.date) );
     $appDiv.append( $('<h4>').text(app.location) );
     $appDiv.append( $('<h4>').text(app.doctor) );
     $appDiv.append( $('<h4>').text(app.notes) );
-    $appDiv.append( $('<button data-id="'+app._id+'">').addClass('remove-app').text('Delete App') )
+    $appDiv.append( $('<button data-id="'+app._id+'">').addClass('remove-app').text('Delete App') );
     $display.append($appDiv);
   });
 }
 
+//////// GETS ALL OF THE APPOINTMENTS ////////
 function getUserAppts(){
   $.ajax({
     method: 'get',
     url: '/users',
     success: function(data){
-      console.log(data);
       renderAppointments(data);
     }
   });
 }
 
 function addApps(appData, callback){
-  console.log()
   $.ajax({
     method: 'post',
     url: '/users/appointments',
     data: {user: appData},
     success: function(){
-      // console.log('added the appointment?');
       getUserAppts();
     }
-  })
+  });
 }
 
 function addAppointmentsHandler(){
@@ -55,12 +53,11 @@ function addAppointmentsHandler(){
     var appCoPay = appCoPayField.val();
     var appNotesField = $('input[name="appNotes"]');
     var appNotes = appNotesField.val();
-    console.log("date" + appDate + " app loc"+ appLocation);
     var appointment = {date: appDate, location: appLocation, doctor: appDoctor, phoneNum: appPhoneNum, coPay: appCoPay, notes: appNotes};
     JSON.stringify(appointment);
     addApps(appointment, function(){
       console.log("...adding apps... hopefully");
-    })
+    });
   });
 }
 
@@ -68,21 +65,18 @@ function deleteApptsHandler(){
   $('#display-appointments').on('click', '.remove-app', function(e){
       e.preventDefault();
       var appId = $(this).data('id');
-      console.log("i want to delete");
-      console.log(appId);
       $.ajax({
         method: 'delete',
         url: '/users/appointments/'+ appId,
         success: function(data){
           $('#'+appId).remove();
-          console.log("removing");
         }
-      })
-  })
+      });
+  });
 
 }
 
 $(function(){
   addAppointmentsHandler();
   deleteApptsHandler();
-})
+});

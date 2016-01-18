@@ -1,10 +1,12 @@
-////////// FOOD RESTRICTIONS
+////////// FOOD RESTRICTIONS //////////
+
+
+///////// RENDERS FOOD RESTRICTION TO DOM ////////
 function renderUserFoods(user){
   var foods = user.foodRestrictions;
   var $display = $('#display-foods');
   $display.empty();
   foods.forEach(function(food){
-    console.log(food);
     var $foodDiv = $('<div id="'+ food._id +'">');
     $foodDiv.append( $('<h4>').text(food.name));
     $foodDiv.append( $('<p>').text(food.notes) )
@@ -13,7 +15,7 @@ function renderUserFoods(user){
   })
 }
 
-
+//////// GETS ALL OF THE USERS RESTRICTIONS ////////
 function getUserFoods(){
   $.ajax({
     method: 'get',
@@ -25,8 +27,7 @@ function getUserFoods(){
   })
 }
 
-
-
+//////// CREATE NEW FOOD RESTRICTION ////////
 function addRestrictions(restriction, callback){
   $.ajax({
     method: 'post',
@@ -39,7 +40,7 @@ function addRestrictions(restriction, callback){
 }
 
 
-
+//////// FOOD RESTRICTION EVENT HANDLER ////////
 function addFoodRestrictionsHandler(){
   $('#foodRestrictions').on('submit', function(e){
     e.preventDefault();
@@ -47,7 +48,6 @@ function addFoodRestrictionsHandler(){
     var foodRestrictionsName = foodRestrictionsNameField.val();
     var foodRestrictionsNotesField = $('input[name="foodRestrictionsNotes"]');
     var foodRestrictionsNotes = foodRestrictionsNotesField.val();
-    console.log(foodRestrictionsName + " and " + foodRestrictionsNotes);
     var restriction = {name: foodRestrictionsName, notes: foodRestrictionsNotes};
     addRestrictions(restriction, function(){
       console.log("...adding restrictions");
@@ -55,18 +55,16 @@ function addFoodRestrictionsHandler(){
   });
 };
 
+//////// DELETES FOOD RESTRICTION ////////
 function deleteFoodsHandler(){
   $('#display-foods').on('click', '.remove-food', function(e){
       e.preventDefault();
       var foodId = $(this).data('id');
-      console.log("i want to delete");
-      console.log(foodId);
       $.ajax({
         method: 'delete',
         url: '/users/foodRestrictions/'+ foodId,
         success: function(data){
           $('#'+foodId).remove();
-          console.log("removing")
         }
       })
   })
