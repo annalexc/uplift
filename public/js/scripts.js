@@ -102,7 +102,18 @@ function updateUserProfileHandler(){
   });
 }
 
-
+function onloadgetter(){
+  $.ajax({
+    method: 'get',
+    url: '/users',
+    success: function(){
+      getUser();
+      getUserMeds();
+      getUserFoods();
+      getUserAppts();
+    }
+  })
+};
 
 
 
@@ -111,7 +122,7 @@ $(function(){
   setLogInFormHandler();
   logOut();
   updateUserProfileHandler();
-
+  onloadgetter();
 
 
   // FUNCTIONING JQUERY GET of CDC
