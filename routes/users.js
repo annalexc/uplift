@@ -8,16 +8,20 @@ router.get('/', function(req,res){
   User.findById(req.user._id, function(err, user){
     var request = require('request');
     var parseString = require('xml2js').parseString;
-    var xml = 'https://wsearch.nlm.nih.gov/ws/query?db=healthTopics&term='+ user.profile[0].illness;
-    console.log(xml);
-    request(xml, function(err, response, body){
-      parseString(body, function(err, result){
-        console.dir(result.nlmSearchResult.list[0].document[0].content[3]._);
-        user.profile[0].illnessInfo = result.nlmSearchResult.list[0].document[0].content[3]._;
-        console.log(user);
-        res.json(user);
+    if (user.profile[0].illness){
+      var xml = 'https://wsearch.nlm.nih.gov/ws/query?db=healthTopics&term='+ user.profile[0].illness;
+      console.log(xml);
+      request(xml, function(err, response, body){
+        parseString(body, function(error, result){
+          console.dir(result.nlmSearchResult.list[0].document[0].content[3]._);
+          user.profile[0].illnessInfo = result.nlmSearchResult.list[0].document[0].content[3]._;
+          console.log(user);
+          res.json(user);
+        });
       });
-    });
+    } else {
+      res.json(user);
+    }
     // user.save(function(err, databaseUser){
     //   res.json(databaseUser);
     // });
