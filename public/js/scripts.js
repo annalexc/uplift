@@ -28,6 +28,7 @@ function setLogInFormHandler(){
       getUserFoods();
       getUserAppts();
     });
+    $('#log-in').children('input').val('');
   });
 }
 
@@ -90,7 +91,7 @@ function renderUserProfile(user){
   $profile.append($updateProfile);
 }
 
-////////GET USER AND RENDER PROFILE ////////
+//////// GET USER AND RENDER PROFILE ////////
 function getUser(){
   $.ajax({
     method: 'get',
@@ -137,7 +138,6 @@ function updateUserProfileHandler(){
   });
 }
 
-
 ///////// POPULATES THE USERS DETAILS WHEN SIGNED IN ////////
 function onloadgetter(){
   $.ajax({
@@ -153,17 +153,15 @@ function onloadgetter(){
 }
 
 
-
-
 $(function(){
   setLogInFormHandler();
   logOut();
   updateUserProfileHandler();
   onloadgetter();
 
-  // $('#create-profile').on('submit', function(){
-  //   $('#create-profile').children('input').val('');
-  // });
+  $('#create-profile').on('submit', function(){
+    $('#create-profile').children('input').val('');
+  });
 
 
   // FUNCTIONING JQUERY GET of CDC
