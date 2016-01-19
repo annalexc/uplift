@@ -85,7 +85,7 @@ function renderUserProfile(user){
   $updateProfileForm.append($('<input type="text" name="illness" value="' + user.profile[0].illness + '">'));
   $updateProfileForm.append($('<label for="phoneNum">').text('Contact Number:'));
   $updateProfileForm.append($('<input type="tel" name="phoneNum" value="' + user.profile[0].phoneNum + '">'));
-  $updateProfileForm.append($('<button data-id="' + user._id + '">').text('Update Profile'));
+  $updateProfileForm.append($('<button type="submit" data-id="' + user._id + '">').text('Update Profile'));
 
   $updateProfile.append($updateProfileForm);
   $profile.append($updateProfile);

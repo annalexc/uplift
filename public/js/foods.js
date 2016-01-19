@@ -12,7 +12,7 @@ function renderUserFoods(user){
     var $updateFoodForm = $('<form method="patch">').addClass('update-food');
     $foodDiv.append($('<h5>').text("Food: " + food.name));
     $foodDiv.append($('<h5>').text("Notes: " + food.notes));
-    $foodDiv.append($('<button data-id="' + food._id + '">').addClass('remove-food').text('Remove Restriction'));
+    $foodDiv.append($('<button type="submit" data-id="' + food._id + '">').addClass('remove-food').text('Remove Restriction'));
     $display.append($foodDiv);
 
     $updateFoodForm.append($('<h5>').addClass('updates').text('Update Food Restriction'));
@@ -20,7 +20,7 @@ function renderUserFoods(user){
     $updateFoodForm.append($('<input type="text" name="editFoodName" value="' + food.name + '">'));
     $updateFoodForm.append($('<label for="editFoodNotes">').text('Notes:'));
     $updateFoodForm.append($('<input type="text" name="editFoodNotes" value="' + food.notes + '">'));
-    $updateFoodForm.append( $('<button data-id="' + food._id + '">').text('Update Restriction') );
+    $updateFoodForm.append( $('<button type="submit" data-id="' + food._id + '">').text('Update Restriction') );
     $updateFood.append($updateFoodForm);
 
     $foodDiv.append($updateFood);
