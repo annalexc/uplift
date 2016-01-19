@@ -119,7 +119,7 @@ router.patch('/medications/:id', function(req,res){
   var updateMed = req.body.user;
   var i = 0;
   medications.forEach(function(med){
-    console.log(med);
+    console.log(i);
     console.log("this is this medicine's id "+med._id);
     console.log("this is the id we want to change "+updateId);
     if (med._id == updateId) {
