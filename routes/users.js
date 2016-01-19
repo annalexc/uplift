@@ -6,6 +6,16 @@ var User = require('../models/user');
 /// GETS THE CURRENT USER'S INFO
 router.get('/', function(req,res){
   User.findById(req.user._id, function(err, user){
+    var request = require('request');
+    var parseString = require('xml2js').parseString;
+    var xml = 'https://wsearch.nlm.nih.gov/ws/query?db=healthTopics&term'+ user.profile[0].illness;
+    request(xml, function(err, res, body){
+      parseString(body, function(err, result){
+        console.dir(result.nlmSearchResult.list[0].document[0].content[3]._);
+        user.profile[0].illnessInfo = result.nlmSearchResult.list[0].document[0].content[3]._;
+        console.log(user);
+      });
+    });
     res.json(user);
   });
 });
@@ -208,11 +218,14 @@ router.patch('/foodRestrictions/:id', function(req,res){
 // console.log("this is the body"+req.body.user);
 // console.log("this is the user's restrictions"+req.user.foodRestrictions);
 // console.log("this is the new restriction"+req.user);
+
+var request = require('request');
 var parseString = require('xml2js').parseString;
-var xml = 'https://wsearch.nlm.nih.gov/ws/query?db=healthTopics&term=asthma';
-// xml.replace("\ufeff", "")
-parseString(xml, function(err, result){
-  console.log(err);
+var xml = 'https://wsearch.nlm.nih.gov/ws/query?db=healthTopics&term=breast%20cancer';
+request(xml, function(err, res, body){
+  parseString(body, function(err, result){
+    console.dir(result.nlmSearchResult.list[0].document[0].content[3]._);
+  });
 });
 
 module.exports = router;
