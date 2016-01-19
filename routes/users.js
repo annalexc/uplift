@@ -163,6 +163,7 @@ router.patch('/foodRestrictions/:id', function(req,res){
     }
     i+=1;
   });
+  
   req.user.save(function(err, databaseUser){  // Save the user
     res.json(databaseUser); // Send the updated user as JSON
   });
