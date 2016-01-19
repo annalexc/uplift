@@ -133,6 +133,7 @@ function addAppointmentsHandler(){
     var appointment = {date: apptDate, time: apptTime, location: apptLocation, doctor: apptDoctor, phoneNum: apptPhoneNum, coPay: apptCoPay, notes: apptNotes};
     JSON.stringify(appointment);
     addAppts(appointment);
+    $('#appointments').children('input').val('');
   });
 }
 
