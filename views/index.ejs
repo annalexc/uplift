@@ -6,7 +6,7 @@
 </head>
 <body>
 
-  <div id="profile">
+  <div id="display-profile">
 
   </div>
 
@@ -39,7 +39,7 @@
     <input type="date" name="createBirthdate">
     <label for="gender">Gender</label>
     <select class="gender" name="createGender">
-      <option value="blank">Select One</option>
+      <option value="Not Specified">Select One</option>
       <option value="Male">Male</option>
       <option value="Female">Female</option>
     </select>
@@ -57,25 +57,6 @@
     <input type="submit" value="Log In">
     <button id="log-out">Sign Out</button>
   </form>
-
-    <h2>Update Profile</h2>
-    <form id="update-profile" method="patch">
-      <label for="firstName">First Name:</label>
-      <input type="text" name="firstName" placeholder="First Name">
-      <label for="lastName">Last Name:</label>
-      <input type="text" name="lastName" placeholder="Last Name">
-      <label for="birthdate">Date of Birth:</label>
-      <input type="date" name="birthdate">
-      <label for="gender">Gender:</label>
-      <select class="gender" name="gender">
-        <option value="blank">Select One</option>
-        <option value="Male">Male</option>
-        <option value="Female">Female</option>
-      </select>
-      <label for="phoneNum">Contact Number:</label>
-      <input type="tel" name="phoneNum" placeholder="XXX-XXX-XXXX">
-      <input type="submit" value="Update Profile">
-    </form>
 
     <h2>Appointments</h2>
     <form id="appointments" action="/users/appointments" method="post">
