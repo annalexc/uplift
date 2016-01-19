@@ -7,7 +7,7 @@ function renderUserMeds(user){
   $display.empty();
   medications.forEach(function(med){
     var $medDiv = $('<div id="'+med._id+'">');
-    var $editDiv = $('<div>');
+    var $updateMed = $('<div>');
     var $updateMedForm = $('<form method="patch" id="update-med-form">').addClass('update-med');
     $medDiv.append( $('<h4>').text(med.name) );
     $medDiv.append( $('<h6>').text(med.dosage) );
@@ -28,10 +28,9 @@ function renderUserMeds(user){
     $updateMedForm.append($('<label for="updateMedTime">').text('Time: '));
     $updateMedForm.append($('<input type="text" name="updateMedTime" value="'+med.time+'">'));
     $updateMedForm.append( $('<button data-id="'+med._id+'">' ).text("Update Medication") );
-    $editDiv.append($updateMedForm);
-
-
-    $medDiv.append($editDiv);
+    $updateMed.append($updateMedForm);
+    
+    $medDiv.append($updateMed);
   });
 }
 
@@ -85,17 +84,17 @@ function updateMedsHandler(){
       e.preventDefault();
       var medId = $(this).find('button').data('id');
       console.log(medId);
-      var updatenameField = $(this).find('input[name="updateMedName"]');
-      var updatename = updatenameField.val();
-      var updatedosageField = $(this).find('input[name="updateMedDosage"]');
-      var updatedosage = updatedosageField.val();
-      var updatesideEffectsField = $(this).find('input[name="updateMedSideEffects"]');
-      var updatesideEffects = updatesideEffectsField.val();
-      var updatecoPayField = $(this).find('input[name="updateMedCoPay"]');
-      var updatecoPay = updatecoPayField.val();
-      var updatetimeField = $(this).find('input[name="updateMedTime"]');
-      var updatetime = updatetimeField.val();
-      var userData = {name: updatename, dosage: updatedosage, sideEffects: updatesideEffects, coPay: updatecoPay, time: updatetime};
+      var updateNameField = $(this).find('input[name="updateMedName"]');
+      var updateName = updateNameField.val();
+      var updateDosageField = $(this).find('input[name="updateMedDosage"]');
+      var updateDosage = updateDosageField.val();
+      var updateSideEffectsField = $(this).find('input[name="updateMedSideEffects"]');
+      var updateSideEffects = updateSideEffectsField.val();
+      var updateCoPayField = $(this).find('input[name="updateMedCoPay"]');
+      var updateCoPay = updateCoPayField.val();
+      var updateTimeField = $(this).find('input[name="updateMedTime"]');
+      var updateTime = updateTimeField.val();
+      var userData = {name: updateName, dosage: updateDosage, sideEffects: updateSideEffects, coPay: updateCoPay, time: updateTime};
       $.ajax({
         method: 'patch',
         url: '/users/medications/'+ medId,
