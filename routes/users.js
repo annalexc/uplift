@@ -165,7 +165,6 @@ router.delete('/foodRestrictions/:id', function(req,res){
 });
 
 // UPDATES A FOOD RESTRICTION
-
 router.patch('/foodRestrictions/:id', function(req,res){
   var updateId = req.params.id;
   var foods = req.user.foodRestrictions;
