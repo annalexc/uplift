@@ -132,7 +132,7 @@ function addAppointmentsHandler(){
     var apptNotes = apptNotesField.val();
     var appointment = {date: apptDate, time: apptTime, location: apptLocation, doctor: apptDoctor, phoneNum: apptPhoneNum, coPay: apptCoPay, notes: apptNotes};
     JSON.stringify(appointment);
-    addApps(appointment, function(){
+    addAppts(appointment, function(){
       console.log("...adding appts... hopefully");
     });
   });
@@ -152,16 +152,37 @@ function deleteApptsHandler(){
   });
 }
 
-// function updateApptsHandler(){
-//   $.ajax({
-//     method: 'patch',
-//     url: '/users/appointments',
-//     data: {user: apptData},
-//     success: function(data){
-//
-//     }
-//   });
-// }
+//////// UPDATES APPOINTMENTS ////////
+function updateFoodsHandler(){
+  $('#display-appointments').on('submit', '.update-appt', function(e){
+      e.preventDefault();
+      var apptId = $(this).find('button').data('id');
+      console.log(apptId);
+      var updateApptDateField = $(this).find('input[name="updateApptDate"]');
+      var updateApptDate = updateApptDateField.val();
+      var updateApptTimeField = $(this).find('input[name="updateApptTime"]');
+      var updateApptTime = updateApptTimeField.val();
+      var updateApptLocationField = $(this).find('input[name="updateApptLocation"]');
+      var updateApptLocation = updateApptLocationField.val();
+      var updateApptDoctorField = $(this).find('input[name="updateApptDoctor"]');
+      var updateApptDoctor = updateApptDoctorField.val();
+      var updateApptCoPayField = $(this).find('input[name="updateApptCoPay"]');
+      var updateApptCoPay = updateApptCoPayField.val();
+      var updateApptNotesField = $(this).find('input[name="updateApptNotes"]');
+      var updateApptNotes = updateApptNotesField.val();
+      var userData = {date: updateApptDate, time: updateApptTime, location: updateApptLocation, doctor: updateApptDoctor, coPay: updateApptCoPay, notes: updateApptNotes};
+      console.log(userData);
+      $.ajax({
+        method: 'patch',
+        data: {user: userData},
+        url: '/users/appointments/'+ apptId,
+        success: function(data){
+          getUserAppts();
+        }
+      });
+  });
+
+}
 
 $(function(){
   addAppointmentsHandler();

@@ -80,7 +80,6 @@ router.patch('/appointments/:id', function(req,res){
   var i = 0;
   appointments.forEach(function(appt){
     if (appt._id == updateId) {
-      console.log(appointments[i]);
       appointments[i].date = updateAppts.date;
       appointments[i].time = updateAppts.time;
       appointments[i].location = updateAppts.location;
@@ -90,7 +89,6 @@ router.patch('/appointments/:id', function(req,res){
     }
     i+=1;
   });
-
   req.user.save(function(err, databaseUser){  // Save the user
     res.json(databaseUser); // Send the updated user as JSON
   });

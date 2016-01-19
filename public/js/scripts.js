@@ -40,6 +40,11 @@ function logOut(){
   });
 }
 
+
+
+
+
+
 //////// RENDER USER ///////
 function renderUserProfile(user){
   console.log(user);
@@ -51,6 +56,8 @@ function renderUserProfile(user){
   profile.append( $('<h4>').text("Birthdate: " + birthdate).addClass('birthdate') );
   profile.append( $('<h4>').text("Gender: " + user.profile[0].gender).addClass('gender'));
   profile.append( $('<h4>').text("Contact Number: " + user.profile[0].phoneNum).addClass('phoneNum'));
+
+
 }
 
 
@@ -62,7 +69,6 @@ function getUser(){
     method: 'get',
     url: '/users',
     success: function(data){
-      console.log(data);
       renderUserProfile(data);
     }
   });
