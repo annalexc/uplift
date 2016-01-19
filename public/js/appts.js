@@ -7,11 +7,13 @@ function renderAppointments(user){
   $display.empty();
   appointments.forEach(function(app){
     var $appDiv = $('<div id="'+app._id+'">');
-    $appDiv.append( $('<h4>').text(app.date) );
-    $appDiv.append( $('<h4>').text(app.location) );
-    $appDiv.append( $('<h4>').text(app.doctor) );
-    $appDiv.append( $('<h4>').text(app.notes) );
-    $appDiv.append( $('<button data-id="'+app._id+'">').addClass('remove-app').text('Delete App') );
+    $appDiv.append( $('<h5>').text("Date: " + app.date) );
+    $appDiv.append( $('<h5>').text("Time: " + app.time) );
+    $appDiv.append( $('<h5>').text("Location: " + app.location) );
+    $appDiv.append( $('<h5>').text("Doctor: " + app.doctor) );
+    $appDiv.append( $('<h5>').text("Notes: " + app.notes) );
+    $appDiv.append( $('<h5>').text("Notes: " + app.coPay) );
+    $appDiv.append( $('<button data-id="'+app._id+'">').addClass('remove-app').text('Delete Appointment') );
     $display.append($appDiv);
   });
 }
@@ -43,6 +45,8 @@ function addAppointmentsHandler(){
     e.preventDefault();
     var appDateField = $('input[name="appDate"]');
     var appDate = appDateField.val();
+    var appTimeField = $('input[name="appTime"]');
+    var appTime = appTimeField.val();
     var appLocationField = $('input[name="appLocation"]');
     var appLocation = appLocationField.val();
     var appDoctorField = $('input[name="appDoctor"]');
@@ -53,7 +57,7 @@ function addAppointmentsHandler(){
     var appCoPay = appCoPayField.val();
     var appNotesField = $('input[name="appNotes"]');
     var appNotes = appNotesField.val();
-    var appointment = {date: appDate, location: appLocation, doctor: appDoctor, phoneNum: appPhoneNum, coPay: appCoPay, notes: appNotes};
+    var appointment = {date: appDate, time: appTime, location: appLocation, doctor: appDoctor, phoneNum: appPhoneNum, coPay: appCoPay, notes: appNotes};
     JSON.stringify(appointment);
     addApps(appointment, function(){
       console.log("...adding apps... hopefully");

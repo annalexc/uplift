@@ -9,14 +9,17 @@
 
   </div>
 
+  <h3>Medications</h3>
   <div id="display-medications">
 
   </div>
 
+  <h3>Appointments</h3>
   <div id="display-appointments">
 
   </div>
 
+  <h3>Food Restrictions</h3>
   <div id="display-foods">
 
   </div>
@@ -91,6 +94,9 @@
     <form id="appointments" action="/users/appointments" method="post">
       <label for="appDate">Date:</label>
       <input type="date" name="appDate">
+      <br>
+      <label for="appTime">Time:</label>
+      <input type="text" name="appTime" placeholder="HH:MM AM/PM">
       <br>
       <label for="appLocation">Location:</label>
       <input type="text" name="appLocation" placeholder="Location">

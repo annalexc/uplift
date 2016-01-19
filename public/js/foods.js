@@ -10,8 +10,8 @@ function renderUserFoods(user){
     var $foodDiv = $('<div id="'+ food._id +'">');
     var $updateFood = $('<div>');
     var $updateFoodForm = $('<form method="patch">').addClass('update-food');
-    $foodDiv.append( $('<h4>').text(food.name));
-    $foodDiv.append( $('<p>').text(food.notes));
+    $foodDiv.append( $('<h5>').text("Food: " + food.name));
+    $foodDiv.append( $('<h5>').text("Notes: " + food.notes));
     $foodDiv.append( $('<button data-id="'+food._id+'">').addClass('remove-food').text( 'Remove Restriction') );
     $display.append($foodDiv);
 
