@@ -81,8 +81,7 @@ function updateFoodsHandler(){
         data: {user: userData},
         url: '/users/foodRestrictions/'+ foodId,
         success: function(data){
-          console.log('updating');
-          // $('#'+foodId).remove();
+          getUserFoods();
         }
       });
   });
