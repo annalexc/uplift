@@ -22,7 +22,7 @@ function renderUserFoods(user){
     $updateFood.append( $('<button data-id="'+food._id+'">').addClass('update-food').text( 'Update Restriction') );
     $updateFood.append($('<br>'));
     $display.append($foodDiv);
-    $updateFood.appendTo($foodDiv);
+    $foodDiv.append($updateFood);
   });
 }
 
@@ -70,6 +70,7 @@ function addFoodRestrictionsHandler(){
 function updateFoodsHandler(){
   $('#display-foods').on('click', '.update-food', function(e){
       e.preventDefault();
+      console.log("Hi!");
       var foodId = $(this).data('id');
       var updateFoodNameField = $('input[name="editFoodName"]');
       var updateFoodName = updateFoodNameField.val();

@@ -113,14 +113,30 @@ router.delete('/medications/:id', function(req,res){
 });
 
 // UPDATES A MEDICATION
-// router.patch('/', function (req, res){
-//   if (req.user){
-//     req.user.medications = req.body.user;
-//     req.user.save(function(err, databaseUser){  // Save the user
-//       res.json(databaseUser); // Send the updated user as JSON
-//     });
-//   }
-// });
+router.patch('/medications/:id', function(req,res){
+  var updateId = req.params.id;
+  var medications = req.user.medications;
+  var updateMed = req.body.user;
+  var i = 0;
+  medications.forEach(function(med){
+    console.log(med);
+    console.log("this is this medicine's id "+med._id);
+    console.log("this is the id we want to change "+updateId);
+    if (med._id == updateId) {
+      console.log(medications[i]);
+      medications[i].name = updateMed.name;
+      medications[i].dosage = updateMed.dosage;
+      medications[i].sideEffects = updateMed.sideEffects;
+      medications[i].coPay = updateMed.coPay;
+      medications[i].time = updateMed.time;
+    }
+    i+=1;
+  });
+
+  req.user.save(function(err, databaseUser){  // Save the user
+    res.json(databaseUser); // Send the updated user as JSON
+  });
+});
 
 // ADDS A NEW FOOD RESTRICTION TO THE USER
 router.post('/foodRestrictions', function (req, res){
@@ -163,7 +179,7 @@ router.patch('/foodRestrictions/:id', function(req,res){
     }
     i+=1;
   });
-  
+
   req.user.save(function(err, databaseUser){  // Save the user
     res.json(databaseUser); // Send the updated user as JSON
   });
