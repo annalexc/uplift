@@ -1,0 +1,24 @@
+<h2>Create Account</h2>
+<form id="create-profile" action="/users" method="post" class="sign-up">
+  <label for="username">Username:</label>
+  <input type="text" name="user[username]" placeholder="username">
+  <label for="password">Password:</label>
+  <input type="password" name="user[password]" placeholder="password">
+  <label for="firstName">First Name:</label>
+  <input type="text" name="createFirstName" placeholder="First Name">
+  <label for="lastName">Last Name:</label>
+  <input type="text" name="createLastName" placeholder="Last Name">
+  <label for="birthdate">Date of Birth:</label>
+  <input type="date" name="createBirthdate">
+  <label for="gender">Gender:</label>
+  <select class="gender" name="createGender">
+    <option value="Not Specified">Select One</option>
+    <option value="Male">Male</option>
+    <option value="Female">Female</option>
+  </select>
+  <label for="illness">Illness:</label>
+  <input type="text" name="illness" placeholder="Illness">
+  <label for="phoneNum">Contact Number:</label>
+  <input type="tel" name="createPhoneNum" placeholder="XXX-XXX-XXXX">
+  <input type="submit" value="Create Profile">
+</form>
