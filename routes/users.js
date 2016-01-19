@@ -5,11 +5,24 @@ var User = require('../models/user');
 
 /// GETS THE CURRENT USER'S INFO
 router.get('/', function(req,res){
-  User.findById(req.user._id, function(err, user){
-    var request = require('request');
-    var parseString = require('xml2js').parseString;
-    res.json(user);
-  });
+  if (req.user){
+    User.findById(req.user._id, function(err, user){
+      var request = require('request');
+      var parseString = require('xml2js').parseString;
+      if (user.profile[0].illness){
+        var xml = 'https://wsearch.nlm.nih.gov/ws/query?db=healthTopics&term='+user.profile[0].illness;
+        request(xml, function(err, res, body){
+          parseString(body, function(err, result){
+            console.dir(result.nlmSearchResult.list[0].document[0].content[3]._);
+          });
+        });
+      } else {
+        res.json(user);
+      }
+    });
+  } else {
+    res.json();
+  }
 });
 
 // CREATES A USER
