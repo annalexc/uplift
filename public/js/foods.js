@@ -10,17 +10,17 @@ function renderUserFoods(user){
     var $foodDiv = $('<div id="'+ food._id +'">');
     var $updateFood = $('<div id="food-update-form">');
     var $updateFoodForm = $('<form method="patch">').addClass('update-food');
-    $foodDiv.append( $('<h5>').text("Food: " + food.name));
-    $foodDiv.append( $('<h5>').text("Notes: " + food.notes));
-    $foodDiv.append( $('<button data-id="'+food._id+'">').addClass('remove-food').text( 'Remove Restriction') );
+    $foodDiv.append($('<h5>').text("Food: " + food.name));
+    $foodDiv.append($('<h5>').text("Notes: " + food.notes));
+    $foodDiv.append($('<button data-id="' + food._id + '">').addClass('remove-food').text('Remove Restriction'));
     $display.append($foodDiv);
 
     $updateFoodForm.append($('<h5>').addClass('updates').text('Update Food Restriction'));
-    $updateFoodForm.append($('<label for="editFoodName">').text('Restriction: '));
-    $updateFoodForm.append($('<input type="text" name="editFoodName" value="'+food.name+'">'));
-    $updateFoodForm.append($('<label for="editFoodNotes">').text('Notes: '));
-    $updateFoodForm.append($('<input type="text" name="editFoodNotes" value="'+food.notes+'">'));
-    $updateFoodForm.append( $('<button data-id="'+food._id+'">').text( 'Update Restriction') );
+    $updateFoodForm.append($('<label for="editFoodName">').text('Restriction:'));
+    $updateFoodForm.append($('<input type="text" name="editFoodName" value="' + food.name + '">'));
+    $updateFoodForm.append($('<label for="editFoodNotes">').text('Notes:'));
+    $updateFoodForm.append($('<input type="text" name="editFoodNotes" value="' + food.notes + '">'));
+    $updateFoodForm.append( $('<button data-id="' + food._id + '">').text('Update Restriction') );
     $updateFood.append($updateFoodForm);
 
     $foodDiv.append($updateFood);
@@ -33,10 +33,9 @@ function getUserFoods(){
     method: 'get',
     url: '/users',
     success: function(data){
-      console.log(data);
       renderUserFoods(data);
     }
-  })
+  });
 }
 
 //////// CREATE NEW FOOD RESTRICTION ////////
@@ -48,7 +47,7 @@ function addRestrictions(restriction, callback){
     success: function(){
       getUserFoods();
     }
-  })
+  });
 }
 
 
@@ -61,25 +60,20 @@ function addFoodRestrictionsHandler(){
     var foodRestrictionsNotesField = $('input[name="foodRestrictionsNotes"]');
     var foodRestrictionsNotes = foodRestrictionsNotesField.val();
     var restriction = {name: foodRestrictionsName, notes: foodRestrictionsNotes};
-    addRestrictions(restriction, function(){
-      console.log("...adding restrictions");
-    })
+    addRestrictions(restriction);
   });
-};
+}
 
 //////// UPDATES FOOD RESTRICTION ////////
 function updateFoodsHandler(){
   $('#display-foods').on('submit', '.update-food', function(e){
       e.preventDefault();
-      console.log("hi");
       var foodId = $(this).find('button').data('id');
-            console.log(foodId);
       var updateFoodNameField = $(this).find('input[name="editFoodName"]');
       var updateFoodName = updateFoodNameField.val();
       var updateFoodNotesField = $(this).find('input[name="editFoodNotes"]');
       var updateFoodNotes = updateFoodNotesField.val();
       var userData = {name: updateFoodName, notes: updateFoodNotes};
-      console.log(userData);
       $.ajax({
         method: 'patch',
         data: {user: userData},
@@ -89,7 +83,6 @@ function updateFoodsHandler(){
         }
       });
   });
-
 }
 
 //////// DELETES FOOD RESTRICTION ////////
@@ -101,14 +94,14 @@ function deleteFoodsHandler(){
         method: 'delete',
         url: '/users/foodRestrictions/'+ foodId,
         success: function(data){
-          $('#'+foodId).remove();
+          $('#' + foodId).remove();
         }
       });
-  })
+  });
 }
 
 $(function(){
     addFoodRestrictionsHandler();
     deleteFoodsHandler();
     updateFoodsHandler();
-})
+});

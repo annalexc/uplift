@@ -11,7 +11,7 @@ function renderUserMeds(user){
     var $updateMedForm = $('<form method="patch">').addClass('update-med');
     $medDiv.append($('<h5>').text('Medication: ' + med.name));
     $medDiv.append($('<h5>').text('Dosage: ' + med.dosage));
-    $medDiv.append($('<h5>').text('Side Effects: ' + med.sideEffects) );
+    $medDiv.append($('<h5>').text('Side Effects: ' + med.sideEffects));
     $medDiv.append($('<h5>').text('Copay: $' + med.coPay));
     $medDiv.append($('<h5>').text('Time: ' + med.time));
     $medDiv.append($('<button data-id="' + med._id + '">').addClass('remove-med').text('Delete Med'));
@@ -23,12 +23,12 @@ function renderUserMeds(user){
     $updateMedForm.append($('<label for="updateMedDosage">').text('Dosage:'));
     $updateMedForm.append($('<input type="text" name="updateMedDosage" value="' + med.dosage + '">'));
     $updateMedForm.append($('<label for="updateMedSideEffects">').text('Side Effects:'));
-    $updateMedForm.append($('<input type="text" name="updateMedSideEffects" value="'+med.sideEffects+'">'));
+    $updateMedForm.append($('<input type="text" name="updateMedSideEffects" value="' + med.sideEffects + '">'));
     $updateMedForm.append($('<label for="updateMedCoPay">').text('Copay:'));
-    $updateMedForm.append($('<input type="number" name="updateMedCoPay" value="'+med.coPay+'">'));
+    $updateMedForm.append($('<input type="number" name="updateMedCoPay" value="' + med.coPay + '">'));
     $updateMedForm.append($('<label for="updateMedTime">').text('Time:'));
-    $updateMedForm.append($('<input type="text" name="updateMedTime" value="'+med.time+'">'));
-    $updateMedForm.append( $('<button data-id="'+med._id+'">' ).text("Update Medication") );
+    $updateMedForm.append($('<input type="text" name="updateMedTime" value="' + med.time + '">'));
+    $updateMedForm.append($('<button data-id="' + med._id + '">' ).text("Update Medication"));
     $updateMed.append($updateMedForm);
 
     $medDiv.append($updateMed);
@@ -48,15 +48,14 @@ function getUserMeds(){
 
 //////// ADDS MEDS TO USER ////////
 function addMeds(userData, callback){
-    console.log(userData);
-    $.ajax({
-      method: 'post',
-      url: '/users/medications',
-      data: {user: userData},
-      success: function(){
-        getUserMeds();
-      }
-    });
+  $.ajax({
+    method: 'post',
+    url: '/users/medications',
+    data: {user: userData},
+    success: function(){
+      getUserMeds();
+    }
+  });
 }
 
 //////// MEDS EVENT LISTENER ////////
@@ -73,7 +72,7 @@ function medsHandler(){
     var time = timeField.val();
     var coPayField = $('input[name="medCoPay"]');
     var coPay = coPayField.val();
-    var medicine = {name: medName, dosage: dosage, sideEffects: sideEffects, time: time, coPay: coPay };
+    var medicine = {name: medName, dosage: dosage, sideEffects: sideEffects, time: time, coPay: coPay};
     addMeds(medicine, function(){
     });
   });
@@ -84,7 +83,6 @@ function updateMedsHandler(){
   $('#display-medications').on('submit', '.update-med', function(e){
       e.preventDefault();
       var medId = $(this).find('button').data('id');
-      console.log(medId);
       var updateNameField = $(this).find('input[name="updateMedName"]');
       var updateName = updateNameField.val();
       var updateDosageField = $(this).find('input[name="updateMedDosage"]');
@@ -101,12 +99,10 @@ function updateMedsHandler(){
         url: '/users/medications/'+ medId,
         data: {user: userData},
         success: function(data){
-          console.log('updating meds');
           getUserMeds();
         }
       });
   });
-
 }
 
 
@@ -119,11 +115,10 @@ function deleteMedsHandler(){
         method: 'delete',
         url: '/users/medications/'+ medId,
         success: function(data){
-          $('#'+medId).remove();
+          $('#' + medId).remove();
         }
       });
   });
-
 }
 
 $(function(){
