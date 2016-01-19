@@ -1,0 +1,126 @@
+@import url(http://fonts.googleapis.com/css?family=Lato:100,300,400,700);
+* {
+		box-sizing: border-box;
+		margin: 0;
+		padding: 0;
+		list-style-type: none;
+}
+
+.pad-bot {
+		padding-bottom: 10px
+}
+
+.pad-left {
+		padding-left: 30px
+}
+
+.left {
+		float: left
+}
+
+.right {
+		float: right
+}
+
+.inline-holder {
+		display: inline-block;
+	  width: 100%;
+}
+
+.fifty-cent-width {
+		width: 50%
+}
+
+.icon {
+		width: 30px;
+		height: 30px;
+		display: block
+}
+
+body,
+html {
+		margin: 0px;
+		padding: 0px;
+		height: 100%;
+		width: 100%;
+	  overflow: hidden;
+		font-family: 'Lato'
+}
+
+.clearfix { overflow: auto; }
+
+h1 {
+		font-weight: 700
+}
+
+h3 {
+		font-weight: 400
+}
+h5, h6 {display: inline}
+
+p {
+		font-weight: 300
+}
+
+.main-container {
+		position: relative;
+		display: inline-block;
+		width: 100%;
+	  height: 100%;
+    overflow: hidden;
+}
+
+nav {
+		position: relative;
+		height: auto;
+		text-align: center;
+		background-color: #ececec;
+		border-right: 2px solid rgb(227, 227, 227);
+		-webkit-box-shadow: 10px 0 5px -2px rgb(227, 227, 227);
+		box-shadow: 1px 0 10px 0px rgb(227, 227, 227);
+		width: 75px;
+		height: 100%;
+		padding: 40px 0px 0px 0px;
+		margin: 0;
+		float: left;
+}
+
+nav ul {
+		list-style-type: none;
+}
+
+nav a {
+		text-decoration: none;
+		color: turquoise;
+}
+
+li.logo {
+		padding-bottom: 150px;
+		background: url("") no-repeat;
+		width: 72px;
+		height: 72px;
+}
+
+nav a {
+		width: 30px;
+		height: 30px;
+		margin: 0px;
+		position: absolute;
+		margin-left: auto;
+		left: 15px;
+		margin-right: auto;
+}
+
+.button1 {
+		background: url("http://cdn.atlantafalcons.com/flagship/lib/2014/01/chat-icon-30x30-gray.png") no-repeat;
+}
+
+.button2 {
+		background: url("http://www.esthergibbons.com/images/icon-list-plus@2x.png") no-repeat;
+		top: 250px
+}
+
+.button3 {
+		background: url("http://png-2.findicons.com/files/icons/2810/ios_tab_bar/30/search.png");
+		top: 300px;
+}
