@@ -40,11 +40,6 @@ function logOut(){
   });
 }
 
-// //////// CLEARS CREATE ACCOUNT INPUT FIELDS ///////
-// $('#create-profile').on('submit', function(){
-//   $('#create-profile').reset();
-// });
-
 //////// RENDER USER ///////
 function renderUserProfile(user){
   var $profile = $('#display-profile');
