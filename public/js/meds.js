@@ -7,8 +7,8 @@ function renderUserMeds(user){
   $display.empty();
   medications.forEach(function(med){
     var $medDiv = $('<div id="'+med._id+'">');
-    var $updateMed = $('<div>');
-    var $updateMedForm = $('<form method="patch" id="update-med-form">').addClass('update-med');
+    var $updateMed = $('<div id="med-update-form">');
+    var $updateMedForm = $('<form method="patch">').addClass('update-med');
     $medDiv.append( $('<h5>').text('Medication: ' + med.name) );
     $medDiv.append( $('<h5>').text('Dosage: ' + med.dosage) );
     $medDiv.append( $('<h5>').text('Side Effects: ' + med.sideEffects) );
@@ -17,21 +17,17 @@ function renderUserMeds(user){
     $medDiv.append( $('<button data-id="'+med._id+'">').addClass('remove-med').text('Delete Med') );
     $display.append($medDiv);
 
+    $updateMedForm.append($('<h5>').addClass('updates').text('Update Medication'));
     $updateMedForm.append($('<label for="updateMedName">').text('Medication: '));
     $updateMedForm.append($('<input type="text" name="updateMedName" value="'+med.name+'">'));
-    $updateMedForm.append($('<br>'));
     $updateMedForm.append($('<label for="updateMedDosage">').text('Dosage: '));
     $updateMedForm.append($('<input type="text" name="updateMedDosage" value="'+med.dosage+'">'));
-    $updateMedForm.append($('<br>'));
     $updateMedForm.append($('<label for="updateMedSideEffects">').text('Side Effects: '));
     $updateMedForm.append($('<input type="text" name="updateMedSideEffects" value="'+med.sideEffects+'">'));
-    $updateMedForm.append($('<br>'));
     $updateMedForm.append($('<label for="updateMedCoPay">').text('Copay: '));
     $updateMedForm.append($('<input type="text" name="updateMedCoPay" value="'+med.coPay+'">'));
-    $updateMedForm.append($('<br>'));
     $updateMedForm.append($('<label for="updateMedTime">').text('Time: '));
     $updateMedForm.append($('<input type="text" name="updateMedTime" value="'+med.time+'">'));
-    $updateMedForm.append($('<br>'));
     $updateMedForm.append( $('<button data-id="'+med._id+'">' ).text("Update Medication") );
     $updateMed.append($updateMedForm);
 

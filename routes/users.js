@@ -73,17 +73,27 @@ router.delete('/appointments/:id', function(req,res){
 });
 
 // UPDATES AN APPOINTMENT
-router.patch('/appointments/:id', function (req, res){
+router.patch('/appointments/:id', function(req,res){
   var updateId = req.params.id;
   var appointments = req.user.appointments;
+  var updateAppts = req.body.user;
+  var i = 0;
   appointments.forEach(function(appt){
-    if (appt._id == updateId){
-      console.log('updating');
+    if (appt._id == updateId) {
+      console.log(appointments[i]);
+      appointments[i].date = updateAppts.date;
+      appointments[i].time = updateAppts.time;
+      appointments[i].location = updateAppts.location;
+      appointments[i].doctor = updateAppts.doctor;
+      appointments[i].notes = updateAppts.notes;
+      appointments[i].coPay = updateAppts.coPay;
     }
-    req.user.save(function(err, databaseUser){  // Save the user
-      res.json(databaseUser); // Send the updated user as JSON
-    });
-  })
+    i+=1;
+  });
+
+  req.user.save(function(err, databaseUser){  // Save the user
+    res.json(databaseUser); // Send the updated user as JSON
+  });
 });
 
 // ADDS A NEW MEDICATION TO THE USER

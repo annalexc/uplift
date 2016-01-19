@@ -4,3 +4,45 @@ body{
    padding: 0px 20px 20px 20px;
    font-family: 'News Cycle', sans-serif;
 }
+
+/*profile name*/
+h2 {
+ margin: 10px 0px;
+}
+
+/*div headers*/
+h3 {
+  margin: 5px 0px;
+  text-decoration: underline;
+}
+
+/*profile info*/
+h4 {
+  margin: 5px 0px;
+}
+
+/*div info*/
+h5 {
+  margin: 0;
+}
+
+.updates {
+  text-decoration: underline;
+}
+
+label {
+  font-size: 13px;
+  font-weight: bold;
+}
+
+input {
+  display: block;
+}
+
+select {
+  display: block;
+}
+
+input[type="submit"] {
+  margin: 5px 0px;
+}

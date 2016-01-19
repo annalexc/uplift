@@ -44,13 +44,11 @@ function logOut(){
 function renderUserProfile(user){
   console.log(user);
   var profile = $('#profile');
+  var birthdate = convertTimeToWords(user.profile[0].birthdate);
+  console.log(birthdate);
   profile.empty();
-  // var $el = $('<h2>');
-  // $el.text(user.profile[0].firstName);
-  // profile.append($el);
   profile.append( $('<h2>').text(user.profile[0].firstName + " " + user.profile[0].lastName));
-  // profile.append( $('<h3>').text(user.profile[0].lastName));
-  profile.append( $('<h4>').text("Birthdate: " + user.profile[0].birthdate).addClass('birthdate') );
+  profile.append( $('<h4>').text("Birthdate: " + birthdate).addClass('birthdate') );
   profile.append( $('<h4>').text("Gender: " + user.profile[0].gender).addClass('gender'));
   profile.append( $('<h4>').text("Contact Number: " + user.profile[0].phoneNum).addClass('phoneNum'));
 }

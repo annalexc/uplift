@@ -1,20 +1,93 @@
 ////////////// APPOINTMENTS ///////////////
+var convertTimeToValue = function(date){
+ date = date.split('');
+ date.splice(10);
+ return date.join('');
+};
+
+var convertTimeToWords = function(date){
+  JSON.stringify(date);
+  var newDate = date.split('');
+  var year = newDate.splice(0,4).join('');
+  var month = newDate.splice(1,2).join('');
+   switch (month){
+     case '01':
+       month = "January";
+       break;
+     case '02':
+       month = "February";
+       break;
+     case '03':
+       month = "March";
+       break;
+     case '04':
+       month = "April";
+       break;
+     case '05':
+       month = "May";
+       break;
+     case '06':
+       month = "June";
+       break;
+     case '07':
+       month = "July";
+       break;
+     case '08':
+       month = "August";
+       break;
+     case '09':
+       month = "September";
+       break;
+     case '10':
+       month = "October";
+       break;
+     case '11':
+       month = "November";
+       break;
+     case '12':
+       month = "December";
+       break;
+   }
+  var day = newDate.splice(2,2).join('');
+  return month + " " + day + ", "+ year;
+};
 
 ///////// RENDER APPOINTMENTS TO DOM ////////
 function renderAppointments(user){
   var appointments = user.appointments;
   var $display = $('#display-appointments');
   $display.empty();
-  appointments.forEach(function(app){
-    var $appDiv = $('<div id="'+app._id+'">');
-    $appDiv.append( $('<h5>').text("Date: " + app.date) );
-    $appDiv.append( $('<h5>').text("Time: " + app.time) );
-    $appDiv.append( $('<h5>').text("Location: " + app.location) );
-    $appDiv.append( $('<h5>').text("Doctor: " + app.doctor) );
-    $appDiv.append( $('<h5>').text("Notes: " + app.notes) );
-    $appDiv.append( $('<h5>').text("Notes: " + app.coPay) );
-    $appDiv.append( $('<button data-id="'+app._id+'">').addClass('remove-app').text('Delete Appointment') );
-    $display.append($appDiv);
+  appointments.forEach(function(appt){
+    var $apptDiv = $('<div id="'+appt._id+'">');
+    var $updateAppt = $('<div id="appt-update-form">');
+    var $updateApptForm = $('<form method="patch">').addClass('update-appt');
+    var newDate = convertTimeToWords(appt.date);
+    $apptDiv.append( $('<h5>').text("Date: " + newDate ));
+    $apptDiv.append( $('<h5>').text("Time: " + appt.time) );
+    $apptDiv.append( $('<h5>').text("Location: " + appt.location) );
+    $apptDiv.append( $('<h5>').text("Doctor: " + appt.doctor) );
+    $apptDiv.append( $('<h5>').text("Notes: " + appt.notes) );
+    $apptDiv.append( $('<h5>').text("Copay: " + appt.coPay) );
+    $apptDiv.append( $('<button data-id="'+appt._id+'">').addClass('remove-appt').text('Delete Appointment') );
+    $display.append($apptDiv);
+
+    $updateApptForm.append($('<h5>').addClass('updates').text('Update Appointment'));
+    $updateApptForm.append($('<label form="updateApptDate">').text('Date: '));
+    $updateApptForm.append($('<input type="date" name="updateApptDate" value="'+convertTimeToValue(appt.date)+'">'));
+    $updateApptForm.append($('<label form="updateApptTime">').text('Time: '));
+    $updateApptForm.append($('<input type="text" name="updateApptTime" value="'+appt.time+'">'));
+    $updateApptForm.append($('<label form="updateApptLocation">').text('Location: '));
+    $updateApptForm.append($('<input type="text" name="updateApptLocation" value="'+appt.location+'">'));
+    $updateApptForm.append($('<label form="updateApptDoctor">').text('Doctor: '));
+    $updateApptForm.append($('<input type="text" name="updateApptDoctor" value="'+appt.doctor+'">'));
+    $updateApptForm.append($('<label form="updateApptNotes">').text('Notes: '));
+    $updateApptForm.append($('<input type="text" name="updateApptNotes" value="'+appt.notes+'">'));
+    $updateApptForm.append($('<label form="updateApptCoPay">').text('CoPay: '));
+    $updateApptForm.append($('<input type="number" name="updateApptCoPay" value="'+appt.coPay+'">'));
+    $updateApptForm.append( $('<button data-id="'+appt._id+'">' ).text("Update Appointment") );
+    $updateAppt.append($updateApptForm);
+
+    $apptDiv.append($updateAppt);
   });
 }
 
@@ -29,11 +102,11 @@ function getUserAppts(){
   });
 }
 
-function addApps(appData, callback){
+function addAppts(apptData, callback){
   $.ajax({
     method: 'post',
     url: '/users/appointments',
-    data: {user: appData},
+    data: {user: apptData},
     success: function(){
       getUserAppts();
     }
@@ -43,37 +116,37 @@ function addApps(appData, callback){
 function addAppointmentsHandler(){
   $('#appointments').on('submit', function(e){
     e.preventDefault();
-    var appDateField = $('input[name="appDate"]');
-    var appDate = appDateField.val();
-    var appTimeField = $('input[name="appTime"]');
-    var appTime = appTimeField.val();
-    var appLocationField = $('input[name="appLocation"]');
-    var appLocation = appLocationField.val();
-    var appDoctorField = $('input[name="appDoctor"]');
-    var appDoctor = appDoctorField.val();
-    var appPhoneNumField = $('input[name="appPhoneNum"]');
-    var appPhoneNum = appPhoneNumField.val();
-    var appCoPayField = $('input[name="appCoPay"]');
-    var appCoPay = appCoPayField.val();
-    var appNotesField = $('input[name="appNotes"]');
-    var appNotes = appNotesField.val();
-    var appointment = {date: appDate, time: appTime, location: appLocation, doctor: appDoctor, phoneNum: appPhoneNum, coPay: appCoPay, notes: appNotes};
+    var apptDateField = $('input[name="apptDate"]');
+    var apptDate = apptDateField.val();
+    var apptTimeField = $('input[name="apptTime"]');
+    var apptTime = apptTimeField.val();
+    var apptLocationField = $('input[name="apptLocation"]');
+    var apptLocation = apptLocationField.val();
+    var apptDoctorField = $('input[name="apptDoctor"]');
+    var apptDoctor = apptDoctorField.val();
+    var apptPhoneNumField = $('input[name="apptPhoneNum"]');
+    var apptPhoneNum = apptPhoneNumField.val();
+    var apptCoPayField = $('input[name="apptCoPay"]');
+    var apptCoPay = apptCoPayField.val();
+    var apptNotesField = $('input[name="apptNotes"]');
+    var apptNotes = apptNotesField.val();
+    var appointment = {date: apptDate, time: apptTime, location: apptLocation, doctor: apptDoctor, phoneNum: apptPhoneNum, coPay: apptCoPay, notes: apptNotes};
     JSON.stringify(appointment);
     addApps(appointment, function(){
-      console.log("...adding apps... hopefully");
+      console.log("...adding appts... hopefully");
     });
   });
 }
 
 function deleteApptsHandler(){
-  $('#display-appointments').on('click', '.remove-app', function(e){
+  $('#display-appointments').on('click', '.remove-appt', function(e){
       e.preventDefault();
-      var appId = $(this).data('id');
+      var apptId = $(this).data('id');
       $.ajax({
         method: 'delete',
-        url: '/users/appointments/'+ appId,
+        url: '/users/appointments/' + apptId,
         success: function(data){
-          $('#'+appId).remove();
+          $('#'+apptId).remove();
         }
       });
   });
@@ -83,7 +156,7 @@ function deleteApptsHandler(){
 //   $.ajax({
 //     method: 'patch',
 //     url: '/users/appointments',
-//     data: {user: appData},
+//     data: {user: apptData},
 //     success: function(data){
 //
 //     }

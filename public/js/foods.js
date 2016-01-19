@@ -8,21 +8,19 @@ function renderUserFoods(user){
   $display.empty();
   foods.forEach(function(food){
     var $foodDiv = $('<div id="'+ food._id +'">');
-    var $updateFood = $('<div>');
+    var $updateFood = $('<div id="food-update-form">');
     var $updateFoodForm = $('<form method="patch">').addClass('update-food');
     $foodDiv.append( $('<h5>').text("Food: " + food.name));
     $foodDiv.append( $('<h5>').text("Notes: " + food.notes));
     $foodDiv.append( $('<button data-id="'+food._id+'">').addClass('remove-food').text( 'Remove Restriction') );
     $display.append($foodDiv);
 
+    $updateFoodForm.append($('<h5>').addClass('updates').text('Update Food Restriction'));
     $updateFoodForm.append($('<label for="editFoodName">').text('Restriction: '));
     $updateFoodForm.append($('<input type="text" name="editFoodName" value="'+food.name+'">'));
-    $updateFoodForm.append($('<br>'));
     $updateFoodForm.append($('<label for="editFoodNotes">').text('Notes: '));
     $updateFoodForm.append($('<input type="text" name="editFoodNotes" value="'+food.notes+'">'));
-    $updateFoodForm.append($('<br>'));
     $updateFoodForm.append( $('<button data-id="'+food._id+'">').text( 'Update Restriction') );
-    $updateFoodForm.append($('<br>'));
     $updateFood.append($updateFoodForm);
 
     $foodDiv.append($updateFood);
