@@ -63,13 +63,27 @@ router.delete('/appointments/:id', function(req,res){
   var i = 0;
   appointments.forEach(function(appt){
     if (appt._id == deleteId) {
-      req.user.appointments.splice(i, 1);
+      appointments.splice(i, 1);
     }
     i+=1;
   });
   req.user.save(function(err, databaseUser){  // Save the user
     res.json(databaseUser); // Send the updated user as JSON
   });
+});
+
+// UPDATES AN APPOINTMENT
+router.patch('/appointments/:id', function (req, res){
+  var updateId = req.params.id;
+  var appointments = req.user.appointments;
+  appointments.forEach(function(appt){
+    if (appt._id == updateId){
+      console.log('updating');
+    }
+    req.user.save(function(err, databaseUser){  // Save the user
+      res.json(databaseUser); // Send the updated user as JSON
+    });
+  })
 });
 
 // ADDS A NEW MEDICATION TO THE USER
@@ -98,6 +112,16 @@ router.delete('/medications/:id', function(req,res){
   });
 });
 
+// UPDATES A MEDICATION
+// router.patch('/', function (req, res){
+//   if (req.user){
+//     req.user.medications = req.body.user;
+//     req.user.save(function(err, databaseUser){  // Save the user
+//       res.json(databaseUser); // Send the updated user as JSON
+//     });
+//   }
+// });
+
 // ADDS A NEW FOOD RESTRICTION TO THE USER
 router.post('/foodRestrictions', function (req, res){
   if (req.user){
@@ -116,6 +140,26 @@ router.delete('/foodRestrictions/:id', function(req,res){
   foodRestrictions.forEach(function(foodRes){
     if (foodRes._id == deleteId) {
       req.user.foodRestrictions.splice(i, 1);
+    }
+    i+=1;
+  });
+  req.user.save(function(err, databaseUser){  // Save the user
+    res.json(databaseUser); // Send the updated user as JSON
+  });
+});
+
+// UPDATES A FOOD RESTRICTION
+
+router.patch('/foodRestrictions/:id', function(req,res){
+  var updateId = req.params.id;
+  var foods = req.user.foodRestrictions;
+  var updateFood = req.body.user;
+  var i = 0;
+  foods.forEach(function(food){
+    if (food._id == updateId) {
+      console.log(foods[i]);
+      foods[i].name = updateFood.name;
+      foods[i].notes = updateFood.notes;
     }
     i+=1;
   });

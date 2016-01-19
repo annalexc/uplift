@@ -73,8 +73,18 @@ function deleteApptsHandler(){
         }
       });
   });
-
 }
+
+// function updateApptsHandler(){
+//   $.ajax({
+//     method: 'patch',
+//     url: '/users/appointments',
+//     data: {user: appData},
+//     success: function(data){
+//
+//     }
+//   });
+// }
 
 $(function(){
   addAppointmentsHandler();
