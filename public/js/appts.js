@@ -67,7 +67,7 @@ function renderAppointments(user){
     $apptDiv.append( $('<h5>').text("Location: " + appt.location) );
     $apptDiv.append( $('<h5>').text("Doctor: " + appt.doctor) );
     $apptDiv.append( $('<h5>').text("Notes: " + appt.notes) );
-    $apptDiv.append( $('<h5>').text("Copay: " + appt.coPay) );
+    $apptDiv.append( $('<h5>').text("Copay: $" + appt.coPay) );
     $apptDiv.append( $('<button data-id="'+appt._id+'">').addClass('remove-appt').text('Delete Appointment') );
     $display.append($apptDiv);
 
