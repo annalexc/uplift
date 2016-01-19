@@ -68,7 +68,7 @@ function renderAppointments(user){
     $apptDiv.append( $('<h5>').text("Doctor: " + appt.doctor));
     $apptDiv.append( $('<h5>').text("Notes: " + appt.notes));
     $apptDiv.append( $('<h5>').text("Copay: $" + appt.coPay));
-    $apptDiv.append( $('<button type="submit" data-id="' + appt._id + '">').addClass('remove-appt').text('Delete Appointment'));
+    $apptDiv.append( $('<button data-id="' + appt._id + '">').addClass('remove-appt').text('Delete Appointment'));
     $display.append($apptDiv);
 
     $updateApptForm.append($('<h5>').addClass('updates').text('Update Appointment'));
@@ -84,7 +84,7 @@ function renderAppointments(user){
     $updateApptForm.append($('<input type="text" name="updateApptNotes" value="' + appt.notes + '">'));
     $updateApptForm.append($('<label form="updateApptCoPay">').text('Copay:'));
     $updateApptForm.append($('<input type="number" name="updateApptCoPay" value="' + appt.coPay + '">'));
-    $updateApptForm.append( $('<button type="submit" data-id="' + appt._id + '">' ).text("Update Appointment") );
+    $updateApptForm.append( $('<button data-id="' + appt._id + '">' ).text("Update Appointment") );
     $updateAppt.append($updateApptForm);
 
     $apptDiv.append($updateAppt);

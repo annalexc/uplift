@@ -12,15 +12,15 @@ function renderUserFoods(user){
     var $updateFoodForm = $('<form method="patch">').addClass('update-food');
     $foodDiv.append($('<h5>').text("Food: " + food.name));
     $foodDiv.append($('<h5>').text("Notes: " + food.notes));
-    $foodDiv.append($('<button type="submit" data-id="' + food._id + '">').addClass('remove-food').text('Remove Restriction'));
+    $foodDiv.append($('<button data-id="' + food._id + '">').addClass('remove-food').text('Remove Restriction'));
     $display.append($foodDiv);
 
     $updateFoodForm.append($('<h5>').addClass('updates').text('Update Food Restriction'));
-    $updateFoodForm.append($('<label for="editFoodName">').text('Restriction:'));
-    $updateFoodForm.append($('<input type="text" name="editFoodName" value="' + food.name + '">'));
-    $updateFoodForm.append($('<label for="editFoodNotes">').text('Notes:'));
-    $updateFoodForm.append($('<input type="text" name="editFoodNotes" value="' + food.notes + '">'));
-    $updateFoodForm.append( $('<button type="submit" data-id="' + food._id + '">').text('Update Restriction') );
+    $updateFoodForm.append($('<label for="updateFoodName">').text('Restriction:'));
+    $updateFoodForm.append($('<input type="text" name="updateFoodName" value="' + food.name + '">'));
+    $updateFoodForm.append($('<label for="updateFoodNotes">').text('Notes:'));
+    $updateFoodForm.append($('<input type="text" name="updateFoodNotes" value="' + food.notes + '">'));
+    $updateFoodForm.append($('<button data-id="' + food._id + '">').text('Update Restriction'));
     $updateFood.append($updateFoodForm);
 
     $foodDiv.append($updateFood);
@@ -70,19 +70,20 @@ function updateFoodsHandler(){
   $('#display-foods').on('submit', '.update-food', function(e){
       e.preventDefault();
       var foodId = $(this).find('button').data('id');
-      var updateFoodNameField = $(this).find('input[name="editFoodName"]');
+      console.log(foodId);
+      var updateFoodNameField = $(this).find('input[name="updateFoodName"]');
       var updateFoodName = updateFoodNameField.val();
-      var updateFoodNotesField = $(this).find('input[name="editFoodNotes"]');
+      var updateFoodNotesField = $(this).find('input[name="updateFoodNotes"]');
       var updateFoodNotes = updateFoodNotesField.val();
       var userData = {name: updateFoodName, notes: updateFoodNotes};
-      $.ajax({
-        method: 'patch',
-        data: {user: userData},
-        url: '/users/foodRestrictions/'+ foodId,
-        success: function(data){
-          getUserFoods();
-        }
-      });
+      // $.ajax({
+      //   method: 'patch',
+      //   data: {user: userData},
+      //   url: '/users/foodRestrictions/'+ foodId,
+      //   success: function(data){
+      //     getUserFoods();
+      //   }
+      // });
   });
 }
 

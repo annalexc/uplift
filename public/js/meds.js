@@ -14,7 +14,7 @@ function renderUserMeds(user){
     $medDiv.append($('<h5>').text('Side Effects: ' + med.sideEffects));
     $medDiv.append($('<h5>').text('Copay: $' + med.coPay));
     $medDiv.append($('<h5>').text('Time: ' + med.time));
-    $medDiv.append($('<button type="submit" data-id="' + med._id + '">').addClass('remove-med').text('Delete Med'));
+    $medDiv.append($('<button data-id="' + med._id + '">').addClass('remove-med').text('Delete Med'));
     $display.append($medDiv);
 
     $updateMedForm.append($('<h5>').addClass('updates').text('Update Medication'));
@@ -28,7 +28,7 @@ function renderUserMeds(user){
     $updateMedForm.append($('<input type="number" name="updateMedCoPay" value="' + med.coPay + '">'));
     $updateMedForm.append($('<label for="updateMedTime">').text('Time:'));
     $updateMedForm.append($('<input type="text" name="updateMedTime" value="' + med.time + '">'));
-    $updateMedForm.append($('<button type="submit" data-id="' + med._id + '">' ).text("Update Medication"));
+    $updateMedForm.append($('<button data-id="' + med._id + '">' ).text("Update Medication"));
     $updateMed.append($updateMedForm);
 
     $medDiv.append($updateMed);
