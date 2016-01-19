@@ -210,11 +210,11 @@ router.patch('/foodRestrictions/:id', function(req,res){
 // console.log("this is the body"+req.body.user);
 // console.log("this is the user's restrictions"+req.user.foodRestrictions);
 // console.log("this is the new restriction"+req.user);
-// var parseString = require('xml2js').parseString;
-// var xml = 'https://wsearch.nlm.nih.gov/ws/query?db=healthTopics&term=asthma';
-// console.log(xml);
-// parseString(xml, function(err, result){
-//   console.log(result);
-// });
+var parseString = require('xml2js').parseString;
+var xml = 'https://wsearch.nlm.nih.gov/ws/query?db=healthTopics&term=asthma';
+// xml.replace("\ufeff", "")
+parseString(xml, function(err, result){
+  console.log(err);
+});
 
 module.exports = router;
