@@ -20,7 +20,7 @@ function renderUserFoods(user){
     $updateFoodForm.append($('<input type="text" name="updateFoodName" value="' + food.name + '">'));
     $updateFoodForm.append($('<label for="updateFoodNotes">').text('Notes:'));
     $updateFoodForm.append($('<input type="text" name="updateFoodNotes" value="' + food.notes + '">'));
-    $updateFoodForm.append($('<button data-id="' + food._id + '">').text('Update Restriction'));
+    $updateFoodForm.append($('<button data-id="' + food._id + '">').text("Update Restriction"));
     $updateFood.append($updateFoodForm);
 
     $foodDiv.append($updateFood);
@@ -76,14 +76,14 @@ function updateFoodsHandler(){
       var updateFoodNotesField = $(this).find('input[name="updateFoodNotes"]');
       var updateFoodNotes = updateFoodNotesField.val();
       var userData = {name: updateFoodName, notes: updateFoodNotes};
-      // $.ajax({
-      //   method: 'patch',
-      //   data: {user: userData},
-      //   url: '/users/foodRestrictions/'+ foodId,
-      //   success: function(data){
-      //     getUserFoods();
-      //   }
-      // });
+      $.ajax({
+        method: 'patch',
+        data: {user: userData},
+        url: '/users/foodRestrictions/' + foodId,
+        success: function(data){
+          getUserFoods();
+        }
+      });
   });
 }
 
