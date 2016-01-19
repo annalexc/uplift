@@ -28,7 +28,6 @@ function setLogInFormHandler(){
       getUserFoods();
       getUserAppts();
     });
-    $('#log-in').children('input').val('');
   });
 }
 
@@ -162,9 +161,9 @@ $(function(){
   updateUserProfileHandler();
   onloadgetter();
 
-  $('#create-profile').on('submit', function(){
-    $('#create-profile').children('input').val('');
-  });
+  // $('#create-profile').on('submit', function(){
+  //   $('#create-profile').children('input').val('');
+  // });
 
 
   // FUNCTIONING JQUERY GET of CDC
