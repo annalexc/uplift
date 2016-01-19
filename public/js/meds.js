@@ -25,7 +25,7 @@ function renderUserMeds(user){
     $updateMedForm.append($('<label for="updateMedSideEffects">').text('Side Effects: '));
     $updateMedForm.append($('<input type="text" name="updateMedSideEffects" value="'+med.sideEffects+'">'));
     $updateMedForm.append($('<label for="updateMedCoPay">').text('Copay: '));
-    $updateMedForm.append($('<input type="text" name="updateMedCoPay" value="'+med.coPay+'">'));
+    $updateMedForm.append($('<input type="number" name="updateMedCoPay" value="'+med.coPay+'">'));
     $updateMedForm.append($('<label for="updateMedTime">').text('Time: '));
     $updateMedForm.append($('<input type="text" name="updateMedTime" value="'+med.time+'">'));
     $updateMedForm.append( $('<button data-id="'+med._id+'">' ).text("Update Medication") );

@@ -1,62 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <% include partials/head.ejs %>
+  <head>
+    <% include partials/head.ejs %>
 
-</head>
-<body>
+  </head>
+  <body>
 
-  <div id="display-profile">
+    <div id="display-profile">
 
-  </div>
+    </div>
 
-  <h3>Medications</h3>
-  <div id="display-medications">
+    <h3>Medications</h3>
+    <div id="display-medications">
 
-  </div>
+    </div>
 
-  <h3>Appointments</h3>
-  <div id="display-appointments">
+    <h3>Appointments</h3>
+    <div id="display-appointments">
 
-  </div>
+    </div>
 
-  <h3>Food Restrictions</h3>
-  <div id="display-foods">
+    <h3>Food Restrictions</h3>
+    <div id="display-foods">
 
-  </div>
+    </div>
 
-  <h2>Create Account</h2>
-  <form id="create-profile" action="/users" method="post" class="sign-up">
-    <label for="username">Username:</label>
-    <input type="text" name="user[username]" placeholder="username">
-    <label for="password">Password:</label>
-    <input type="password" name="user[password]" placeholder="password">
-    <label for="firstName">First Name</label>
-    <input type="text" name="createFirstName" placeholder="First Name">
-    <label for="lastName">Last Name</label>
-    <input type="text" name="createLastName" placeholder="Last Name">
-    <label for="birthdate">Date of Birth</label>
-    <input type="date" name="createBirthdate">
-    <label for="gender">Gender</label>
-    <select class="gender" name="createGender">
-      <option value="Not Specified">Select One</option>
-      <option value="Male">Male</option>
-      <option value="Female">Female</option>
-    </select>
-    <label for="phoneNum">Contact Number</label>
-    <input type="tel" name="createPhoneNum" placeholder="XXX-XXX-XXXX">
-    <input type="submit" value="Create Profile">
-  </form>
+    <h2>Create Account</h2>
+    <form id="create-profile" action="/users" method="post" class="sign-up">
+      <label for="username">Username:</label>
+      <input type="text" name="user[username]" placeholder="username">
+      <label for="password">Password:</label>
+      <input type="password" name="user[password]" placeholder="password">
+      <label for="firstName">First Name:</label>
+      <input type="text" name="createFirstName" placeholder="First Name">
+      <label for="lastName">Last Name:</label>
+      <input type="text" name="createLastName" placeholder="Last Name">
+      <label for="birthdate">Date of Birth:</label>
+      <input type="date" name="createBirthdate">
+      <label for="gender">Gender:</label>
+      <select class="gender" name="createGender">
+        <option value="Not Specified">Select One</option>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+      </select>
+      <label for="illness">Illness:</label>
+      <input type="text" name="illness" placeholder="Illness">
+      <label for="phoneNum">Contact Number:</label>
+      <input type="tel" name="createPhoneNum" placeholder="XXX-XXX-XXXX">
+      <input type="submit" value="Create Profile">
+    </form>
 
-  <h2>Login</h2>
-  <form id='log-in' action="/users/authenticate" method="post">
-    <label for="username">Username:</label>
-    <input type="text" name="username" placeholder="username">
-    <label for="password">Password:</label>
-    <input type="password" name="password" placeholder="password">
-    <input type="submit" value="Log In">
-    <button id="log-out">Sign Out</button>
-  </form>
+    <h2>Login</h2>
+    <form id='log-in' action="/users/authenticate" method="post">
+      <label for="username">Username:</label>
+      <input type="text" name="username" placeholder="username">
+      <label for="password">Password:</label>
+      <input type="password" name="password" placeholder="password">
+      <input type="submit" value="Log In">
+      <button id="log-out">Sign Out</button>
+    </form>
 
     <h2>Appointments</h2>
     <form id="appointments" action="/users/appointments" method="post">
@@ -88,7 +90,7 @@
       <label for="medTime">Time:</label>
       <input type="text" name="medTime" placeholder="Time">
       <label for="medCoPay">Copay:</label>
-      <input type="text" name="medCoPay" placeholder="Copay">
+      <input type="number" name="medCoPay" placeholder="Copay">
       <input type="submit" value="Add Medication">
     </form>
 
@@ -101,5 +103,5 @@
       <input type="submit" value="Add Food Restriction">
     </form>
 
-</body>
+  </body>
 </html>

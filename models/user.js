@@ -13,7 +13,8 @@ var UserSchema = mongoose.Schema({
       gender: {type: String},
       phoneNum: {type: Number},
       status: {type: String},
-      illness: {type: String}
+      illness: {type: String},
+      illnessInfo: {type: String}
     }],
   appointments: [{
       date: {type: Date},
@@ -29,7 +30,7 @@ var UserSchema = mongoose.Schema({
       dosage: {type: String},
       sideEffects: {type: String},
       time: {type: String},
-      coPay: {type: String}
+      coPay: {type: Number}
     }],
   foodRestrictions: [{
       name: {type: String},
