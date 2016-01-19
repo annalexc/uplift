@@ -50,11 +50,13 @@ function renderUserProfile(user){
   var $profile = $('#display-profile');
   var birthdate = convertTimeToWords(user.profile[0].birthdate);
   $profile.empty();
-  $profile.append( $('<h2>').text(user.profile[0].firstName + " " + user.profile[0].lastName));
-  $profile.append( $('<h4>').text("Birthdate: " + birthdate).addClass('birthdate'));
-  $profile.append( $('<h4>').text("Gender: " + user.profile[0].gender).addClass('gender'));
-  $profile.append( $('<h4>').text("Illness: " + user.profile[0].illness).addClass('illness'));
-  $profile.append( $('<h4>').text("Contact Number: " + user.profile[0].phoneNum).addClass('phoneNum'));
+  $profile.append($('<h2>').text(user.profile[0].firstName + " " + user.profile[0].lastName));
+  $profile.append($('<h4>').text("Birthdate: " + birthdate).addClass('birthdate'));
+  $profile.append($('<h4>').text("Gender: " + user.profile[0].gender).addClass('gender'));
+  $profile.append($('<h4>').text("Illness: " + user.profile[0].illness).addClass('illness'));
+  $profile.append($('<h4>').text("Illness Info: "));
+  $profile.append($('<div>').html(user.profile[0].illnessInfo).addClass('illness-info'));
+  $profile.append($('<h4>').text("Contact Number: " + user.profile[0].phoneNum).addClass('phoneNum'));
 
   var $updateProfile = $('<div id="profile-update-form">');
   var $updateProfileForm = $('<form method="patch">').addClass('update-profile');
@@ -87,7 +89,7 @@ function renderUserProfile(user){
   $updateProfileForm.append($('<input type="text" name="illness" value="' + user.profile[0].illness + '">'));
   $updateProfileForm.append($('<label for="phoneNum">').text('Contact Number:'));
   $updateProfileForm.append($('<input type="tel" name="phoneNum" value="' + user.profile[0].phoneNum + '">'));
-  $updateProfileForm.append( $('<button data-id="' + user._id + '">').text('Update Profile'));
+  $updateProfileForm.append($('<button data-id="' + user._id + '">').text('Update Profile'));
 
   $updateProfile.append($updateProfileForm);
   $profile.append($updateProfile);
