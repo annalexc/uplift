@@ -56,16 +56,18 @@ input[type="submit"] {
 .modal {
   position: absolute;
   top: 0;
-  left: 90;
+  left: 0;
   background-color: rgba(0,0,0,0.5);
   display: hidden;
 }
 
-.appointments-container {
+.appointments-modal-content {
   margin: 0 auto;
   width: 300px;
   background-color: white;
+  overflow: scroll;
 }
+
 
 #close-add-appt-modal {
   float:right;

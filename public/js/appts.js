@@ -57,11 +57,14 @@ function renderAppointments(user){
   var appointments = user.appointments;
   var $display = $('#display-appointments');
   $display.empty();
-  $display.append($('<h3>').text('Appointments'));
+  var $container = ( $('<div>').addClass('appointments-container') );
+  $container.append($('<h3>').text('Appointments'));
+  $container.append( $('<a href="#" id="open-add-appt-modal">').text("+Add an Appointment") );
+  $display.append($container);
   if (appointments.length === 0){
-    $display.append($('<p>').text("You have no upcoming appointments."));
+    $container.append($('<p>').text("You have no upcoming appointments."));
   }
-    appointments.forEach(function(appt){
+  appointments.forEach(function(appt){
     var $apptDiv = $('<div id="' + appt._id + '">');
     var $updateAppt = $('<div id="appt-update-form">');
     var $updateApptForm = $('<form method="patch">').addClass('update-appt');
@@ -73,7 +76,7 @@ function renderAppointments(user){
     $apptDiv.append( $('<h5>').text("Notes: " + appt.notes));
     $apptDiv.append( $('<h5>').text("Copay: $" + appt.coPay));
     $apptDiv.append( $('<button data-id="' + appt._id + '">').addClass('remove-appt').text('Delete Appointment'));
-    $display.append($apptDiv);
+    $container.append($apptDiv);
 
     $updateApptForm.append($('<h5>').addClass('updates').text('Update Appointment'));
     $updateApptForm.append($('<label form="updateApptDate">').text('Date:'));
@@ -193,17 +196,22 @@ $(function(){
   addAppointmentsHandler();
   deleteApptsHandler();
 
-  $('.button4').on('click', function(e){
+  $('#display-appointments').on('click', '#open-add-appt-modal', function(e){
     e.preventDefault();
     console.log("hello there");
-    $('.appointments-modal').toggle();
+    $('.new-appointments-modal').toggle();
   });
 
   $('#close-add-appt-modal').on('click', function(e){
     e.preventDefault();
-    $('.appointments-modal').toggle();
+    console.log("it's not broken")
+    $('.new-appointments-modal').toggle();
   })
-
-
+  //
+  // $('.button4').on('click', function(e){
+  //   e.preventDefault();
+  //   console.log('hello!');
+  //   $('#display-appointments').toggle();
+  // })
 
 });
