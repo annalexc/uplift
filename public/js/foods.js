@@ -6,6 +6,9 @@ function renderUserFoods(user){
   var $display = $('#display-foods');
   $display.empty();
   $display.append($('<h3>').text('Dietary Restrictions'));
+  if (foods.length === 0){
+    $display.append( $('<p>').text("You have no dietary restrictions") );
+  }
   foods.forEach(function(food){
     var $foodDiv = $('<div id="'+ food._id +'">');
     $foodDiv.append($('<h5>').text("Food: " + food.name));
