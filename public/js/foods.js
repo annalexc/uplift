@@ -65,9 +65,24 @@ function addFoodRestrictionsHandler(){
   });
 }
 
+//////// DELETES FOOD RESTRICTION ////////
+function deleteFoodsHandler(){
+  $('#display-foods').on('click', '.remove-food', function(e){
+      e.preventDefault();
+      var foodId = $(this).data('id');
+      $.ajax({
+        method: 'delete',
+        url: '/users/foodRestrictions/'+ foodId,
+        success: function(data){
+          $('#' + foodId).remove();
+        }
+      });
+  });
+}
+
 //////// UPDATES FOOD RESTRICTION ////////
 function updateFoodsHandler(){
-  $('#display-foods').on('submit', '.update-food', function(e){
+  $('#display-foods').on('click', '.update-food', function(e){
       e.preventDefault();
       var foodId = $(this).find('button').data('id');
       console.log(foodId);
@@ -87,20 +102,6 @@ function updateFoodsHandler(){
   });
 }
 
-//////// DELETES FOOD RESTRICTION ////////
-function deleteFoodsHandler(){
-  $('#display-foods').on('click', '.remove-food', function(e){
-      e.preventDefault();
-      var foodId = $(this).data('id');
-      $.ajax({
-        method: 'delete',
-        url: '/users/foodRestrictions/'+ foodId,
-        success: function(data){
-          $('#' + foodId).remove();
-        }
-      });
-  });
-}
 
 $(function(){
     addFoodRestrictionsHandler();

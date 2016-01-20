@@ -7,23 +7,39 @@ var User = require('../models/user');
 router.get('/', function(req,res){
   if (req.user){
     User.findById(req.user._id, function(err, user){
-      var request = require('request');
-      var parseString = require('xml2js').parseString;
-      if (user.profile[0].illness){
-        var xml = 'https://wsearch.nlm.nih.gov/ws/query?db=healthTopics&term='+user.profile[0].illness;
-        request(xml, function(err, res, body){
-          parseString(body, function(err, result){
-            console.dir(result.nlmSearchResult.list[0].document[0].content[3]._);
-          });
-        });
-      } else {
-        res.json(user);
-      }
+      res.json(user);
     });
   } else {
     res.json();
   }
+
 });
+// router.get('/', function(req,res){
+//   if (req.user && req.user.profile){
+//     User.findById(req.user._id, function(err, user){
+//       var request = require('request');
+//       var parseString = require('xml2js').parseString;
+//       console.log(user)
+//       if (user.profile){
+//         if (user.profile.illness){
+//           var xml = 'https://wsearch.nlm.nih.gov/ws/query?db=healthTopics&term='+user.profile.illness;
+//           request(xml, function(err, response, body){
+//             parseString(body, function(err, result){
+//               user.profile[0].illnessInfo = result.nlmSearchResult.list[0].document[0].content[3]._;
+//               res.json(user);
+//             });
+//           });
+//         } else {
+//           res.json(user);
+//         }
+//       } else {
+//         res.json(user);
+//       }
+//     });
+//   } else {
+//     res.json();
+//   }
+// });
 
 // CREATES A USER
 router.post('/', function(req, res){
@@ -36,8 +52,10 @@ router.post('/', function(req, res){
 // LOGS A USER IN AND ASSIGNS A TOKEN
 router.post('/authenticate', function(req, res){
   var username = req.body.username; // What username did THEY type in
+  console.log(req.body);
   var passwordTry = req.body.password; // What password attempt did THEY type in
   User.findOne({username: username}, function(err, dbUser){ // Find the user by that username
+    console.log(dbUser);
     dbUser.authenticate(passwordTry, function(err, isMatch){  // See if the password is correct
       if(isMatch){  // If it is!!!...
         dbUser.setToken(function(){  // Create a new token
