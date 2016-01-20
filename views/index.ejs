@@ -17,110 +17,31 @@
            <li><a href="#" class="button4"><i class="fa fa-calendar"></i></a></li>
        </ul>
      </nav>
-
-
   </div>
 
   <div class="container">
-    <div id="display-profile">
+     <div class="content">
 
+
+    <div id="display-profile">
     </div>
 
+    <h3>Medications</h3>
     <div id="display-medications">
 
     </div>
 
+    <h3>Appointments</h3>
     <div id="display-appointments">
 
     </div>
 
+    <h3>Food Restrictions</h3>
     <div id="display-foods">
 
     </div>
 
 
-<<<<<<< d26f21ca6933980f0502eaa11f86c91f1a47b920
-    <h2>Create Account</h2>
-    <form id="create-profile" action="/users" method="post" class="sign-up">
-      <label for="username">Username:</label>
-      <input type="text" name="user[username]" placeholder="username" required>
-      <label for="password">Password:</label>
-      <input type="password" name="user[password]" placeholder="password" required>
-      <label for="firstName">First Name:</label>
-      <input type="text" name="user[profile][firstName]" placeholder="First Name" required>
-      <label for="lastName">Last Name:</label>
-      <input type="text" name="user[profile][lastName]" placeholder="Last Name" required>
-      <label for="birthdate">Date of Birth:</label>
-      <input type="date" name="user[profile][birthdate]" required>
-      <label for="gender">Gender:</label>
-      <select class="gender" name="user[profile][gender]" required>
-        <option value=" ">Select One</option>
-        <option value="Not Specified">Not Specified</option>
-        <option value="Male">Male</option>
-        <option value="Female">Female</option>
-      </select>
-      <label for="illness">Illness:</label>
-      <input type="text" name="user[profile][illness]" placeholder="Illness" required>
-      <label for="phoneNum">Contact Number:</label>
-      <input type="tel" name="user[profile][phoneNum]" placeholder="XXX-XXX-XXXX" required>
-      <button type="submit" value="Create Profile">Create Profile</button>
-    </form>
-
-    <h2>Login</h2>
-    <form id='log-in' action="/users/authenticate" method="post">
-      <label for="username">Username:</label>
-      <input type="text" name="username" placeholder="username">
-      <label for="password">Password:</label>
-      <input type="password" name="password" placeholder="password">
-      <button value="Log In">Log In</button>
-      <button type="submit" id="log-out">Sign Out</button>
-    </form>
-
-    <h2>Appointments</h2>
-    <form id="appointments" action="/users/appointments" method="post">
-      <label for="apptDate">Date:</label>
-      <input type="date" name="apptDate">
-      <label for="apptTime">Time:</label>
-      <input type="text" name="apptTime" placeholder="HH:MM AM/PM">
-      <label for="apptLocation">Location:</label>
-      <input type="text" name="apptLocation" placeholder="Location">
-      <label for="apptDoctor">Doctor:</label>
-      <input type="text" name="apptDoctor" placeholder="Doctor">
-      <label for="apptPhoneNum">Contact Number:</label>
-      <input type="text" name="apptPhoneNum" placeholder="XXX-XXX-XXXX">
-      <label for="apptCoPay">Copay:</label>
-      <input type="number" name="apptCoPay" placeholder="Copay">
-      <label for="apptNotes">Notes:</label>
-      <input type="text" name="apptNotes" placeholder="Notes">
-      <button type="submit" value="Add Appointment">Add Appointment</button>
-    </form>
-
-    <h2>Medication</h2>
-    <form id="medication" action="/users/medications" method="post">
-      <label for="medName">Medication:</label>
-      <input type="text" name="medName" placeholder="Name">
-      <label for="medDosage">Dosage:</label>
-      <input type="text" name="medDosage" placeholder="Dosage">
-      <label for="medSideEffects">Side Effects:</label>
-      <input type="text" name="medSideEffects" placeholder="Side Effects">
-      <label for="medTime">Time:</label>
-      <input type="text" name="medTime" placeholder="Time">
-      <label for="medCoPay">Copay:</label>
-      <input type="number" name="medCoPay" placeholder="Copay">
-      <button type="submit" value="Add Medication">Add Medication</button>
-    </form>
-
-    <h2>Dietary Restrictions</h2>
-    <form id="foodRestrictions" action="/users/foodRestrictions" method="post">
-      <i class="fa fa-cutlery"></i>
-      <label for="foodRestrictionsName">Restriction:</label>
-      <input type="text" name="foodRestrictionsName" placeholder="Food">
-      <label for="foodRestrictionsNotes">Notes:</label>
-      <input type="text" name="foodRestrictionsNotes" placeholder="Notes">
-      <button type="submit" value="Add Food Restriction">Add Dietary Restriction</button>
-    </form>
-    </div>
-=======
     <% include partials/account.ejs %>
 
     <% include partials/login.ejs %>
@@ -130,7 +51,7 @@
     <% include partials/medication.ejs %>
 
     <% include partials/restrictions.ejs %>
->>>>>>> changes index to partials
-
+   </div>
+</div>
   </body>
 </html>
