@@ -30,25 +30,25 @@
     <h2>Create Account</h2>
     <form id="create-profile" action="/users" method="post" class="sign-up">
       <label for="username">Username:</label>
-      <input type="text" name="user[username]" placeholder="username">
+      <input type="text" name="user[username]" placeholder="username" required>
       <label for="password">Password:</label>
-      <input type="password" name="user[password]" placeholder="password">
+      <input type="password" name="user[password]" placeholder="password" required>
       <label for="firstName">First Name:</label>
-      <input type="text" name="createFirstName" placeholder="First Name">
+      <input type="text" name="user[profile][firstName]" placeholder="First Name" required>
       <label for="lastName">Last Name:</label>
-      <input type="text" name="createLastName" placeholder="Last Name">
+      <input type="text" name="user[profile][lastName]" placeholder="Last Name" required>
       <label for="birthdate">Date of Birth:</label>
-      <input type="date" name="createBirthdate" required>
+      <input type="date" name="user[profile][birthdate]" required>
       <label for="gender">Gender:</label>
-      <select class="gender" name="createGender">
+      <select class="gender" name="user[profile][gender]" required>
         <option value="Not Specified">Select One</option>
         <option value="Male">Male</option>
         <option value="Female">Female</option>
       </select>
       <label for="illness">Illness:</label>
-      <input type="text" name="illness" placeholder="Illness">
+      <input type="text" name="user[profile][illness]" placeholder="Illness" required>
       <label for="phoneNum">Contact Number:</label>
-      <input type="tel" name="createPhoneNum" placeholder="XXX-XXX-XXXX">
+      <input type="tel" name="user[profile][phoneNum]" placeholder="XXX-XXX-XXXX" required>
       <button type="submit" value="Create Profile">Create Profile</button>
     </form>
 

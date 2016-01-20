@@ -12,7 +12,6 @@ router.get('/', function(req,res){
   } else {
     res.json();
   }
-
 });
 // router.get('/', function(req,res){
 //   if (req.user && req.user.profile){
@@ -44,6 +43,7 @@ router.get('/', function(req,res){
 // CREATES A USER
 router.post('/', function(req, res){
   var newUser = new User(req.body.user);
+  console.log("this is the new user " + newUser);
   newUser.save(function(err, databaseUser){
     res.redirect('/');
   });

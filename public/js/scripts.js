@@ -44,10 +44,10 @@ function logOut(){
 //////// RENDER USER ///////
 function renderUserProfile(user){
   var $profile = $('#display-profile');
-  var birthdate = convertTimeToWords(user.profile[0].birthdate);
+  // var birthdate = convertTimeToWords(user.profile[0].birthdate);
   $profile.empty();
   $profile.append($('<h2>').text(user.profile[0].firstName + " " + user.profile[0].lastName));
-  $profile.append($('<h4>').text("Birthdate: " + birthdate).addClass('birthdate'));
+  // $profile.append($('<h4>').text("Birthdate: " + birthdate).addClass('birthdate'));
   $profile.append($('<h4>').text("Gender: " + user.profile[0].gender).addClass('gender'));
   $profile.append($('<h4>').text("Illness: " + user.profile[0].illness).addClass('illness'));
   $profile.append($('<h4>').text("Illness Info: "));
@@ -97,6 +97,7 @@ function getUser(){
     method: 'get',
     url: '/users',
     success: function(data){
+      console.log(data);
       renderUserProfile(data);
     }
   });
@@ -159,9 +160,9 @@ $(function(){
   updateUserProfileHandler();
   onloadgetter();
 
-  $('#create-profile').on('submit', function(){
-    $('#create-profile').children('input').val('');
-  });
+  // $('#create-profile').on('submit', function(){
+  //   $('#create-profile').children('input').val('');
+  // });
 
 
   // FUNCTIONING JQUERY GET of CDC
