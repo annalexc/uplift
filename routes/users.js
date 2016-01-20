@@ -268,13 +268,13 @@ router.patch('/foodRestrictions/:id', function(req, res){
 // console.log("this is the user's restrictions"+req.user.foodRestrictions);
 // console.log("this is the new restriction"+req.user);
 
-var request = require('request');
-var parseString = require('xml2js').parseString;
-var xml = 'https://wsearch.nlm.nih.gov/ws/query?db=healthTopics&term=breast%20cancer';
-request(xml, function(err, res, body){
-  parseString(body, function(err, result){
-    console.dir(result.nlmSearchResult.list[0].document[0].content[3]._);
-  });
-});
+// var request = require('request');
+// var parseString = require('xml2js').parseString;
+// var xml = 'https://wsearch.nlm.nih.gov/ws/query?db=healthTopics&term=breast%20cancer';
+// request(xml, function(err, res, body){
+//   parseString(body, function(err, result){
+//     console.dir(result.nlmSearchResult.list[0].document[0].content[3]._);
+//   });
+// });
 
 module.exports = router;

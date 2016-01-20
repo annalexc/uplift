@@ -105,7 +105,6 @@ function getUser(){
     method: 'get',
     url: '/users',
     success: function(data){
-      console.log(data);
       renderUserProfile(data);
     }
   });
@@ -152,7 +151,8 @@ function onloadgetter(){
   $.ajax({
     method: 'get',
     url: '/users',
-    success: function(){
+    success: function(data){
+      console.log(data);
       getUser();
       getUserMeds();
       getUserFoods();
