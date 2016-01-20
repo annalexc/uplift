@@ -5,31 +5,6 @@
 		list-style-type: none;
 }
 
-.pad-bot {
-		padding-bottom: 10px
-}
-
-.pad-left {
-		padding-left: 30px
-}
-
-.left {
-		float: left
-}
-
-.right {
-		float: right
-}
-
-.inline-holder {
-		display: inline-block;
-	  width: 100%;
-}
-
-.fifty-cent-width {
-		width: 50%
-}
-
 .icon {
 		width: 30px;
 		height: 30px;
@@ -38,6 +13,7 @@
 
 body,
 html {
+	background-image: url(public/images/background-sunset.jpg)
 		margin: 0px;
 		padding: 0px;
 		height: 100%;
@@ -47,19 +23,6 @@ html {
 }
 
 .clearfix { overflow: auto; }
-
-h1 {
-		font-weight: 700
-}
-
-h3 {
-		font-weight: 400
-}
-h5, h6 {display: inline}
-
-p {
-		font-weight: 300
-}
 
 .main-container {
 		position: relative;
@@ -77,7 +40,7 @@ nav {
 		border-right: 2px solid rgb(227, 227, 227);
 		-webkit-box-shadow: 10px 0 5px -2px rgb(227, 227, 227);
 		box-shadow: 1px 0 10px 0px rgb(227, 227, 227);
-		width: 75px;
+		width: 90px;
 		height: 100%;
 		padding: 40px 0px 0px 0px;
 		margin: 0;
@@ -88,18 +51,16 @@ nav ul {
 		list-style-type: none;
 }
 
-nav a {
-		text-decoration: none;
-		color: turquoise;
-}
-
 li.logo {
 		padding-bottom: 150px;
 		background: url("") no-repeat;
 		width: 72px;
 		height: 72px;
 }
-
+li {
+	font-size: 65px;
+	width:50px;
+}
 nav a {
 		width: 30px;
 		height: 30px;
@@ -108,38 +69,40 @@ nav a {
 		margin-left: auto;
 		left: 15px;
 		margin-right: auto;
+		text-decoration: none;
+		color: black;
 }
 
 .button1 {
-		background: url("http://cdn.atlantafalcons.com/flagship/lib/2014/01/chat-icon-30x30-gray.png") no-repeat;
+	top: 150px
+
 }
 
 .button2 {
-		background: url("http://www.esthergibbons.com/images/icon-list-plus@2x.png") no-repeat;
 		top: 250px
+
 }
 
 .button3 {
-		background: url("http://png-2.findicons.com/files/icons/2810/ios_tab_bar/30/search.png");
-		top: 300px;
+		top: 350px;
+
 }
 
 .button4 {
-		background: url("http://cdn.atlantafalcons.com/flagship/lib/2014/01/chat-icon-30x30-gray.png") no-repeat;
-		top: 350px;
+		top: 450px;
+
 }
 
 .button5 {
-		background: url("http://www.esthergibbons.com/images/icon-list-plus@2x.png") no-repeat;
-		top: 400px
+		top: 550px
+
 }
 
 .button6 {
-		background: url("http://png-2.findicons.com/files/icons/2810/ios_tab_bar/30/search.png");
-		top: 450px;
+		top: 650px;
+
 }
 
-
-nav li:hover {
-  background-color: darken(whitesmoke, 8%);
+li:hover {
+  background-color: darken(orange, 8%);
 }
