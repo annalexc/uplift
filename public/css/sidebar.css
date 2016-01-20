@@ -51,9 +51,8 @@ nav ul {
 		list-style-type: none;
 }
 
-li.logo {
+li.logo img {
 		padding-bottom: 150px;
-		background: url("") no-repeat;
 		width: 72px;
 		height: 72px;
 }
