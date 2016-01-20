@@ -81,7 +81,7 @@ function deleteFoodsHandler(){
 
 //////// UPDATES FOOD RESTRICTION ////////
 function updateFoodsHandler(){
-  $('#display-foods').on('click', '.update-food', function(e){
+  $('#display-foods').on('submit', '.update-food', function(e){
       e.preventDefault();
       var foodId = $(this).find('button').data('id');
       console.log(foodId);
