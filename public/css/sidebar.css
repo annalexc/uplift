@@ -13,7 +13,7 @@
 
 body,
 html {
-	background-image: url(public/images/background-sunset.jpg)
+	background-color: whitesmoke;
 		margin: 0px;
 		padding: 0px;
 		height: 100%;
@@ -51,9 +51,8 @@ nav ul {
 }
 
 li.logo img {
-		padding-bottom: 0px;
+		padding-left: 10px;
 		width: 72px;
-		height: 72px;
 }
 li {
 	font-size: 65px;
