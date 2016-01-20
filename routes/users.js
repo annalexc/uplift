@@ -13,6 +13,32 @@ router.get('/', function(req,res){
     res.json();
   }
 });
+
+router.get('/taco', function(req, res) {
+  var request = require('request');
+  var parseString = require('xml2js').parseString;
+  var illness = req.query.user;
+  var xml = 'https://wsearch.nlm.nih.gov/ws/query?db=healthTopics&term='+ illness;
+  request(xml, function(err, response, body){
+    parseString(body, function(err, result){
+      var data = result.nlmSearchResult.list[0].document[0].content[3]._;
+      if (data.length > 170){
+        console.log(data);
+        console.log(data.length);
+        res.json(data);
+
+      } else {
+        console.log(illness);
+        var newIllness = illness.replace(' ', '_');
+        console.log(newIllness);
+        data = '<a href="https://en.wikipedia.org/wiki/'+newIllness+'"> Try this wikipedia link  </a>'
+        res.json(data);
+      }
+
+    });
+  });
+
+});
 // router.get('/', function(req,res){
 //   if (req.user && req.user.profile){
 //     User.findById(req.user._id, function(err, user){

@@ -50,7 +50,7 @@ function renderUserProfile(user){
   $profile.append($('<h4>').text("Birthdate: " + birthdate).addClass('birthdate'));
   $profile.append($('<h4>').text("Gender: " + user.profile[0].gender).addClass('gender'));
   $profile.append($('<h4>').text("Illness: " + user.profile[0].illness).addClass('illness'));
-  $profile.append($('<h4>').text("Illness Info: "));
+  $profile.append($('<a id="illness-info-link">').text("Get Illness Info") );
   $profile.append($('<div>').html(user.profile[0].illnessInfo).addClass('illness-info'));
   $profile.append($('<h4>').text("Contact Number: " + user.profile[0].phoneNum).addClass('phoneNum'));
 
@@ -161,12 +161,34 @@ function onloadgetter(){
   });
 }
 
+function renderIllnessInfo(){
+  $('#display-profile').on('click', 'a#illness-info-link', function(e){
+    e.preventDefault();
+    console.log('hi!');
+    var userData = $('.illness').text();
+    userData = userData.split("");
+    userData = userData.splice(9).join('');
+    $.ajax({
+      method: 'get',
+      url: '/users/taco',
+      data: {user: userData},
+      success: function(data){
+        console.log(data);
+        var illnessInfo = $('<div id="illness-information">')
+        illnessInfo.prependTo('body');
+        illnessInfo.append( $('<p>').html(data) );
+      }
+    });
+  });
+}
+
 
 $(function(){
   setLogInFormHandler();
   logOut();
   updateUserProfileHandler();
   onloadgetter();
+  renderIllnessInfo();
 
 
   // $('#create-profile').on('submit', function(){
