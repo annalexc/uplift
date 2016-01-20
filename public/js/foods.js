@@ -77,7 +77,7 @@ function deleteFoodsHandler(){
         method: 'delete',
         url: '/users/foodRestrictions/'+ foodId,
         success: function(data){
-          $('#' + foodId).remove();
+          getUserFoods();
         }
       });
   });

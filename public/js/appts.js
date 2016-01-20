@@ -149,7 +149,7 @@ function deleteApptsHandler(){
         method: 'delete',
         url: '/users/appointments/' + apptId,
         success: function(data){
-          $('#'+apptId).remove();
+          getUserAppts();
         }
       });
   });

@@ -119,7 +119,7 @@ function deleteMedsHandler(){
         method: 'delete',
         url: '/users/medications/'+ medId,
         success: function(data){
-          $('#' + medId).remove();
+          getUserMeds();
         }
       });
   });

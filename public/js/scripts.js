@@ -158,6 +158,10 @@ function onloadgetter(){
         getUserMeds();
         getUserFoods();
         getUserAppts();
+        if ($.cookie('token')){
+          $('#create-profile').hide();
+          $('#log-in').hide();
+        }
     }
   });
 }
