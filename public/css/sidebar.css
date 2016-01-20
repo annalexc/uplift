@@ -18,7 +18,6 @@ html {
 		padding: 0px;
 		height: 100%;
 		width: 100%;
-	  overflow: hidden;
 		font-family: 'Lato'
 }
 
@@ -74,32 +73,26 @@ nav a {
 
 .button1 {
 	top: 150px
-
 }
 
 .button2 {
 		top: 250px
-
 }
 
 .button3 {
 		top: 350px;
-
 }
 
 .button4 {
 		top: 450px;
-
 }
 
 .button5 {
 		top: 550px
-
 }
 
 .button6 {
 		top: 650px;
-
 }
 
 li:hover {
