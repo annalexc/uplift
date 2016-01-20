@@ -50,4 +50,5 @@ input[type="submit"] {
 .sidebar {
    overflow: hidden;
    position: fixed;
+   left: 0;
 }
