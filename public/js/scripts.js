@@ -23,6 +23,8 @@ function setLogInFormHandler(){
     var password = passwordField.val();
     login(username, password, function(){
       console.log('The token is: ', $.cookie('token'));
+      $('#create-profile').hide();
+      $('#log-in').hide();
       getUser();
       getUserMeds();
       getUserFoods();
@@ -152,11 +154,10 @@ function onloadgetter(){
     method: 'get',
     url: '/users',
     success: function(data){
-      console.log(data);
-      getUser();
-      getUserMeds();
-      getUserFoods();
-      getUserAppts();
+        getUser();
+        getUserMeds();
+        getUserFoods();
+        getUserAppts();
     }
   });
 }
