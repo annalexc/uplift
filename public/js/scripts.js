@@ -68,15 +68,23 @@ function renderUserProfile(user){
 
   var $genderSelect = $('<select name="gender">');
   if (user.profile[0].gender === "Not Specified") {
-    $genderSelect.append($('<option value="Not Specified" selected="selected">').text('Select One'));
+    $genderSelect.append($('<option value=" ">').text('Select One'));
+    $genderSelect.append($('<option value="Not Specified" selected="selected">').text('Not Specified'));
+    $genderSelect.append($('<option value="Male">').text('Male'));
+    $genderSelect.append($('<option value="Female">').text('Female'));
+  } else if (user.profile[0].gender === "Select One") {
+    $genderSelect.append($('<option value=" " selected="selected">').text('Select One'));
+    $genderSelect.append($('<option value="Not Specified">').text('Not Specified'));
     $genderSelect.append($('<option value="Male">').text('Male'));
     $genderSelect.append($('<option value="Female">').text('Female'));
   } else if (user.profile[0].gender === "Male") {
-    $genderSelect.append($('<option value="Not Specified">').text('Select One'));
+    $genderSelect.append($('<option value=" ">').text('Select One'));
+    $genderSelect.append($('<option value="Not Specified">').text('Not Specified'));
     $genderSelect.append($('<option value="Male" selected="selected">').text('Male'));
     $genderSelect.append($('<option value="Female">').text('Female'));
   } else {
-    $genderSelect.append($('<option value="Not Specified">').text('Select One'));
+    $genderSelect.append($('<option value=" ">').text('Select One'));
+    $genderSelect.append($('<option value="Not Specified">').text('Not Specified'));
     $genderSelect.append($('<option value="Male">').text('Male'));
     $genderSelect.append($('<option value="Female" selected="selected">').text('Female'));
   }
