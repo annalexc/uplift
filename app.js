@@ -5,7 +5,7 @@ var app = express();
 
 app.set('view engine', 'ejs');
 
-var mongoPath = 'mongodb://localhost/project3'
+var mongoPath = process.env.MONGOLAB_URI || 'mongodb://localhost/project3'
 var mongoose = require('mongoose');
 mongoose.connect(mongoPath);
 
