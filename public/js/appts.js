@@ -152,7 +152,7 @@ function deleteApptsHandler(){
 }
 
 //////// UPDATES APPOINTMENTS ////////
-function updateFoodsHandler(){
+function updateApptsHandler(){
   $('#display-appointments').on('submit', '.update-appt', function(e){
       e.preventDefault();
       var apptId = $(this).find('button').data('id');

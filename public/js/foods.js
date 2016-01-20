@@ -1,6 +1,5 @@
 ////////// FOOD RESTRICTIONS //////////
 
-
 ///////// RENDERS FOOD RESTRICTION TO DOM ////////
 function renderUserFoods(user){
   var foods = user.foodRestrictions;
@@ -8,13 +7,13 @@ function renderUserFoods(user){
   $display.empty();
   foods.forEach(function(food){
     var $foodDiv = $('<div id="'+ food._id +'">');
-    var $updateFood = $('<div id="food-update-form">');
-    var $updateFoodForm = $('<form method="patch">').addClass('update-food');
     $foodDiv.append($('<h5>').text("Food: " + food.name));
     $foodDiv.append($('<h5>').text("Notes: " + food.notes));
     $foodDiv.append($('<button data-id="' + food._id + '">').addClass('remove-food').text('Remove Restriction'));
     $display.append($foodDiv);
 
+    var $updateFood = $('<div id="food-update-form">');
+    var $updateFoodForm = $('<form method="patch">').addClass('update-food');
     $updateFoodForm.append($('<h5>').addClass('updates').text('Update Food Restriction'));
     $updateFoodForm.append($('<label for="updateFoodName">').text('Restriction:'));
     $updateFoodForm.append($('<input type="text" name="updateFoodName" value="' + food.name + '">'));
@@ -93,8 +92,8 @@ function updateFoodsHandler(){
       var userData = {name: updateFoodName, notes: updateFoodNotes};
       $.ajax({
         method: 'patch',
-        data: {user: userData},
         url: '/users/foodRestrictions/' + foodId,
+        data: {user: userData},
         success: function(data){
           getUserFoods();
         }
