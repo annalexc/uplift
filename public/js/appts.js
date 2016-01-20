@@ -57,7 +57,11 @@ function renderAppointments(user){
   var appointments = user.appointments;
   var $display = $('#display-appointments');
   $display.empty();
-  appointments.forEach(function(appt){
+  $display.append($('<h3>').text('Appointments'));
+  if (appointments.length === 0){
+    $display.append($('<p>').text("You have no upcoming appointments."));
+  }
+    appointments.forEach(function(appt){
     var $apptDiv = $('<div id="' + appt._id + '">');
     var $updateAppt = $('<div id="appt-update-form">');
     var $updateApptForm = $('<form method="patch">').addClass('update-appt');

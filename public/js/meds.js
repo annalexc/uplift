@@ -5,7 +5,11 @@ function renderUserMeds(user){
   var medications = user.medications;
   var $display = $('#display-medications');
   $display.empty();
-  medications.forEach(function(med){
+  $display.append($('<h3>').text('Medications'));
+  if (medications.length === 0){
+    $display.append($('<p>').text("You have no medications."));
+  }
+    medications.forEach(function(med){
     var $medDiv = $('<div id="' + med._id + '">');
     var $updateMed = $('<div id="med-update-form">');
     var $updateMedForm = $('<form method="patch">').addClass('update-med');
@@ -60,48 +64,48 @@ function addMeds(userData, callback){
 
 //////// MEDS EVENT LISTENER ////////
 function medsHandler(){
-  $('#medication').on('submit', function(e){
-    e.preventDefault();
-    var medNameField = $('input[name="medName"]');
-    var medName = medNameField.val();
-    var dosageField = $('input[name="medDosage"]');
-    var dosage = dosageField.val();
-    var sideEffectsField = $('input[name="medSideEffects"]');
-    var sideEffects = sideEffectsField.val();
-    var timeField = $('input[name="medTime"]');
-    var time = timeField.val();
-    var coPayField = $('input[name="medCoPay"]');
-    var coPay = coPayField.val();
-    var medicine = {name: medName, dosage: dosage, sideEffects: sideEffects, time: time, coPay: coPay};
-    addMeds(medicine);
-    $('#medication').children('input').val('');
-  });
+    $('#medication').on('submit', function(e){
+      e.preventDefault();
+      var medNameField = $('input[name="medName"]');
+      var medName = medNameField.val();
+      var dosageField = $('input[name="medDosage"]');
+      var dosage = dosageField.val();
+      var sideEffectsField = $('input[name="medSideEffects"]');
+      var sideEffects = sideEffectsField.val();
+      var timeField = $('input[name="medTime"]');
+      var time = timeField.val();
+      var coPayField = $('input[name="medCoPay"]');
+      var coPay = coPayField.val();
+      var medicine = {name: medName, dosage: dosage, sideEffects: sideEffects, time: time, coPay: coPay};
+      addMeds(medicine);
+      $('#medication').children('input').val('');
+    });
 }
 
 //////// UPDATES MEDICATION ////////
 function updateMedsHandler(){
   $('#display-medications').on('submit', '.update-med', function(e){
-      e.preventDefault();
-      var medId = $(this).find('button').data('id');
-      var updateNameField = $(this).find('input[name="updateMedName"]');
-      var updateName = updateNameField.val();
-      var updateDosageField = $(this).find('input[name="updateMedDosage"]');
-      var updateDosage = updateDosageField.val();
-      var updateSideEffectsField = $(this).find('input[name="updateMedSideEffects"]');
-      var updateSideEffects = updateSideEffectsField.val();
-      var updateCoPayField = $(this).find('input[name="updateMedCoPay"]');
-      var updateCoPay = updateCoPayField.val();
-      var updateTimeField = $(this).find('input[name="updateMedTime"]');
-      var updateTime = updateTimeField.val();
-      var userData = {name: updateName, dosage: updateDosage, sideEffects: updateSideEffects, coPay: updateCoPay, time: updateTime};
-      $.ajax({
-        method: 'patch',
-        url: '/users/medications/'+ medId,
-        data: {user: userData},
-        success: function(data){
-          getUserMeds();
-        }
-      });
+    e.preventDefault();
+    var medId = $(this).find('button').data('id');
+    var updateNameField = $(this).find('input[name="updateMedName"]');
+    var updateName = updateNameField.val();
+    var updateDosageField = $(this).find('input[name="updateMedDosage"]');
+    var updateDosage = updateDosageField.val();
+    var updateSideEffectsField = $(this).find('input[name="updateMedSideEffects"]');
+    var updateSideEffects = updateSideEffectsField.val();
+    var updateCoPayField = $(this).find('input[name="updateMedCoPay"]');
+    var updateCoPay = updateCoPayField.val();
+    var updateTimeField = $(this).find('input[name="updateMedTime"]');
+    var updateTime = updateTimeField.val();
+    var userData = {name: updateName, dosage: updateDosage, sideEffects: updateSideEffects, coPay: updateCoPay, time: updateTime};
+    $.ajax({
+      method: 'patch',
+      url: '/users/medications/'+ medId,
+      data: {user: userData},
+      success: function(data){
+        getUserMeds();
+      }
+    });
   });
 }
 
