@@ -1,20 +1,25 @@
-<div class="appointments-conatiner">
-  <h2>Appointments</h2>
-  <form id="appointments" action="/users/appointments" method="post">
-    <label for="apptDate">Date:</label>
-    <input type="date" name="apptDate">
-    <label for="apptTime">Time:</label>
-    <input type="text" name="apptTime" placeholder="HH:MM AM/PM">
-    <label for="apptLocation">Location:</label>
-    <input type="text" name="apptLocation" placeholder="Location">
-    <label for="apptDoctor">Doctor:</label>
-    <input type="text" name="apptDoctor" placeholder="Doctor">
-    <label for="apptPhoneNum">Contact Number:</label>
-    <input type="text" name="apptPhoneNum" placeholder="XXX-XXX-XXXX">
-    <label for="apptCoPay">Copay:</label>
-    <input type="number" name="apptCoPay" placeholder="Copay">
-    <label for="apptNotes">Notes:</label>
-    <input type="text" name="apptNotes" placeholder="Notes">
-    <input type="submit" value="Add Appointment">
-  </form>
+<div class="modal appointments-modal">
+  <div class="appointments-container">
+    <h2>Appointments</h2>
+    <div id="close-add-appt-modal">
+      <p>X</p>
+    </div>
+    <form id="appointments" action="/users/appointments" method="post">
+      <label for="apptDate">Date:</label>
+      <input type="date" name="apptDate">
+      <label for="apptTime">Time:</label>
+      <input type="text" name="apptTime" placeholder="HH:MM AM/PM">
+      <label for="apptLocation">Location:</label>
+      <input type="text" name="apptLocation" placeholder="Location">
+      <label for="apptDoctor">Doctor:</label>
+      <input type="text" name="apptDoctor" placeholder="Doctor">
+      <label for="apptPhoneNum">Contact Number:</label>
+      <input type="text" name="apptPhoneNum" placeholder="XXX-XXX-XXXX">
+      <label for="apptCoPay">Copay:</label>
+      <input type="number" name="apptCoPay" placeholder="Copay">
+      <label for="apptNotes">Notes:</label>
+      <input type="text" name="apptNotes" placeholder="Notes">
+      <input type="submit" value="Add Appointment">
+    </form>
+  </div>
 </div>

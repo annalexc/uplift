@@ -52,3 +52,21 @@ input[type="submit"] {
    position: fixed;
    left: 0;
 }
+
+.modal {
+  position: absolute;
+  top: 0;
+  left: 90;
+  background-color: rgba(0,0,0,0.5);
+  display: hidden;
+}
+
+.appointments-container {
+  margin: 0 auto;
+  width: 300px;
+  background-color: white;
+}
+
+#close-add-appt-modal {
+  float:right;
+}

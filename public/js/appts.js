@@ -184,9 +184,26 @@ function updateApptsHandler(){
         }
       });
   });
+
+
+
 }
 
 $(function(){
   addAppointmentsHandler();
   deleteApptsHandler();
+
+  $('.button4').on('click', function(e){
+    e.preventDefault();
+    console.log("hello there");
+    $('.appointments-modal').toggle();
+  });
+
+  $('#close-add-appt-modal').on('click', function(e){
+    e.preventDefault();
+    $('.appointments-modal').toggle();
+  })
+
+
+
 });
