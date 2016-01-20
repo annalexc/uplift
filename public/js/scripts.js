@@ -23,8 +23,8 @@ function setLogInFormHandler(){
     var password = passwordField.val();
     login(username, password, function(){
       console.log('The token is: ', $.cookie('token'));
-      $('#create-profile').hide();
-      $('#log-in').hide();
+      $('.create-profile-container').hide();
+      $('.log-in-container').hide();
       getUser();
       getUserMeds();
       getUserFoods();
@@ -159,8 +159,8 @@ function onloadgetter(){
         getUserFoods();
         getUserAppts();
         if ($.cookie('token')){
-          $('#create-profile').hide();
-          $('#log-in').hide();
+          $('.create-profile-container').hide();
+          $('.log-in-container').hide();
         }
     }
   });
