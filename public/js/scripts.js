@@ -29,8 +29,8 @@ function setLogInFormHandler(){
       getUserMeds();
       getUserFoods();
       getUserAppts();
+      $('#display-profile').show();
     });
-    $('#log-in').children('input').val('');
   });
 }
 
