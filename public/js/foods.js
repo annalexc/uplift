@@ -40,7 +40,7 @@ function renderUserFoods(user){
     var $updateYourFood = $('.update-your-food');
     $updateYourFood.on('click', function(e){
       e.preventDefault();
-      $updateFoodForm.slideDown("slow");
+      $updateFoodForm.slideToggle("slow");
     });
   });
 }
