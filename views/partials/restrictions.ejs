@@ -4,11 +4,11 @@
       <p>X</p>
     </div>
     <h2>Dietary Restrictions</h2>
-    <form id="foodRestrictions" action="/users/foodRestrictions" method="post">
+    <form id="foodRestrictions" action="/users/foodRestrictions" method="post" required>
       <label for="foodRestrictionsName">Restriction:</label>
-      <input type="text" name="foodRestrictionsName" placeholder="Food">
+      <input type="text" name="foodRestrictionsName" placeholder="Food" required>
       <label for="foodRestrictionsNotes">Notes:</label>
-      <input type="text" name="foodRestrictionsNotes" placeholder="Notes">
+      <input type="text" name="foodRestrictionsNotes" placeholder="Notes" required>
       <input type="submit" name="foodRestrictionAdd" value="Add">
     </form>
   </div>

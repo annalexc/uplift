@@ -6,15 +6,15 @@
     <h2>Medication</h2>
     <form id="medication" action="/users/medications" method="post">
       <label for="medName">Medication:</label>
-      <input type="text" name="medName" placeholder="Name">
+      <input type="text" name="medName" placeholder="Name" required>
       <label for="medDosage">Dosage:</label>
-      <input type="text" name="medDosage" placeholder="Dosage">
+      <input type="text" name="medDosage" placeholder="Dosage" required>
       <label for="medSideEffects">Side Effects:</label>
-      <input type="text" name="medSideEffects" placeholder="Side Effects">
+      <input type="text" name="medSideEffects" placeholder="Side Effects" required>
       <label for="medTime">Time:</label>
-      <input type="text" name="medTime" placeholder="Time">
+      <input type="text" name="medTime" placeholder="Time" required>
       <label for="medCoPay">Copay:</label>
-      <input type="number" name="medCoPay" placeholder="Copay" min=0>
+      <input type="number" name="medCoPay" placeholder="Copay" min=0 required>
       <input type="submit" name="medicationAdd" value="Add">
     </form>
   </div>
