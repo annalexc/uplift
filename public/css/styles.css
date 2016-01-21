@@ -8,14 +8,24 @@
 */
 
 body{
-   background-color: whitesmoke;
-   background-image: url('https://i.imgur.com/FLe1spq.jpg');
-   background-repeat: no-repeat;
-    background-attachment: fixed;
-   background-size: 100% 100%;
-   margin: 0 auto;
-   padding: 0px 20px 20px 20px;
-   font-family: 'Muli', sans-serif;
+  background-color: whitesmoke;
+  background-image: url('https://i.imgur.com/FLe1spq.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
+  margin: 0 auto;
+  padding: 0px 20px 20px 20px;
+  font-family: 'Muli', sans-serif;
+}
+
+a {
+  color: #e05038;
+}
+
+a:hover {
+  font-weight: bold;
+  color: #e05038;
+  text-decoration: none;
 }
 
 .panel-title {
@@ -29,7 +39,7 @@ body{
 }
 
 .user-full-name {
- margin: 10px 0px;
+  margin: 10px 0px;
 }
 
 .updates {
@@ -65,9 +75,9 @@ input[type="submit"] {
 }
 
 .sidebar {
-   overflow: hidden;
-   position: fixed;
-   left: 0;
+  overflow: hidden;
+  position: fixed;
+  left: 0;
 }
 
 .modal {
@@ -127,10 +137,49 @@ input[type="submit"] {
   padding: 10px;
 }
 
-.btn, .btn-primary {
+
+.btn.outline {
+  background: #e05038;
+}
+
+.btn-primary.outline {
+  border: 1px solid #e05038;
+}
+
+.btn-primary.outline:hover,
+.btn-primary.outline:focus,
+.btn-primary.outline:active,
+.btn-primary.outline.active,
+.open > .dropdown-toggle.btn-primary {
+  border-color: #e05038;
+}
+
+.btn-primary.outline:active,
+.btn-primary.outline.active {
+  border-color: #e05038;
+}
+
+.btn,
+.btn-primary,
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary:visited {
   margin-top: 8px;
   margin-bottom: 8px;
   margin-right: 8px;
+  background-color: #e05038;
+  border-color: #e05038;
+}
+
+.btn,
+.btn-primary.outline,
+.btn-primary.outline:hover,
+.btn-primary.outline:focus,
+.btn-primary.outline:active,
+.btn-primary.outline:visited {
+  border: 1px solid #e05038;
+  background-color: #e05038;
 }
 
 .date-and-time {
@@ -155,14 +204,15 @@ p {
 
 .log-in-container,
 .create-profile-container {
-  margin-top: 60px;
+  margin: 40px auto;
+  width: 30%;
 }
 
 .main-logo{
-    display: block;
-    height: auto;
-    width: 30%;
-    margin-left: 35%;
-    margin-right: 35%;
-    margin-top: 5%;
+  display: block;
+  height: auto;
+  width: 30%;
+  margin-left: 35%;
+  margin-right: 35%;
+  margin-top: 5%;
 }

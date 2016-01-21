@@ -86,6 +86,14 @@ nav a {
 	top: 490px;
 }
 
-li:hover {
-	background-color: darken(orange, 8%);
+nav a:hover {
+	color: #e05038;
+}
+
+nav a:active {
+	color: #e05038;
+}
+
+nav a:focus {
+	color: #e05038;
 }
