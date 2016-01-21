@@ -220,6 +220,9 @@ $(function(){
     $('#display-profile').show();
   })
 
+  if (!$.cookie('token')){
+    $('#display-profile').hide();
+  }
 
 
   // FUNCTIONING JQUERY GET of CDC
