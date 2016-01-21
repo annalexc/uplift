@@ -81,17 +81,17 @@ function renderAppointments(user){
 
     $updateApptForm.append($('<h5>').addClass('updates').text('Update Appointment'));
     $updateApptForm.append($('<label form="updateApptDate">').text('Date:'));
-    $updateApptForm.append($('<input type="date" name="updateApptDate" value="'+convertTimeToValue(appt.date)+'">'));
+    $updateApptForm.append($('<input type="date" name="updateApptDate" value="'+convertTimeToValue(appt.date)+'" required>'));
     $updateApptForm.append($('<label form="updateApptTime">').text('Time:'));
-    $updateApptForm.append($('<input type="text" name="updateApptTime" value="' + appt.time + '">'));
+    $updateApptForm.append($('<input type="text" name="updateApptTime" value="' + appt.time + '" required>'));
     $updateApptForm.append($('<label form="updateApptLocation">').text('Location:'));
-    $updateApptForm.append($('<input type="text" name="updateApptLocation" value="' + appt.location + '">'));
+    $updateApptForm.append($('<input type="text" name="updateApptLocation" value="' + appt.location + '" required>'));
     $updateApptForm.append($('<label form="updateApptDoctor">').text('Doctor:'));
-    $updateApptForm.append($('<input type="text" name="updateApptDoctor" value="' + appt.doctor + '">'));
+    $updateApptForm.append($('<input type="text" name="updateApptDoctor" value="' + appt.doctor + '" required>'));
     $updateApptForm.append($('<label form="updateApptNotes">').text('Notes:'));
-    $updateApptForm.append($('<input type="text" name="updateApptNotes" value="' + appt.notes + '">'));
+    $updateApptForm.append($('<input type="text" name="updateApptNotes" value="' + appt.notes + '" required>'));
     $updateApptForm.append($('<label form="updateApptCoPay">').text('Copay:'));
-    $updateApptForm.append($('<input type="number" name="updateApptCoPay" value="' + appt.coPay + '" min=0>'));
+    $updateApptForm.append($('<input type="number" name="updateApptCoPay" value="' + appt.coPay + '" min=0 required>'));
     $updateApptForm.append( $('<button data-id="' + appt._id + '">' ).text("Submit") );
     $updateAppt.append($updateApptForm);
 

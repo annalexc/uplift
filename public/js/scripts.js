@@ -62,14 +62,14 @@ function renderUserProfile(user){
   var newBirthdate = convertTimeToValue(user.profile[0].birthdate);
   $updateProfileForm.append($('<h3>').addClass('updates').text('Update Profile'));
   $updateProfileForm.append($('<label for="firstName">').text('First Name:'));
-  $updateProfileForm.append($('<input type="text" name="firstName" value="' + user.profile[0].firstName + '">'));
+  $updateProfileForm.append($('<input type="text" name="firstName" value="' + user.profile[0].firstName + '" required>'));
   $updateProfileForm.append($('<label for="lastName">').text('Last Name:'));
-  $updateProfileForm.append($('<input type="text" name="lastName" value="' + user.profile[0].lastName + '">'));
+  $updateProfileForm.append($('<input type="text" name="lastName" value="' + user.profile[0].lastName + '" required>'));
   $updateProfileForm.append($('<label for="birthdate">').text('D.O.B.:'));
-  $updateProfileForm.append($('<input type="date" name="birthdate" value="' + newBirthdate + '">'));
+  $updateProfileForm.append($('<input type="date" name="birthdate" value="' + newBirthdate + '" required>'));
   $updateProfileForm.append($('<label for="gender">').text('Gender:'));
 
-  var $genderSelect = $('<select name="gender">');
+  var $genderSelect = $('<select name="gender" required>');
   if (user.profile[0].gender === "Not Specified") {
     $genderSelect.append($('<option value=" ">').text('Select One'));
     $genderSelect.append($('<option value="Not Specified" selected="selected">').text('Not Specified'));
@@ -93,9 +93,9 @@ function renderUserProfile(user){
   }
   $updateProfileForm.append($genderSelect);
   $updateProfileForm.append($('<label for="illness">').text('Illness:'));
-  $updateProfileForm.append($('<input type="text" name="illness" value="' + user.profile[0].illness + '">'));
+  $updateProfileForm.append($('<input type="text" name="illness" value="' + user.profile[0].illness + '" required>'));
   $updateProfileForm.append($('<label for="phoneNum">').text('Contact Number:'));
-  $updateProfileForm.append($('<input type="tel" name="phoneNum" value="' + user.profile[0].phoneNum + '">'));
+  $updateProfileForm.append($('<input type="tel" name="phoneNum" value="' + user.profile[0].phoneNum + '" required>'));
   $updateProfileForm.append($('<button data-id="' + user._id + '">').text('Submit'));
 
   $updateProfile.append($updateProfileForm);

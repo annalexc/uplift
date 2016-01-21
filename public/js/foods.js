@@ -24,9 +24,9 @@ function renderUserFoods(user){
     var $updateFoodForm = $('<form method="patch">').addClass('update-food');
     $updateFoodForm.append($('<h5>').addClass('updates').text('Update Dietary Restriction'));
     $updateFoodForm.append($('<label for="updateFoodName">').text('Restriction:'));
-    $updateFoodForm.append($('<input type="text" name="updateFoodName" value="' + food.name + '">'));
+    $updateFoodForm.append($('<input type="text" name="updateFoodName" value="' + food.name + '" required>'));
     $updateFoodForm.append($('<label for="updateFoodNotes">').text('Notes:'));
-    $updateFoodForm.append($('<input type="text" name="updateFoodNotes" value="' + food.notes + '">'));
+    $updateFoodForm.append($('<input type="text" name="updateFoodNotes" value="' + food.notes + '" required>'));
     $updateFoodForm.append($('<button data-id="' + food._id + '">').text("Submit"));
     $updateFood.append($updateFoodForm);
 

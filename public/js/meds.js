@@ -27,15 +27,15 @@ function renderUserMeds(user){
 
     $updateMedForm.append($('<h5>').addClass('updates').text('Update Medication'));
     $updateMedForm.append($('<label for="updateMedName">').text('Medication:'));
-    $updateMedForm.append($('<input type="text" name="updateMedName" value="' + med.name + '">'));
+    $updateMedForm.append($('<input type="text" name="updateMedName" value="' + med.name + '" required>'));
     $updateMedForm.append($('<label for="updateMedDosage">').text('Dosage:'));
-    $updateMedForm.append($('<input type="text" name="updateMedDosage" value="' + med.dosage + '">'));
+    $updateMedForm.append($('<input type="text" name="updateMedDosage" value="' + med.dosage + '" required>'));
     $updateMedForm.append($('<label for="updateMedSideEffects">').text('Side Effects:'));
-    $updateMedForm.append($('<input type="text" name="updateMedSideEffects" value="' + med.sideEffects + '">'));
+    $updateMedForm.append($('<input type="text" name="updateMedSideEffects" value="' + med.sideEffects + '" required>'));
     $updateMedForm.append($('<label for="updateMedCoPay">').text('Copay:'));
-    $updateMedForm.append($('<input type="number" name="updateMedCoPay" value="' + med.coPay + '" min=0>'));
+    $updateMedForm.append($('<input type="number" name="updateMedCoPay" value="' + med.coPay + '" min=0 required>'));
     $updateMedForm.append($('<label for="updateMedTime">').text('Time:'));
-    $updateMedForm.append($('<input type="text" name="updateMedTime" value="' + med.time + '">'));
+    $updateMedForm.append($('<input type="text" name="updateMedTime" value="' + med.time + '" required>'));
     $updateMedForm.append($('<button id="submit-med-update" data-id="' + med._id + '">' ).text("Submit"));
     $updateMed.append($updateMedForm);
 
