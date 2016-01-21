@@ -157,7 +157,7 @@ $(function(){
     updateMedsHandler();
     modalizeNewMeds();
 
-    $('.button2').on('click', function(e){
+    $('.medicine-icon').on('click', function(e){
       e.preventDefault();
       console.log('hello!');
       $('#display-medications').toggle();

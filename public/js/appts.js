@@ -233,7 +233,7 @@ $(function(){
   updateApptsHandler();
 
 
-  $('.button4').on('click', function(e){
+  $('.calendar-icon').on('click', function(e){
     e.preventDefault();
     console.log('hello!');
     $('#display-appointments').toggle();

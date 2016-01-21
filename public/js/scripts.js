@@ -203,7 +203,7 @@ $(function(){
   onloadgetter();
   renderIllnessInfo();
 
-  $('.button1').on('click', function(){
+  $('.profile-icon').on('click', function(){
     $('#display-appointments').hide();
     $('#display-foods').hide();
     $('#display-medications').hide();

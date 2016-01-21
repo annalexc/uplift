@@ -136,7 +136,7 @@ $(function(){
     updateFoodsHandler();
     modalizeNewFoods();
 
-    $('.button3').on('click', function(e){
+    $('.food-icon').on('click', function(e){
       e.preventDefault();
       console.log('hello!');
       $('#display-foods').toggle();
