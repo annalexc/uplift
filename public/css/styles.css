@@ -11,6 +11,7 @@ body{
    background-color: whitesmoke;
    background-image: url('https://i.imgur.com/FLe1spq.jpg');
    background-repeat: no-repeat;
+    background-attachment: fixed;
    background-size: 100% 100%;
    margin: 0 auto;
    padding: 0px 20px 20px 20px;
@@ -161,7 +162,8 @@ p {
 .main-logo{
     display: block;
     height: auto;
-    width: 40%;
-    margin-left: 30%;
-    margin-right: 30%;
+    width: 30%;
+    margin-left: 35%;
+    margin-right: 35%;
+    margin-top: 5%;
 }
