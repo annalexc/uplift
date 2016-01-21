@@ -22,21 +22,22 @@ router.get('/taco', function(req, res) {
   request(xml, function(err, response, body){
     parseString(body, function(err, result){
       var count = result.nlmSearchResult.count[0];
-      console.log(count);
-      var data = result.nlmSearchResult.list[0].document[0].content[3]._;
-      // if (count === 0) {
-      //   console.log("sorry");
-      // } else
-      if (data.length > 170){
-        console.log(data);
-        console.log(data.length);
-        res.json(data);
+      if (count == 0) {
+        console.log(count);
+        res.json("Sorry that illness wasn't found")
       } else {
-        console.log(illness);
-        var newIllness = illness.replace(' ', '_');
-        console.log(newIllness);
-        data = 'Not enough information... <a href="https://en.wikipedia.org/wiki/'+newIllness+'"> try this wikipedia link  </a>';
-        res.json(data);
+        var data = result.nlmSearchResult.list[0].document[0].content[3]._;
+        if (data.length > 170){
+          console.log(data);
+          console.log(data.length);
+          res.json(data);
+        } else {
+          console.log(illness);
+          var newIllness = illness.replace(' ', '_');
+          console.log(newIllness);
+          data = 'Not enough information... <a href="https://en.wikipedia.org/wiki/'+newIllness+'"> try this wikipedia link  </a>';
+          res.json(data);
+        }
       }
       // if (result){
       //   console.log("hello");
