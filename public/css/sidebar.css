@@ -50,11 +50,11 @@ nav ul {
 
 li.logo img {
 		padding-left: 10px;
-		width: 72px;
+		width: 80px;
 }
 li {
-	font-size: 65px;
-	width:50px;
+	font-size: 45px;
+	width:70px;
 }
 nav a {
 		width: 30px;
@@ -62,10 +62,10 @@ nav a {
 		margin: 0px;
 		position: absolute;
 		margin-left: auto;
-		left: 15px;
+		left: 25px;
 		margin-right: auto;
 		text-decoration: none;
-		color: black;
+		color: dimgray;
 }
 
 .profile-icon {
