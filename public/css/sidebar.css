@@ -70,19 +70,19 @@ nav a {
 }
 
 .profile-icon {
-	top: 150px
+	top: 250px
 }
 
 .calendar-icon {
-		top: 250px
+		top: 350px
 }
 
 .medicine-icon {
-		top: 350px;
+		top: 450px;
 }
 
 .food-icon {
-		top: 450px;
+		top: 550px;
 }
 
 li:hover {
