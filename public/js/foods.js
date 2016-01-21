@@ -74,7 +74,8 @@ function addFoodRestrictionsHandler(){
     var foodRestrictionsNotes = foodRestrictionsNotesField.val();
     var restriction = {name: foodRestrictionsName, notes: foodRestrictionsNotes};
     addRestrictions(restriction);
-    $('#foodRestrictions').children('input').val('');
+    // $('#foodRestrictions').children('input').val('');
+    $('.new-food-modal').toggle();
   });
 }
 

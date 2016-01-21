@@ -89,7 +89,8 @@ function medsHandler(){
       var coPay = coPayField.val();
       var medicine = {name: medName, dosage: dosage, sideEffects: sideEffects, time: time, coPay: coPay};
       addMeds(medicine);
-      $('#medication').children('input').val('');
+      // $('#medication').children('input').val('');
+      $('.new-med-modal').toggle();
     });
 }
 

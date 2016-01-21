@@ -147,7 +147,8 @@ function addAppointmentsHandler(){
     var appointment = {date: apptDate, time: apptTime, location: apptLocation, doctor: apptDoctor, phoneNum: apptPhoneNum, coPay: apptCoPay, notes: apptNotes};
     JSON.stringify(appointment);
     addAppts(appointment);
-    $('#appointments').children('input').val('');
+    // $('#appointments').children('input').val('');
+    $('.new-appointments-modal').toggle();
   });
 }
 
@@ -231,7 +232,6 @@ $(function(){
     $('#display-appointments').toggle();
     $('#display-foods').hide();
     $('#display-medications').hide();
-
   });
 
 });
