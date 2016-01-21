@@ -142,6 +142,7 @@ $(function(){
       $('#display-foods').toggle();
       $('#display-appointments').hide();
       $('#display-medications').hide();
+      $('#display-profile').hide();
     })
 
 });

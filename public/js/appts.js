@@ -223,7 +223,7 @@ $(function(){
   addAppointmentsHandler();
   deleteApptsHandler();
   modalizeNewAppts();
-
+  updateApptsHandler();
 
 
   $('.button4').on('click', function(e){
@@ -232,6 +232,7 @@ $(function(){
     $('#display-appointments').toggle();
     $('#display-foods').hide();
     $('#display-medications').hide();
+    $('#display-profile').hide();
   });
 
 });

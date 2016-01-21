@@ -203,6 +203,15 @@ $(function(){
   onloadgetter();
   renderIllnessInfo();
 
+  $('.button1').on('click', function(){
+    $('#display-appointments').hide();
+    $('#display-foods').hide();
+    $('#display-medications').hide();
+    $('#display-profile').show();
+  })
+
+
+
   // FUNCTIONING JQUERY GET of CDC
   // $.getJSON('https://tools.cdc.gov/api/v2/resources/media?topic=ovarian%20cancer', function(data){
   //   console.log(data);

@@ -163,5 +163,6 @@ $(function(){
       $('#display-medications').toggle();
       $('#display-appointments').hide();
       $('#display-foods').hide();
+      $('#display-profile').hide();
     })
 });
