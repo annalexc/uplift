@@ -187,9 +187,17 @@ function renderIllnessInfo(){
       data: {user: userData},
       success: function(data){
         console.log(data);
-        var illnessInfo = $('<div id="illness-information">')
-        illnessInfo.prependTo('body');
-        illnessInfo.append( $('<p>').html(data) );
+        var illnessInfo = $('<div>').addClass('illness-modal-content');
+        illnessInfo.empty();
+        illnessInfo.appendTo('#display-illness-info');
+        var closeModal = $('<div class="close-illness-modal">')
+        closeModal.append( $('<p>').text("X") );
+        illnessInfo.append(closeModal);
+        illnessInfo.append( $('<div class="actual-illness-info">').html(data) );
+        $('#display-illness-info').show();
+        $('.close-illness-modal').on('click', function(){
+          $('#display-illness-info').hide();
+        });
       }
     });
   });

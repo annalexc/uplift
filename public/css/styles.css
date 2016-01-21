@@ -63,28 +63,47 @@ input[type="submit"] {
 
 .appointments-modal-content,
 .restrictions-modal-content,
-.medications-modal-content {
-  margin: 0 auto;
-  width: 300px;
+.medications-modal-content,
+.illness-modal-content {
+  margin: 40px auto;
+  padding: 30px;
+  width: 60%;
+  height: 500px;
   background-color: white;
   overflow: scroll;
 }
 
 #display-appointments,
 #display-foods,
-#display-medications {
+#display-medications,
+#display-illness-info {
   display: none;
 }
 
 #close-add-appt-modal,
 #close-add-food-modal,
-#close-add-med-modal {
+#close-add-med-modal,
+.close-illness-modal {
   float:right;
+  margin-top: -10px;
 }
 
 .update-profile,
 .update-food,
 .update-med,
-.update-appt {
+.update-appt,
+.illness-modal {
   display: none;
+}
+
+#display-illness-info {
+  overflow: scroll;
+}
+
+.actual-illness-info {
+  margin-top: 30px;
+}
+
+.actual-illness-info ul {
+  margin-left: 20px;
 }

@@ -2,7 +2,6 @@
 		box-sizing: border-box;
 		margin: 0;
 		padding: 0;
-		list-style-type: none;
 }
 
 .icon {
@@ -48,13 +47,19 @@ nav ul {
 		list-style-type: none;
 }
 
-li.logo img {
+nav li.logo img {
 		padding-left: 10px;
 		width: 80px;
 }
+<<<<<<< HEAD
 li {
 	font-size: 45px;
 	width:70px;
+=======
+nav li {
+	font-size: 65px;
+	width:50px;
+>>>>>>> a1867d0e87c3c01010a0a761cd0703c5b30b59e4
 }
 nav a {
 		width: 30px;
