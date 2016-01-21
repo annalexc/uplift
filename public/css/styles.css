@@ -16,6 +16,16 @@ body{
    font-family: 'Muli', sans-serif;
 }
 
+.panel-title {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  font-size: 18px;
+}
+
+.panel {
+  margin: 10px;
+}
+
 .user-full-name {
  margin: 10px 0px;
 }
@@ -31,6 +41,8 @@ h4 {
 /*div info*/
 h5 {
   margin: 0;
+  padding-top: 4px;
+  padding-botton: 4px;
 }
 
 label {
@@ -86,9 +98,12 @@ input[type="submit"] {
 #display-medications,
 #display-illness-info {
   display: none;
+  padding: 40px;
+  margin-top: 60px;
+  background: rgba(255, 255, 255, 0.5);
 }
 
-#display-profile{
+#display-profile {
   padding: 40px;
   margin-top: 60px;
   background: rgba(255, 255, 255, 0.5);
@@ -112,7 +127,9 @@ input[type="submit"] {
 }
 
 .btn, .btn-primary {
-  margin-top: 5px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  margin-right: 8px;
 }
 
 .date-and-time {
@@ -129,4 +146,8 @@ input[type="submit"] {
 
 .actual-illness-info ul {
   margin-left: 20px;
+}
+
+p {
+  margin: 5px 0px;
 }
