@@ -69,6 +69,7 @@ function renderAppointments(user){
     var $updateAppt = $('<div id="appt-update-form">');
     var $updateApptForm = $('<form method="patch">').addClass('update-appt');
     var newDate = convertTimeToWords(appt.date);
+    $apptDiv.append( $('<h5>').text("Event: " + appt.name) );
     $apptDiv.append( $('<h5>').text("Date: " + newDate));
     $apptDiv.append( $('<h5>').text("Time: " + appt.time));
     $apptDiv.append( $('<h5>').text("Location: " + appt.location));
@@ -80,6 +81,8 @@ function renderAppointments(user){
     $container.append($apptDiv);
 
     $updateApptForm.append($('<h5>').addClass('updates').text('Update Appointment'));
+    $updateApptForm.append($('<label form="updateApptName">').text('Event Name:'));
+    $updateApptForm.append($('<input type="text" name="updateApptName" value="' + appt.name + '" required>'));
     $updateApptForm.append($('<label form="updateApptDate">').text('Date:'));
     $updateApptForm.append($('<input type="date" name="updateApptDate" value="'+convertTimeToValue(appt.date)+'" required>'));
     $updateApptForm.append($('<label form="updateApptTime">').text('Time:'));
@@ -144,7 +147,9 @@ function addAppointmentsHandler(){
     var apptCoPay = apptCoPayField.val();
     var apptNotesField = $('input[name="apptNotes"]');
     var apptNotes = apptNotesField.val();
-    var appointment = {date: apptDate, time: apptTime, location: apptLocation, doctor: apptDoctor, phoneNum: apptPhoneNum, coPay: apptCoPay, notes: apptNotes};
+    var apptNameField = $('input[name="apptName"]');
+    var apptName = apptNameField.val();
+    var appointment = {date: apptDate, time: apptTime, location: apptLocation, doctor: apptDoctor, phoneNum: apptPhoneNum, coPay: apptCoPay, notes: apptNotes, name: apptName};
     JSON.stringify(appointment);
     addAppts(appointment);
     // $('#appointments').children('input').val('');
@@ -172,6 +177,8 @@ function updateApptsHandler(){
       e.preventDefault();
       var apptId = $(this).find('button').data('id');
       console.log(apptId);
+      var updateApptNameField = $(this).find('input[name="updateApptName"]');
+      var updateApptName = updateApptNameField.val();
       var updateApptDateField = $(this).find('input[name="updateApptDate"]');
       var updateApptDate = updateApptDateField.val();
       var updateApptTimeField = $(this).find('input[name="updateApptTime"]');
@@ -184,7 +191,7 @@ function updateApptsHandler(){
       var updateApptCoPay = updateApptCoPayField.val();
       var updateApptNotesField = $(this).find('input[name="updateApptNotes"]');
       var updateApptNotes = updateApptNotesField.val();
-      var userData = {date: updateApptDate, time: updateApptTime, location: updateApptLocation, doctor: updateApptDoctor, coPay: updateApptCoPay, notes: updateApptNotes};
+      var userData = {date: updateApptDate, time: updateApptTime, location: updateApptLocation, doctor: updateApptDoctor, coPay: updateApptCoPay, notes: updateApptNotes, name: updateApptName};
       console.log(userData);
       $.ajax({
         method: 'patch',

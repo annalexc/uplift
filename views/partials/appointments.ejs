@@ -5,6 +5,8 @@
     </div>
     <h2>Appointments</h2>
     <form id="appointments" action="/users/appointments" method="post">
+      <label for="apptName">Event:</label>
+      <input type="text" name="apptName" placeholder="New Event" required>
       <label for="apptDate">Date:</label>
       <input type="date" name="apptDate" required>
       <label for="apptTime">Time:</label>

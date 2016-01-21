@@ -139,6 +139,7 @@ router.patch('/appointments/:id', function(req,res){
   var i = 0;
   appointments.forEach(function(appt){
     if (appt._id == updateId) {
+      appointments[i].name = updateAppts.name;
       appointments[i].date = updateAppts.date;
       appointments[i].time = updateAppts.time;
       appointments[i].location = updateAppts.location;

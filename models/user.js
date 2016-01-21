@@ -18,6 +18,7 @@ var UserSchema = mongoose.Schema({
     }],
   appointments: [{
       date: {type: Date},
+      name: {type: String},
       time: {type: String},
       location: {type: String},
       doctor: {type: String},
