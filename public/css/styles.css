@@ -10,7 +10,8 @@
 body{
    background-color: whitesmoke;
    background-image: url('https://i.imgur.com/FLe1spq.jpg');
-   background-size: cover;
+   background-repeat: no-repeat;
+   background-size: 100% 100%;
    margin: 0 auto;
    padding: 0px 20px 20px 20px;
    font-family: 'Muli', sans-serif;
@@ -42,7 +43,7 @@ h4 {
 h5 {
   margin: 0;
   padding-top: 4px;
-  padding-botton: 4px;
+  padding-bottom: 4px;
 }
 
 label {
@@ -152,9 +153,15 @@ p {
   margin: 5px 0px;
 }
 
+<<<<<<< HEAD
 .prof-logo.resize{
    text-align: center;
    padding-left: center;
 	width:300px;
    height:300px;
+=======
+.log-in-container,
+.create-profile-container {
+  margin-top: 60px;
+>>>>>>> fixes background image
 }
