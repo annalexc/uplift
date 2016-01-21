@@ -188,7 +188,7 @@ function renderIllnessInfo(){
       success: function(data){
         console.log(data);
         var illnessInfo = $('<div>').addClass('illness-modal-content');
-        illnessInfo.empty();
+        $('#display-illness-info').empty();
         illnessInfo.appendTo('#display-illness-info');
         var closeModal = $('<div class="close-illness-modal">')
         closeModal.append( $('<p>').text("X") );
