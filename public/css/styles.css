@@ -81,3 +81,7 @@ input[type="submit"] {
 #close-add-med-modal {
   float:right;
 }
+
+.update-profile{
+  display: none;
+}

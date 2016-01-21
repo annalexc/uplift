@@ -55,6 +55,7 @@ function renderUserProfile(user){
   $profile.append($('<a id="illness-info-link">').text("Get Illness Info") );
   $profile.append($('<div>').html(user.profile[0].illnessInfo).addClass('illness-info'));
   $profile.append($('<h4>').text("Contact Number: " + user.profile[0].phoneNum).addClass('phoneNum'));
+  $profile.append($('<button id="update-profile-button" data-id="'+user._id+'">').text('Update Your Profile'));
 
   var $updateProfile = $('<div id="profile-update-form">');
   var $updateProfileForm = $('<form method="patch">').addClass('update-profile');
@@ -99,6 +100,12 @@ function renderUserProfile(user){
 
   $updateProfile.append($updateProfileForm);
   $profile.append($updateProfile);
+
+  var $updateYourProfile = $('button#update-profile-button');
+  $updateYourProfile.on('click', function(e){
+    e.preventDefault();
+    $('.update-profile').slideDown("slow");
+  });
 }
 
 //////// GET USER AND RENDER PROFILE ////////
@@ -108,6 +115,7 @@ function getUser(){
     url: '/users',
     success: function(data){
       renderUserProfile(data);
+      // renderUpdateUserProfile(data);
     }
   });
 }
@@ -194,12 +202,6 @@ $(function(){
   updateUserProfileHandler();
   onloadgetter();
   renderIllnessInfo();
-
-
-  // $('#create-profile').on('submit', function(){
-  //   $('#create-profile').children('input').val('');
-  // });
-
 
   // FUNCTIONING JQUERY GET of CDC
   // $.getJSON('https://tools.cdc.gov/api/v2/resources/media?topic=ovarian%20cancer', function(data){
