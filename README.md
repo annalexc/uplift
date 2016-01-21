@@ -13,8 +13,7 @@
 
 - Users can sign up and create a profile that will hold all of the information regarding their illness. Users can add and remove appointments, restrictions, or medications based on their doctors recommendations. All of their information is displayed and rendered on their profile page, making it simple for users to manage particulars
 
-- To add plants to their Greenhaus, logged in users have the option to click the "heart" button on any of the plant pages to add that plant.
-
+- To add appointments to their 
 ---
 
 ---

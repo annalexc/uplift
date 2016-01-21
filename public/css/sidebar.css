@@ -85,14 +85,10 @@ nav a {
 		top: 450px;
 }
 
-.button5 {
-		top: 550px
-}
-
-.button6 {
-		top: 650px;
-}
-
 li:hover {
   background-color: darken(orange, 8%);
+}
+
+nav .btn {
+	top: 750 px;
 }
