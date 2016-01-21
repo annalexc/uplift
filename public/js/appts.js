@@ -75,7 +75,7 @@ function renderAppointments(user){
     $apptDiv.append( $('<h5>').text("Doctor: " + appt.doctor));
     $apptDiv.append( $('<h5>').text("Notes: " + appt.notes));
     $apptDiv.append( $('<h5>').text("Copay: $" + appt.coPay));
-    $apptDiv.append( $('<button id="update-your-appt" data-id="' + appt._id + '">').text('Update'));
+    $apptDiv.append( $('<button class="update-your-appt" data-id="' + appt._id + '">').text('Update'));
     $apptDiv.append( $('<button data-id="' + appt._id + '">').addClass('remove-appt').text('Remove'));
     $container.append($apptDiv);
 
@@ -97,10 +97,10 @@ function renderAppointments(user){
 
     $apptDiv.append($updateAppt);
 
-    var $updateYourAppt = $('#update-your-appt');
+    var $updateYourAppt = $('.update-your-appt');
     $updateYourAppt.on('click', function(e){
       e.preventDefault();
-      $('.update-appt').slideToggle("slow");
+      $(this).next().next().children('form').slideDown("slow");
     });
   });
 }
@@ -211,6 +211,11 @@ function updateApptsHandler(){
       console.log("it's not broken")
       $('.new-appointments-modal').toggle();
     });
+
+    $('input[name=apptAdd]').on('submit', function(e){
+      e.preventDefault();
+      $('.new-appointments-modal').hide();
+    });
   }
 
 $(function(){
@@ -224,9 +229,9 @@ $(function(){
     e.preventDefault();
     console.log('hello!');
     $('#display-appointments').toggle();
-    $('.appointments-container').show();
     $('#display-foods').hide();
     $('#display-medications').hide();
-  })
+
+  });
 
 });

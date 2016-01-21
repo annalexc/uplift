@@ -21,7 +21,7 @@ function renderUserMeds(user){
     $medDiv.append($('<h5>').text('Side Effects: ' + med.sideEffects));
     $medDiv.append($('<h5>').text('Copay: $' + med.coPay));
     $medDiv.append($('<h5>').text('Time: ' + med.time));
-    $medDiv.append($('<button id="update-your-med" data-id="' + med._id + '">').text('Update'));
+    $medDiv.append($('<button class="update-your-med" data-id="' + med._id + '">').text('Update'));
     $medDiv.append($('<button data-id="' + med._id + '">').addClass('remove-med').text('Remove'));
     $display.append($medDiv);
 
@@ -41,10 +41,10 @@ function renderUserMeds(user){
 
     $medDiv.append($updateMed);
 
-    var $updateYourMed = $('#update-your-med');
+    var $updateYourMed = $('.update-your-med');
     $updateYourMed.on('click', function(e){
       e.preventDefault();
-      $('.update-med').slideToggle("slow");
+      $(this).next().next().children('form').slideDown("slow");
     });
 
   });
@@ -160,7 +160,7 @@ $(function(){
       e.preventDefault();
       console.log('hello!');
       $('#display-medications').toggle();
-      $('.appointments-container').hide();
+      $('#display-appointments').hide();
       $('#display-foods').hide();
     })
 });

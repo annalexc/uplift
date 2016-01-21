@@ -16,7 +16,7 @@ function renderUserFoods(user){
     var $foodDiv = $('<div id="'+ food._id +'">');
     $foodDiv.append($('<h5>').text("Food: " + food.name));
     $foodDiv.append($('<h5>').text("Notes: " + food.notes));
-    $foodDiv.append($('<button id="update-your-food" data-id="' + food._id + '">').text('Update'));
+    $foodDiv.append($('<button class="update-your-food" data-id="' + food._id + '">').text('Update'));
     $foodDiv.append($('<button data-id="' + food._id + '">').addClass('remove-food').text('Remove'));
     $display.append($foodDiv);
 
@@ -32,10 +32,10 @@ function renderUserFoods(user){
 
     $foodDiv.append($updateFood);
 
-    var $updateYourFood = $('#update-your-food');
+    var $updateYourFood = $('.update-your-food');
     $updateYourFood.on('click', function(e){
       e.preventDefault();
-      $('.update-food').slideToggle("slow");
+      $(this).next().next().children('form').slideDown("slow");
     });
   });
 }
@@ -139,7 +139,7 @@ $(function(){
       e.preventDefault();
       console.log('hello!');
       $('#display-foods').toggle();
-      $('.appointments-container').hide();
+      $('#display-appointments').hide();
       $('#display-medications').hide();
     })
 
