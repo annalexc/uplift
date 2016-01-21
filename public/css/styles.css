@@ -151,3 +151,10 @@ input[type="submit"] {
 p {
   margin: 5px 0px;
 }
+
+.prof-logo.resize{
+   text-align: center;
+   padding-left: center;
+	width:300px;
+   height:300px;
+}
