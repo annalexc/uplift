@@ -55,7 +55,7 @@ function renderUserProfile(user){
   $profile.append($('<a id="illness-info-link">').text("Get Illness Info") );
   $profile.append($('<div>').html(user.profile[0].illnessInfo).addClass('illness-info'));
   $profile.append($('<h4>').text("Contact Number: " + user.profile[0].phoneNum).addClass('phoneNum'));
-  $profile.append($('<button id="update-profile-button" data-id="'+user._id+'">').addClass('btn btn-primary').text('Update'));
+  $profile.append($('<button id="update-profile-button" data-id="'+user._id+'">').addClass('btn btn-primary outline').text('Update'));
 
   var $updateProfile = $('<div id="profile-update-form">');
   var $updateProfileForm = $('<form method="patch">').addClass('update-profile');
