@@ -9,22 +9,21 @@
 
 body{
    background-color: whitesmoke;
+   background-image: url('https://i.imgur.com/2vKMAEU.jpg');
+   background-size: cover;
    margin: 0 auto;
    padding: 0px 20px 20px 20px;
    font-family: 'Muli', sans-serif;
 }
 
-/*profile name*/
 .user-full-name {
  margin: 10px 0px;
 }
 
-/*div headers*/
 .updates {
   margin: 5px 0px;
 }
 
-/*profile info*/
 h4 {
   margin: 5px 0px;
 }
@@ -124,4 +123,9 @@ input[type="submit"] {
 
 .actual-illness-info ul {
   margin-left: 20px;
+}
+
+.container {
+  padding: 60px 20px;
+  background: rgba(255, 255, 255, 0.5);
 }
