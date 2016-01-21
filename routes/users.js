@@ -31,7 +31,7 @@ router.get('/taco', function(req, res) {
         console.log(illness);
         var newIllness = illness.replace(' ', '_');
         console.log(newIllness);
-        data = '<a href="https://en.wikipedia.org/wiki/'+newIllness+'"> Try this wikipedia link  </a>'
+        data = 'Not enough information... <a href="https://en.wikipedia.org/wiki/'+newIllness+'"> Try this wikipedia link  </a>'
         res.json(data);
       }
 
