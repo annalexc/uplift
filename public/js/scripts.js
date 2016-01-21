@@ -104,7 +104,7 @@ function renderUserProfile(user){
   var $updateYourProfile = $('button#update-profile-button');
   $updateYourProfile.on('click', function(e){
     e.preventDefault();
-    $('.update-profile').slideToggle("slow");
+    $('.update-profile').slideDown("slow");
   });
 }
 
