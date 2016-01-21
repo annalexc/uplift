@@ -1,3 +1,12 @@
+/*
+
+#252839   blue
+#f2b632   gold
+#677077   dark grey
+#b5b5b7   light grey
+
+*/
+
 body{
    background-color: whitesmoke;
    margin: 0 auto;
@@ -52,7 +61,7 @@ input[type="submit"] {
   position: absolute;
   top: 0;
   left: 0;
-  background-color: rgba(0,0,0,0.5);
+  background-color: rgba(0,0,0,0.4);
   display: hidden;
 }
 
@@ -65,7 +74,12 @@ input[type="submit"] {
   width: 60%;
   height: 600px;
   background-color: white;
-  overflow: scroll;
+  border: 2px solid #f2b632;
+  border-radius: 4%;
+  -webkit-box-shadow: 2px 2px 2px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 2px 2px 2px 0px rgba(0,0,0,0.75);
+  box-shadow: 2px 2px 2px 0px rgba(0,0,0,0.75);
+  overflow: hidden;
 }
 
 #display-appointments,
