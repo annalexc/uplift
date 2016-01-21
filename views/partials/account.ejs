@@ -4,28 +4,30 @@
   </div>
   <div class="panel-body">
      <form id="create-profile" action="/users" method="post" class="sign-up">
-      <label for="username">Username:</label>
-      <input type="text" name="user[username]" placeholder="username">
-      <label for="password">Password:</label>
-      <input type="password" name="user[password]" placeholder="password">
-      <label for="firstName">First Name:</label>
-      <input type="text" name="user[profile][firstName]" placeholder="First Name">
-      <label for="lastName">Last Name:</label>
-      <input type="text" name="user[profile][lastName]" placeholder="Last Name">
-      <label for="birthdate">Date of Birth:</label>
-      <input type="date" name="user[profile][birthdate]">
-      <label for="gender">Gender:</label>
-      <select class="gender" name="user[profile][gender]">
-        <option value=" ">Select One</option>
-        <option value="Not Specified">Not Specified</option>
-        <option value="Male">Male</option>
-        <option value="Female">Female</option>
-      </select>
-      <label for="illness">Illness:</label>
-      <input type="text" name="user[profile][illness]" placeholder="Illness">
-      <label for="phoneNum">Contact Number:</label>
-      <input type="tel" name="user[profile][phoneNum]" placeholder="XXX-XXX-XXXX">
-      <input type="submit" value="Create Profile">
+       <fieldset class="form-group">
+        <label for="username">Username:</label>
+        <input type="text" name="user[username]" placeholder="username" class="form-control">
+        <label for="password">Password:</label>
+        <input type="password" name="user[password]" placeholder="password" class="form-control">
+        <label for="firstName">First Name:</label>
+        <input type="text" name="user[profile][firstName]" placeholder="First Name" class="form-control">
+        <label for="lastName">Last Name:</label>
+        <input type="text" name="user[profile][lastName]" placeholder="Last Name" class="form-control">
+        <label for="birthdate">Date of Birth:</label>
+        <input type="date" name="user[profile][birthdate]" class="form-control">
+        <label for="gender">Gender:</label>
+        <select class="gender" name="user[profile][gender]" class="form-control">
+          <option value=" ">Select One</option>
+          <option value="Not Specified">Not Specified</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+        </select>
+        <label for="illness">Illness:</label>
+        <input type="text" name="user[profile][illness]" placeholder="Illness" class="form-control">
+        <label for="phoneNum">Contact Number:</label>
+        <input type="tel" name="user[profile][phoneNum]" placeholder="XXX-XXX-XXXX" class="form-control">
+        <input type="submit" class="btn btn-primary" value="Create Profile">
+      </fieldset>
     </form>
   </div>
 </div>

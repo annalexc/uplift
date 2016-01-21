@@ -55,21 +55,23 @@ function renderUserProfile(user){
   $profile.append($('<a id="illness-info-link">').text("Get Illness Info") );
   $profile.append($('<div>').html(user.profile[0].illnessInfo).addClass('illness-info'));
   $profile.append($('<h4>').text("Contact Number: " + user.profile[0].phoneNum).addClass('phoneNum'));
-  $profile.append($('<button id="update-profile-button" data-id="'+user._id+'">').text('Update'));
+  $profile.append($('<button id="update-profile-button" data-id="'+user._id+'">').addClass('btn btn-primary').text('Update'));
 
   var $updateProfile = $('<div id="profile-update-form">');
   var $updateProfileForm = $('<form method="patch">').addClass('update-profile');
+  var $updateProfileFieldSet = $('<fieldset>').addClass('form-group');
   var newBirthdate = convertTimeToValue(user.profile[0].birthdate);
-  $updateProfileForm.append($('<h3>').addClass('updates').text('Update Profile'));
-  $updateProfileForm.append($('<label for="firstName">').text('First Name:'));
-  $updateProfileForm.append($('<input type="text" name="firstName" value="' + user.profile[0].firstName + '" required>'));
-  $updateProfileForm.append($('<label for="lastName">').text('Last Name:'));
-  $updateProfileForm.append($('<input type="text" name="lastName" value="' + user.profile[0].lastName + '" required>'));
-  $updateProfileForm.append($('<label for="birthdate">').text('D.O.B.:'));
-  $updateProfileForm.append($('<input type="date" name="birthdate" value="' + newBirthdate + '" required>'));
-  $updateProfileForm.append($('<label for="gender">').text('Gender:'));
+  $updateProfile.append($updateProfileForm);
+  $updateProfileFieldSet.append($('<h3>').addClass('updates').text('Update Profile'));
+  $updateProfileFieldSet.append($('<label for="firstName">').text('First Name:'));
+  $updateProfileFieldSet.append($('<input type="text" name="firstName" value="' + user.profile[0].firstName + '" required>').addClass('form-control'));
+  $updateProfileFieldSet.append($('<label for="lastName">').text('Last Name:'));
+  $updateProfileFieldSet.append($('<input type="text" name="lastName" value="' + user.profile[0].lastName + '" required>').addClass('form-control'));
+  $updateProfileFieldSet.append($('<label for="birthdate">').text('D.O.B.:'));
+  $updateProfileFieldSet.append($('<input type="date" name="birthdate" value="' + newBirthdate + '" required>').addClass('form-control'));
+  $updateProfileFieldSet.append($('<label for="gender">').text('Gender:'));
 
-  var $genderSelect = $('<select name="gender" required>');
+  var $genderSelect = $('<select name="gender" required>').addClass('form-control');
   if (user.profile[0].gender === "Not Specified") {
     $genderSelect.append($('<option value=" ">').text('Select One'));
     $genderSelect.append($('<option value="Not Specified" selected="selected">').text('Not Specified'));
@@ -91,20 +93,20 @@ function renderUserProfile(user){
     $genderSelect.append($('<option value="Male">').text('Male'));
     $genderSelect.append($('<option value="Female" selected="selected">').text('Female'));
   }
-  $updateProfileForm.append($genderSelect);
-  $updateProfileForm.append($('<label for="illness">').text('Illness:'));
-  $updateProfileForm.append($('<input type="text" name="illness" value="' + user.profile[0].illness + '" required>'));
-  $updateProfileForm.append($('<label for="phoneNum">').text('Contact Number:'));
-  $updateProfileForm.append($('<input type="tel" name="phoneNum" value="' + user.profile[0].phoneNum + '" required>'));
-  $updateProfileForm.append($('<button data-id="' + user._id + '">').text('Submit'));
+  $updateProfileFieldSet.append($genderSelect);
+  $updateProfileFieldSet.append($('<label for="illness">').text('Illness:'));
+  $updateProfileFieldSet.append($('<input type="text" name="illness" value="' + user.profile[0].illness + '" required>').addClass('form-control'));
+  $updateProfileFieldSet.append($('<label for="phoneNum">').text('Contact Number:'));
+  $updateProfileFieldSet.append($('<input type="tel" name="phoneNum" value="' + user.profile[0].phoneNum + '" required>').addClass('form-control'));
+  $updateProfileFieldSet.append($('<button data-id="' + user._id + '">').addClass('btn btn-primary').text('Submit'));
 
-  $updateProfile.append($updateProfileForm);
+  $updateProfileForm.append($updateProfileFieldSet);
   $profile.append($updateProfile);
 
   var $updateYourProfile = $('button#update-profile-button');
   $updateYourProfile.on('click', function(e){
     e.preventDefault();
-    $('.update-profile').slideDown("slow");
+    $updateProfileForm.slideToggle("slow");
   });
 }
 

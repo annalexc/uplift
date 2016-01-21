@@ -82,24 +82,24 @@ function renderAppointments(user){
     $container.append($apptDiv);
 
     var $updateApptForm = $('<form method="patch">').addClass('update-appt');
-    var $updateFieldSet = $('<fieldset>').addClass('form-group');
-    $updateFieldSet.append($('<h5>').addClass('updates').text('Update Appointment'));
-    $updateFieldSet.append($('<label form="updateApptName">').text('Name:'));
-    $updateFieldSet.append($('<input type="text" name="updateApptName" value="' + appt.name + '" required>').addClass('form-control'));
-    $updateFieldSet.append($('<label form="updateApptDate">').text('Date:'));
-    $updateFieldSet.append($('<input type="date" name="updateApptDate" value="'+convertTimeToValue(appt.date)+'" required>').addClass('form-control'));
-    $updateFieldSet.append($('<label form="updateApptTime">').text('Time:'));
-    $updateFieldSet.append($('<input type="text" name="updateApptTime" value="' + appt.time + '" required>').addClass('form-control'));
-    $updateFieldSet.append($('<label form="updateApptLocation">').text('Location:'));
-    $updateFieldSet.append($('<input type="text" name="updateApptLocation" value="' + appt.location + '" required>').addClass('form-control'));
-    $updateFieldSet.append($('<label form="updateApptDoctor">').text('Doctor:'));
-    $updateFieldSet.append($('<input type="text" name="updateApptDoctor" value="' + appt.doctor + '" required>').addClass('form-control'));
-    $updateFieldSet.append($('<label form="updateApptNotes">').text('Notes:'));
-    $updateFieldSet.append($('<input type="text" name="updateApptNotes" value="' + appt.notes + '" required>').addClass('form-control'));
-    $updateFieldSet.append($('<label form="updateApptCoPay">').text('Copay:'));
-    $updateFieldSet.append($('<input type="number" name="updateApptCoPay" value="' + appt.coPay + '" min=0 required>').addClass('form-control'));
-    $updateFieldSet.append( $('<button data-id="' + appt._id + '">' ).addClass('btn btn-primary btn btn-primary').text("Submit") );
-    $updateApptForm.append($updateFieldSet);
+    var $updateApptsFieldSet = $('<fieldset>').addClass('form-group');
+    $updateApptsFieldSet.append($('<h5>').addClass('updates').text('Update Appointment'));
+    $updateApptsFieldSet.append($('<label form="updateApptName">').text('Name:'));
+    $updateApptsFieldSet.append($('<input type="text" name="updateApptName" value="' + appt.name + '" required>').addClass('form-control'));
+    $updateApptsFieldSet.append($('<label form="updateApptDate">').text('Date:'));
+    $updateApptsFieldSet.append($('<input type="date" name="updateApptDate" value="'+convertTimeToValue(appt.date)+'" required>').addClass('form-control'));
+    $updateApptsFieldSet.append($('<label form="updateApptTime">').text('Time:'));
+    $updateApptsFieldSet.append($('<input type="text" name="updateApptTime" value="' + appt.time + '" required>').addClass('form-control'));
+    $updateApptsFieldSet.append($('<label form="updateApptLocation">').text('Location:'));
+    $updateApptsFieldSet.append($('<input type="text" name="updateApptLocation" value="' + appt.location + '" required>').addClass('form-control'));
+    $updateApptsFieldSet.append($('<label form="updateApptDoctor">').text('Doctor:'));
+    $updateApptsFieldSet.append($('<input type="text" name="updateApptDoctor" value="' + appt.doctor + '" required>').addClass('form-control'));
+    $updateApptsFieldSet.append($('<label form="updateApptNotes">').text('Notes:'));
+    $updateApptsFieldSet.append($('<input type="text" name="updateApptNotes" value="' + appt.notes + '" required>').addClass('form-control'));
+    $updateApptsFieldSet.append($('<label form="updateApptCoPay">').text('Copay:'));
+    $updateApptsFieldSet.append($('<input type="number" name="updateApptCoPay" value="' + appt.coPay + '" min=0 required>').addClass('form-control'));
+    $updateApptsFieldSet.append( $('<button data-id="' + appt._id + '">' ).addClass('btn btn-primary').text("Submit") );
+    $updateApptForm.append($updateApptsFieldSet);
 
 
     $apptDiv.append($updateApptForm);
@@ -107,7 +107,6 @@ function renderAppointments(user){
     var $updateYourAppt = $('.update-your-appt');
     $updateYourAppt.on('click', function(e){
       e.preventDefault();
-      console.log('hey');
       $updateApptForm.slideToggle('slow');
     });
   });

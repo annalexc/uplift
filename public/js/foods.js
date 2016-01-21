@@ -13,29 +13,34 @@ function renderUserFoods(user){
     $display.append( $('<p>').text("You have no dietary restrictions") );
   }
   foods.forEach(function(food){
-    var $foodDiv = $('<div id="'+ food._id +'">');
-    $foodDiv.append($('<h5>').text("Food: " + food.name));
-    $foodDiv.append($('<h5>').text("Notes: " + food.notes));
-    $foodDiv.append($('<button class="update-your-food" data-id="' + food._id + '">').text('Update'));
-    $foodDiv.append($('<button data-id="' + food._id + '">').addClass('remove-food').text('Remove'));
+    var $foodDiv = $('<div id="'+ food._id +'">').addClass('panel panel-default');
+    var $divHeading = $('<div>').addClass('panel-heading');
+    var $divBody = $('<div>').addClass('panel-body');
+    $foodDiv.append($divHeading);
+    $foodDiv.append($divBody);
+    $divHeading.append($('<h5>').addClass('panel-title').text(food.name));
+    $divBody.append($('<h5>').text("Notes: " + food.notes));
+    $divBody.append($('<button class="update-your-food" data-id="' + food._id + '">').addClass('btn btn-primary').text('Update'));
+    $divBody.append($('<button data-id="' + food._id + '">').addClass('remove-food btn btn-primary').text('Remove'));
     $display.append($foodDiv);
 
-    var $updateFood = $('<div id="food-update-form">');
+    // var $updateFood = $('<div id="food-update-form">');
     var $updateFoodForm = $('<form method="patch">').addClass('update-food');
-    $updateFoodForm.append($('<h5>').addClass('updates').text('Update Dietary Restriction'));
-    $updateFoodForm.append($('<label for="updateFoodName">').text('Restriction:'));
-    $updateFoodForm.append($('<input type="text" name="updateFoodName" value="' + food.name + '" required>'));
-    $updateFoodForm.append($('<label for="updateFoodNotes">').text('Notes:'));
-    $updateFoodForm.append($('<input type="text" name="updateFoodNotes" value="' + food.notes + '" required>'));
-    $updateFoodForm.append($('<button data-id="' + food._id + '">').text("Submit"));
-    $updateFood.append($updateFoodForm);
+    var $updateFoodFieldSet = $('<fieldset>').addClass('form-group');
+    $updateFoodFieldSet.append($('<h5>').addClass('updates').text('Update Dietary Restriction'));
+    $updateFoodFieldSet.append($('<label for="updateFoodName">').text('Restriction:'));
+    $updateFoodFieldSet.append($('<input type="text" name="updateFoodName" value="' + food.name + '" required>').addClass('form-control'));
+    $updateFoodFieldSet.append($('<label for="updateFoodNotes">').text('Notes:'));
+    $updateFoodFieldSet.append($('<input type="text" name="updateFoodNotes" value="' + food.notes + '" required>').addClass('form-control'));
+    $updateFoodFieldSet.append($('<button data-id="' + food._id + '">').addClass('btn btn-primary').text("Submit"));
+    $updateFoodForm.append($updateFoodFieldSet);
 
-    $foodDiv.append($updateFood);
+    $foodDiv.append($updateFoodForm);
 
     var $updateYourFood = $('.update-your-food');
     $updateYourFood.on('click', function(e){
       e.preventDefault();
-      $(this).next().next().children('form').slideDown("slow");
+      $updateFoodForm.slideDown("slow");
     });
   });
 }
