@@ -25,6 +25,7 @@ function setLogInFormHandler(){
       console.log('The token is: ', $.cookie('token'));
       $('.create-profile-container').hide();
       $('.log-in-container').hide();
+      $('.main-logo').hide();
       getUser();
       getUserMeds();
       getUserFoods();
@@ -171,6 +172,7 @@ function onloadgetter(){
         if ($.cookie('token')){
           $('.create-profile-container').hide();
           $('.log-in-container').hide();
+          $('.main-logo').hide();
         }
     }
   });
