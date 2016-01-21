@@ -55,7 +55,7 @@ function renderUserProfile(user){
   $profile.append($('<a id="illness-info-link">').text("Get Illness Info") );
   $profile.append($('<div>').html(user.profile[0].illnessInfo).addClass('illness-info'));
   $profile.append($('<h4>').text("Contact Number: " + user.profile[0].phoneNum).addClass('phoneNum'));
-  $profile.append($('<button id="update-profile-button" data-id="'+user._id+'">').text('Update Your Profile'));
+  $profile.append($('<button id="update-profile-button" data-id="'+user._id+'">').text('Update'));
 
   var $updateProfile = $('<div id="profile-update-form">');
   var $updateProfileForm = $('<form method="patch">').addClass('update-profile');
@@ -96,7 +96,7 @@ function renderUserProfile(user){
   $updateProfileForm.append($('<input type="text" name="illness" value="' + user.profile[0].illness + '">'));
   $updateProfileForm.append($('<label for="phoneNum">').text('Contact Number:'));
   $updateProfileForm.append($('<input type="tel" name="phoneNum" value="' + user.profile[0].phoneNum + '">'));
-  $updateProfileForm.append($('<button data-id="' + user._id + '">').text('Update Profile'));
+  $updateProfileForm.append($('<button data-id="' + user._id + '">').text('Submit'));
 
   $updateProfile.append($updateProfileForm);
   $profile.append($updateProfile);
@@ -104,7 +104,7 @@ function renderUserProfile(user){
   var $updateYourProfile = $('button#update-profile-button');
   $updateYourProfile.on('click', function(e){
     e.preventDefault();
-    $('.update-profile').slideDown("slow");
+    $('.update-profile').slideToggle("slow");
   });
 }
 

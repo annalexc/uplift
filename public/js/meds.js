@@ -21,7 +21,8 @@ function renderUserMeds(user){
     $medDiv.append($('<h5>').text('Side Effects: ' + med.sideEffects));
     $medDiv.append($('<h5>').text('Copay: $' + med.coPay));
     $medDiv.append($('<h5>').text('Time: ' + med.time));
-    $medDiv.append($('<button data-id="' + med._id + '">').addClass('remove-med').text('Delete Med'));
+    $medDiv.append($('<button id="update-your-med" data-id="' + med._id + '">').text('Update'));
+    $medDiv.append($('<button data-id="' + med._id + '">').addClass('remove-med').text('Remove'));
     $display.append($medDiv);
 
     $updateMedForm.append($('<h5>').addClass('updates').text('Update Medication'));
@@ -32,13 +33,20 @@ function renderUserMeds(user){
     $updateMedForm.append($('<label for="updateMedSideEffects">').text('Side Effects:'));
     $updateMedForm.append($('<input type="text" name="updateMedSideEffects" value="' + med.sideEffects + '">'));
     $updateMedForm.append($('<label for="updateMedCoPay">').text('Copay:'));
-    $updateMedForm.append($('<input type="number" name="updateMedCoPay" value="' + med.coPay + '">'));
+    $updateMedForm.append($('<input type="number" name="updateMedCoPay" value="' + med.coPay + '" min=0>'));
     $updateMedForm.append($('<label for="updateMedTime">').text('Time:'));
     $updateMedForm.append($('<input type="text" name="updateMedTime" value="' + med.time + '">'));
-    $updateMedForm.append($('<button data-id="' + med._id + '">' ).text("Update Medication"));
+    $updateMedForm.append($('<button id="submit-med-update" data-id="' + med._id + '">' ).text("Submit"));
     $updateMed.append($updateMedForm);
 
     $medDiv.append($updateMed);
+
+    var $updateYourMed = $('#update-your-med');
+    $updateYourMed.on('click', function(e){
+      e.preventDefault();
+      $('.update-med').slideToggle("slow");
+    });
+
   });
 }
 
@@ -152,5 +160,7 @@ $(function(){
       e.preventDefault();
       console.log('hello!');
       $('#display-medications').toggle();
+      $('.appointments-container').hide();
+      $('#display-foods').hide();
     })
 });

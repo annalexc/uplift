@@ -75,7 +75,8 @@ function renderAppointments(user){
     $apptDiv.append( $('<h5>').text("Doctor: " + appt.doctor));
     $apptDiv.append( $('<h5>').text("Notes: " + appt.notes));
     $apptDiv.append( $('<h5>').text("Copay: $" + appt.coPay));
-    $apptDiv.append( $('<button data-id="' + appt._id + '">').addClass('remove-appt').text('Delete Appointment'));
+    $apptDiv.append( $('<button id="update-your-appt" data-id="' + appt._id + '">').text('Update'));
+    $apptDiv.append( $('<button data-id="' + appt._id + '">').addClass('remove-appt').text('Remove'));
     $container.append($apptDiv);
 
     $updateApptForm.append($('<h5>').addClass('updates').text('Update Appointment'));
@@ -90,11 +91,17 @@ function renderAppointments(user){
     $updateApptForm.append($('<label form="updateApptNotes">').text('Notes:'));
     $updateApptForm.append($('<input type="text" name="updateApptNotes" value="' + appt.notes + '">'));
     $updateApptForm.append($('<label form="updateApptCoPay">').text('Copay:'));
-    $updateApptForm.append($('<input type="number" name="updateApptCoPay" value="' + appt.coPay + '">'));
-    $updateApptForm.append( $('<button data-id="' + appt._id + '">' ).text("Update Appointment") );
+    $updateApptForm.append($('<input type="number" name="updateApptCoPay" value="' + appt.coPay + '" min=0>'));
+    $updateApptForm.append( $('<button data-id="' + appt._id + '">' ).text("Submit") );
     $updateAppt.append($updateApptForm);
 
     $apptDiv.append($updateAppt);
+
+    var $updateYourAppt = $('#update-your-appt');
+    $updateYourAppt.on('click', function(e){
+      e.preventDefault();
+      $('.update-appt').slideToggle("slow");
+    });
   });
 }
 
@@ -217,6 +224,9 @@ $(function(){
     e.preventDefault();
     console.log('hello!');
     $('#display-appointments').toggle();
+    $('.appointments-container').show();
+    $('#display-foods').hide();
+    $('#display-medications').hide();
   })
 
 });

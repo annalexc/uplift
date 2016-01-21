@@ -82,6 +82,9 @@ input[type="submit"] {
   float:right;
 }
 
-.update-profile{
+.update-profile,
+.update-food,
+.update-med,
+.update-appt {
   display: none;
 }

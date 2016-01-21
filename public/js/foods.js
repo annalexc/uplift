@@ -16,7 +16,8 @@ function renderUserFoods(user){
     var $foodDiv = $('<div id="'+ food._id +'">');
     $foodDiv.append($('<h5>').text("Food: " + food.name));
     $foodDiv.append($('<h5>').text("Notes: " + food.notes));
-    $foodDiv.append($('<button data-id="' + food._id + '">').addClass('remove-food').text('Remove Restriction'));
+    $foodDiv.append($('<button id="update-your-food" data-id="' + food._id + '">').text('Update'));
+    $foodDiv.append($('<button data-id="' + food._id + '">').addClass('remove-food').text('Remove'));
     $display.append($foodDiv);
 
     var $updateFood = $('<div id="food-update-form">');
@@ -26,10 +27,16 @@ function renderUserFoods(user){
     $updateFoodForm.append($('<input type="text" name="updateFoodName" value="' + food.name + '">'));
     $updateFoodForm.append($('<label for="updateFoodNotes">').text('Notes:'));
     $updateFoodForm.append($('<input type="text" name="updateFoodNotes" value="' + food.notes + '">'));
-    $updateFoodForm.append($('<button data-id="' + food._id + '">').text("Update Restriction"));
+    $updateFoodForm.append($('<button data-id="' + food._id + '">').text("Submit"));
     $updateFood.append($updateFoodForm);
 
     $foodDiv.append($updateFood);
+
+    var $updateYourFood = $('#update-your-food');
+    $updateYourFood.on('click', function(e){
+      e.preventDefault();
+      $('.update-food').slideToggle("slow");
+    });
   });
 }
 
@@ -132,6 +139,8 @@ $(function(){
       e.preventDefault();
       console.log('hello!');
       $('#display-foods').toggle();
+      $('.appointments-container').hide();
+      $('#display-medications').hide();
     })
 
 });
