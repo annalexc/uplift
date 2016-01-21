@@ -88,7 +88,3 @@ nav a {
 li:hover {
   background-color: darken(orange, 8%);
 }
-
-nav .btn {
-	top: 750 px;
-}
