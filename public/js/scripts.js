@@ -214,6 +214,7 @@ $(function(){
   updateUserProfileHandler();
   onloadgetter();
   renderIllnessInfo();
+  $('.create-profile-container').hide();
 
   $('.profile-icon').on('click', function(){
     $('#display-appointments').hide();
@@ -226,6 +227,19 @@ $(function(){
     $('#display-profile').hide();
   }
 
+  $('#open-create-account').on('click', function(e){
+    $('.log-in-container').hide();
+    e.preventDefault();
+    console.log("hello");
+    $('.create-profile-container').fadeIn("fast");
+  });
+
+  $('#open-login').on('click', function(e){
+    $('.create-profile-container').hide();
+    e.preventDefault();
+    console.log("hello");
+    $('.log-in-container').fadeIn("fast");
+  });
 
   // FUNCTIONING JQUERY GET of CDC
   // $.getJSON('https://tools.cdc.gov/api/v2/resources/media?topic=ovarian%20cancer', function(data){
