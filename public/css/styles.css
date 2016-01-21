@@ -6,14 +6,13 @@ body{
 }
 
 /*profile name*/
-h2 {
+.user-full-name {
  margin: 10px 0px;
 }
 
 /*div headers*/
-h3 {
+.updates {
   margin: 5px 0px;
-  text-decoration: underline;
 }
 
 /*profile info*/
@@ -24,10 +23,6 @@ h4 {
 /*div info*/
 h5 {
   margin: 0;
-}
-
-.updates {
-  text-decoration: underline;
 }
 
 label {
@@ -94,6 +89,15 @@ input[type="submit"] {
 .update-appt,
 .illness-modal {
   display: none;
+  padding: 10px;
+}
+
+.btn, .btn-primary {
+  margin-top: 5px;
+}
+
+.date-and-time {
+  margin: 5px 0px;
 }
 
 #display-illness-info {

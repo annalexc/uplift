@@ -65,45 +65,50 @@ function renderAppointments(user){
     $container.append($('<p>').text("You have no upcoming appointments."));
   }
   appointments.forEach(function(appt){
-    var $apptDiv = $('<div id="' + appt._id + '">');
-    var $updateAppt = $('<div id="appt-update-form">');
-    var $updateApptForm = $('<form method="patch">').addClass('update-appt');
+    var $apptDiv = $('<div id="' + appt._id + '">').addClass('panel panel-default');
     var newDate = convertTimeToWords(appt.date);
-    $apptDiv.append( $('<h5>').text("Event: " + appt.name));
-    $apptDiv.append( $('<h5>').text("Date: " + newDate));
-    $apptDiv.append( $('<h5>').text("Time: " + appt.time));
-    $apptDiv.append( $('<h5>').text("Location: " + appt.location));
-    $apptDiv.append( $('<h5>').text("Doctor: " + appt.doctor));
-    $apptDiv.append( $('<h5>').text("Notes: " + appt.notes));
-    $apptDiv.append( $('<h5>').text("Copay: $" + appt.coPay));
-    $apptDiv.append( $('<button class="update-your-appt" data-id="' + appt._id + '">').text('Update'));
-    $apptDiv.append( $('<button data-id="' + appt._id + '">').addClass('remove-appt').text('Remove'));
+    var $divHeading = $('<div>').addClass('panel-heading');
+    var $divBody = $('<div>').addClass('panel-body');
+    $apptDiv.append($divHeading);
+    $apptDiv.append($divBody);
+    $divHeading.append( $('<h2>').addClass('panel-title').text(appt.name));
+    $divHeading.append( $('<h5>').addClass('date-and-time').text(newDate + ' @ ' + appt.time));
+    $divBody.append( $('<h5>').text("Location: " + appt.location));
+    $divBody.append( $('<h5>').text("Doctor: " + appt.doctor));
+    $divBody.append( $('<h5>').text("Notes: " + appt.notes));
+    $divBody.append( $('<h5>').text("Copay: $" + appt.coPay));
+    $divBody.append( $('<button class="update-your-appt" data-id="' + appt._id + '">').addClass('btn btn-primary').text('Update'));
+    $divBody.append( $('<button data-id="' + appt._id + '">').addClass('remove-appt btn btn-primary').text('Remove'));
     $container.append($apptDiv);
 
-    $updateApptForm.append($('<h5>').addClass('updates').text('Update Appointment'));
-    $updateApptForm.append($('<label form="updateApptName">').text('Name:'));
-    $updateApptForm.append($('<input type="text" name="updateApptName" value="' + appt.name + '" required>'));
-    $updateApptForm.append($('<label form="updateApptDate">').text('Date:'));
-    $updateApptForm.append($('<input type="date" name="updateApptDate" value="'+convertTimeToValue(appt.date)+'" required>'));
-    $updateApptForm.append($('<label form="updateApptTime">').text('Time:'));
-    $updateApptForm.append($('<input type="text" name="updateApptTime" value="' + appt.time + '" required>'));
-    $updateApptForm.append($('<label form="updateApptLocation">').text('Location:'));
-    $updateApptForm.append($('<input type="text" name="updateApptLocation" value="' + appt.location + '" required>'));
-    $updateApptForm.append($('<label form="updateApptDoctor">').text('Doctor:'));
-    $updateApptForm.append($('<input type="text" name="updateApptDoctor" value="' + appt.doctor + '" required>'));
-    $updateApptForm.append($('<label form="updateApptNotes">').text('Notes:'));
-    $updateApptForm.append($('<input type="text" name="updateApptNotes" value="' + appt.notes + '" required>'));
-    $updateApptForm.append($('<label form="updateApptCoPay">').text('Copay:'));
-    $updateApptForm.append($('<input type="number" name="updateApptCoPay" value="' + appt.coPay + '" min=0 required>'));
-    $updateApptForm.append( $('<button data-id="' + appt._id + '">' ).text("Submit") );
-    $updateAppt.append($updateApptForm);
+    var $updateApptForm = $('<form method="patch">').addClass('update-appt');
+    var $updateFieldSet = $('<fieldset>').addClass('form-group');
+    $updateFieldSet.append($('<h5>').addClass('updates').text('Update Appointment'));
+    $updateFieldSet.append($('<label form="updateApptName">').text('Name:'));
+    $updateFieldSet.append($('<input type="text" name="updateApptName" value="' + appt.name + '" required>').addClass('form-control'));
+    $updateFieldSet.append($('<label form="updateApptDate">').text('Date:'));
+    $updateFieldSet.append($('<input type="date" name="updateApptDate" value="'+convertTimeToValue(appt.date)+'" required>').addClass('form-control'));
+    $updateFieldSet.append($('<label form="updateApptTime">').text('Time:'));
+    $updateFieldSet.append($('<input type="text" name="updateApptTime" value="' + appt.time + '" required>').addClass('form-control'));
+    $updateFieldSet.append($('<label form="updateApptLocation">').text('Location:'));
+    $updateFieldSet.append($('<input type="text" name="updateApptLocation" value="' + appt.location + '" required>').addClass('form-control'));
+    $updateFieldSet.append($('<label form="updateApptDoctor">').text('Doctor:'));
+    $updateFieldSet.append($('<input type="text" name="updateApptDoctor" value="' + appt.doctor + '" required>').addClass('form-control'));
+    $updateFieldSet.append($('<label form="updateApptNotes">').text('Notes:'));
+    $updateFieldSet.append($('<input type="text" name="updateApptNotes" value="' + appt.notes + '" required>').addClass('form-control'));
+    $updateFieldSet.append($('<label form="updateApptCoPay">').text('Copay:'));
+    $updateFieldSet.append($('<input type="number" name="updateApptCoPay" value="' + appt.coPay + '" min=0 required>').addClass('form-control'));
+    $updateFieldSet.append( $('<button data-id="' + appt._id + '">' ).addClass('btn btn-primary btn btn-primary').text("Submit") );
+    $updateApptForm.append($updateFieldSet);
 
-    $apptDiv.append($updateAppt);
+
+    $apptDiv.append($updateApptForm);
 
     var $updateYourAppt = $('.update-your-appt');
     $updateYourAppt.on('click', function(e){
       e.preventDefault();
-      $(this).next().next().children('form').slideDown("slow");
+      console.log('hey');
+      $updateApptForm.slideToggle('slow');
     });
   });
 }

@@ -48,7 +48,7 @@ function renderUserProfile(user){
   var $profile = $('#display-profile');
   var birthdate = convertTimeToWords(user.profile[0].birthdate);
   $profile.empty();
-  $profile.append($('<h2>').text(user.profile[0].firstName + " " + user.profile[0].lastName));
+  $profile.append($('<h1>').addClass('user-full-name').text(user.profile[0].firstName + " " + user.profile[0].lastName));
   $profile.append($('<h4>').text("Birthdate: " + birthdate).addClass('birthdate'));
   $profile.append($('<h4>').text("Gender: " + user.profile[0].gender).addClass('gender'));
   $profile.append($('<h4>').text("Illness: " + user.profile[0].illness).addClass('illness'));
