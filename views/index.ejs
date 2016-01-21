@@ -2,45 +2,35 @@
 <html lang="en">
   <head>
     <% include partials/head.ejs %>
-
   </head>
   <body>
-
          <!-- SIDEBAR -->
       <% include partials/sidebar.ejs %>
-
   <div class="container">
-     <div class="content">
+    <div class="content">
+      <button id="log-out">Sign Out</button>
 
-       <button id="log-out">Sign Out</button>
+      <div id="display-profile">
+      </div>
 
+      <div id="display-medications">
+      </div>
 
-    <div id="display-profile">
+      <div id="display-appointments">
+      </div>
 
-    </div>
+      <div id="display-foods">
+      </div>
 
-    <div id="display-medications">
-
-    </div>
-
-    <div id="display-appointments">
-
-    </div>
-
-    <div id="display-foods">
-
-    </div>
-    <% include partials/login.ejs %>
-
-    <% include partials/account.ejs %>
-
-    <% include partials/appointments.ejs %>
-
-    <% include partials/medication.ejs %>
-
-    <% include partials/restrictions.ejs %>
+      <% include partials/login.ejs %>
+      <% include partials/account.ejs %>
+      <% include partials/appointments.ejs %>
+      <% include partials/medication.ejs %>
+      <% include partials/restrictions.ejs %>
+      <div id="display-illness-info" class="modal">
+      </div>
    </div>
-</div>
+  </div>
 
   </body>
 </html>

@@ -2,7 +2,6 @@
 		box-sizing: border-box;
 		margin: 0;
 		padding: 0;
-		list-style-type: none;
 }
 
 .icon {
@@ -48,11 +47,11 @@ nav ul {
 		list-style-type: none;
 }
 
-li.logo img {
+nav li.logo img {
 		padding-left: 10px;
 		width: 72px;
 }
-li {
+nav li {
 	font-size: 65px;
 	width:50px;
 }
