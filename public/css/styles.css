@@ -123,8 +123,7 @@ input[type="submit"] {
 .update-food,
 .update-med,
 .update-appt,
-.illness-modal {
-  display: none;
+.illness-modal   display: none;
   padding: 10px;
 }
 
