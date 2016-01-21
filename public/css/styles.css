@@ -9,7 +9,11 @@
 
 body{
    background-color: whitesmoke;
+<<<<<<< cdd50891324645eac998415b607181f939ca1210
    background-image: url('https://i.imgur.com/FLe1spq.jpg');
+=======
+   background-image: url("/images/sunsetbnw.jpg");
+>>>>>>> edits styles
    background-size: cover;
    margin: 0 auto;
    padding: 0px 20px 20px 20px;
