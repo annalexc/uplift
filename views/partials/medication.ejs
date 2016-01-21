@@ -1,16 +1,21 @@
-<div class="medication-container">
-  <h2>Medication</h2>
-  <form id="medication" action="/users/medications" method="post">
-    <label for="medName">Medication:</label>
-    <input type="text" name="medName" placeholder="Name">
-    <label for="medDosage">Dosage:</label>
-    <input type="text" name="medDosage" placeholder="Dosage">
-    <label for="medSideEffects">Side Effects:</label>
-    <input type="text" name="medSideEffects" placeholder="Side Effects">
-    <label for="medTime">Time:</label>
-    <input type="text" name="medTime" placeholder="Time">
-    <label for="medCoPay">Copay:</label>
-    <input type="number" name="medCoPay" placeholder="Copay">
-    <input type="submit" value="Add Medication">
-  </form>
+<div class="modal new-med-modal">
+  <div class="medications-modal-content">
+    <div id="close-add-med-modal">
+      <p>X</p>
+    </div>
+    <h2>Medication</h2>
+    <form id="medication" action="/users/medications" method="post">
+      <label for="medName">Medication:</label>
+      <input type="text" name="medName" placeholder="Name">
+      <label for="medDosage">Dosage:</label>
+      <input type="text" name="medDosage" placeholder="Dosage">
+      <label for="medSideEffects">Side Effects:</label>
+      <input type="text" name="medSideEffects" placeholder="Side Effects">
+      <label for="medTime">Time:</label>
+      <input type="text" name="medTime" placeholder="Time">
+      <label for="medCoPay">Copay:</label>
+      <input type="number" name="medCoPay" placeholder="Copay">
+      <input type="submit" value="Add Medication">
+    </form>
+  </div>
 </div>

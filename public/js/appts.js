@@ -192,26 +192,31 @@ function updateApptsHandler(){
 
 }
 
+  function modalizeNewAppts(){
+    $('#display-appointments').on('click', '#open-add-appt-modal', function(e){
+      e.preventDefault();
+      console.log("hello there");
+      $('.new-appointments-modal').toggle();
+    });
+
+    $('#close-add-appt-modal').on('click', function(e){
+      e.preventDefault();
+      console.log("it's not broken")
+      $('.new-appointments-modal').toggle();
+    });
+  }
+
 $(function(){
   addAppointmentsHandler();
   deleteApptsHandler();
+  modalizeNewAppts();
 
-  $('#display-appointments').on('click', '#open-add-appt-modal', function(e){
-    e.preventDefault();
-    console.log("hello there");
-    $('.new-appointments-modal').toggle();
-  });
 
-  $('#close-add-appt-modal').on('click', function(e){
+
+  $('.button4').on('click', function(e){
     e.preventDefault();
-    console.log("it's not broken")
-    $('.new-appointments-modal').toggle();
+    console.log('hello!');
+    $('#display-appointments').toggle();
   })
-  //
-  // $('.button4').on('click', function(e){
-  //   e.preventDefault();
-  //   console.log('hello!');
-  //   $('#display-appointments').toggle();
-  // })
 
 });

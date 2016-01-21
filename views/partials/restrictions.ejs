@@ -1,10 +1,15 @@
-<div class="food-restrictions-container">
-  <h2>Food Restrictions</h2>
-  <form id="foodRestrictions" action="/users/foodRestrictions" method="post">
-    <label for="foodRestrictionsName">Restriction:</label>
-    <input type="text" name="foodRestrictionsName" placeholder="Food">
-    <label for="foodRestrictionsNotes">Notes:</label>
-    <input type="text" name="foodRestrictionsNotes" placeholder="Notes">
-    <input type="submit" value="Add Food Restriction">
-  </form>
+<div class="modal new-food-modal">
+  <div class="restrictions-modal-content">
+    <div id="close-add-food-modal">
+      <p>X</p>
+    </div>
+    <h2>Food Restrictions</h2>
+    <form id="foodRestrictions" action="/users/foodRestrictions" method="post">
+      <label for="foodRestrictionsName">Restriction:</label>
+      <input type="text" name="foodRestrictionsName" placeholder="Food">
+      <label for="foodRestrictionsNotes">Notes:</label>
+      <input type="text" name="foodRestrictionsNotes" placeholder="Notes">
+      <input type="submit" value="Add Food Restriction">
+    </form>
+  </div>
 </div>

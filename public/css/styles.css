@@ -61,14 +61,23 @@ input[type="submit"] {
   display: hidden;
 }
 
-.appointments-modal-content {
+.appointments-modal-content,
+.restrictions-modal-content,
+.medications-modal-content {
   margin: 0 auto;
   width: 300px;
   background-color: white;
   overflow: scroll;
 }
 
+#display-appointments,
+#display-foods,
+#display-medications {
+  display: none;
+}
 
-#close-add-appt-modal {
+#close-add-appt-modal,
+#close-add-food-modal,
+#close-add-med-modal {
   float:right;
 }

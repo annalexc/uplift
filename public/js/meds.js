@@ -5,7 +5,10 @@ function renderUserMeds(user){
   var medications = user.medications;
   var $display = $('#display-medications');
   $display.empty();
+  var $container = ( $('<div>').addClass('meds-container') );
   $display.append($('<h3>').text('Medications'));
+  $container.append($('<a href="#" id="open-add-med-modal">').text("+Add a Medication") );
+  $display.append($container);
   if (medications.length === 0){
     $display.append($('<p>').text("You have no medications."));
   }
@@ -125,8 +128,29 @@ function deleteMedsHandler(){
   });
 }
 
+function modalizeNewMeds(){
+  $('#display-medications').on('click', '#open-add-med-modal', function(e){
+    e.preventDefault();
+    console.log("hello there");
+    $('.new-med-modal').toggle();
+  });
+
+  $('#close-add-med-modal').on('click', function(e){
+    e.preventDefault();
+    console.log("it's not broken")
+    $('.new-med-modal').toggle();
+  });
+}
+
 $(function(){
     deleteMedsHandler();
     medsHandler();
     updateMedsHandler();
+    modalizeNewMeds();
+
+    $('.button2').on('click', function(e){
+      e.preventDefault();
+      console.log('hello!');
+      $('#display-medications').toggle();
+    })
 });

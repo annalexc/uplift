@@ -5,7 +5,10 @@ function renderUserFoods(user){
   var foods = user.foodRestrictions;
   var $display = $('#display-foods');
   $display.empty();
+  var $container = ( $('<div>').addClass('foods-container') );
   $display.append($('<h3>').text('Dietary Restrictions'));
+  $container.append($('<a href="#" id="open-add-food-modal">').text("+Add a Food Restriction") );
+  $display.append($container);
   if (foods.length === 0){
     $display.append( $('<p>').text("You have no dietary restrictions") );
   }
@@ -105,9 +108,30 @@ function updateFoodsHandler(){
   });
 }
 
+function modalizeNewFoods(){
+  $('#display-foods').on('click', '#open-add-food-modal', function(e){
+    e.preventDefault();
+    console.log("hello there");
+    $('.new-food-modal').toggle();
+  });
+
+  $('#close-add-food-modal').on('click', function(e){
+    e.preventDefault();
+    console.log("it's not broken")
+    $('.new-food-modal').toggle();
+  });
+}
 
 $(function(){
     addFoodRestrictionsHandler();
     deleteFoodsHandler();
     updateFoodsHandler();
+    modalizeNewFoods();
+
+    $('.button3').on('click', function(e){
+      e.preventDefault();
+      console.log('hello!');
+      $('#display-foods').toggle();
+    })
+
 });
