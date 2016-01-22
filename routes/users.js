@@ -14,6 +14,13 @@ router.get('/', function(req,res){
   }
 });
 
+/// GETS THE CURRENT USER'S INFO
+router.get('/api', function(req,res){
+  User.find({}, function(err, databaseUsers){
+    res.json({user: databaseUsers})
+  })
+});
+
 router.get('/taco', function(req, res) {
   var request = require('request');
   var parseString = require('xml2js').parseString;
