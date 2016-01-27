@@ -30,26 +30,17 @@ router.get('/taco', function(req, res) {
     parseString(body, function(err, result){
       var count = result.nlmSearchResult.count[0];
       if (count == 0) {
-        console.log(count);
         res.json("Sorry that illness wasn't found")
       } else {
         var data = result.nlmSearchResult.list[0].document[0].content[3]._;
         if (data.length > 170){
-          console.log(data);
-          console.log(data.length);
           res.json(data);
         } else {
-          console.log(illness);
           var newIllness = illness.replace(' ', '_');
-          console.log(newIllness);
           data = 'Not enough information... <a href="https://en.wikipedia.org/wiki/'+newIllness+'"> try this wikipedia link  </a>';
           res.json(data);
         }
       }
-      // if (result){
-      //   console.log("hello");
-      //   res.json("No information found");
-      // };
 
     });
   });
