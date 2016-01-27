@@ -3,7 +3,7 @@
 
 ### Development Approach
 
-We began by whiteboarding and outlining what our app was going to include. Once we outlined what the page should do what it should contain we divided up our work so that we could each focus on the database models, the routes we would build and the design of the page. Once the page was built all in a single list-like format we jQueried the app until everything moved and interacted in the desired ways. Here are some examples of our planning process:
+We began by whiteboarding and outlining what our app was going to include. Once we outlined what the page should do and what it should contain, we divided up our work. We decided we could each focus on the database models, the routes we would build and the design of the page. Once the page was built all in a single list-like format we jQueried the app until everything moved and interacted in the desired ways. Here are some examples of our planning process:
 
 ![Placeholder](/public/images/brokenlink.jpg)
 
