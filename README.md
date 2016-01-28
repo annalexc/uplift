@@ -5,7 +5,10 @@
 
 We began by whiteboarding and outlining what our app was going to include. Once we outlined what the page should do and what it should contain, we divided up our work. We decided we could each focus on the database models, the routes we would build and the design of the page. Once the page was built all in a single list-like format we jQueried the app until everything moved and interacted in the desired ways. Here are some examples of our planning process:
 
-![Placeholder](/public/images/brokenlink.jpg)
+![Whiteboarding](/public/images/whiteboarding1.jpg)
+![Whiteboarding](/public/images/whiteboarding2.jpg)
+![Whiteboarding](/public/images/whiteboarding3.jpg)
+![Whiteboarding](/public/images/whiteboarding4.jpg)
 
 
 ---
@@ -24,7 +27,7 @@ We began by whiteboarding and outlining what our app was going to include. Once 
 
 ![Splash page](/public/images/home-screen.png)
 
-- Users can sign up and create a profile that will hold all of the information regarding their illness. Users can add and remove appointments, restrictions, or medications based on their doctors recommendations. All of their information is displayed and rendered on their profile page, making it simple for users to manage particulars
+- Users can sign up and create a profile that will hold all of the information regarding their illness. Users can add and remove appointments, restrictions, or medications based on their doctor's recommendations. All of their information is displayed and rendered on their profile page, making it simple for users to manage particulars
 
 ![Appointments](/public/images/appointments.jpg)
 
